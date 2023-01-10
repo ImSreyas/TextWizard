@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('nav.css');
+@import url('lib.css');
+@import url('scrollbar.css');
+html{
+    margin: 0;
+    padding: 0;
+}
+*:has(body[theme='dark']){
+    --color: #f4e909;
+    --bg: #323337;
+    --text-color: white;
+    --text-secondary-color: #d1d0c5;
+}
+*:has(body[theme='white']){
+    --color: #BA68C8;
+    --bg: white;
+    --text-color: white;
+    --text-secondary-color: #d1d0c5;
+}
+body{
+    color: var(--text-color);
+    background-color: var(--bg);
+}
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+input[type='submit']{
+    cursor: pointer;
+}

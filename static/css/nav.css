@@ -1,0 +1,21 @@
+nav{
+    width: 100%;
+    height: fit-content;
+    position: sticky;
+    top: -1.2vw;
+}
+nav div{
+    display: flex;
+    justify-content: flex-end;
+    padding-inline-end: 5vw;
+}
+nav div a{
+    color: white;
+}
+nav div a span{
+    display: block;
+    padding: 2.2rem 2rem;
+}
+.nav-highlight{
+    color: var(--color);
+}

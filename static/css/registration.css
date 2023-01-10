@@ -1,0 +1,36 @@
+@import url('../main.css');
+body{
+    display: flex;
+    justify-content: flex-end;
+    min-height: 100vh;
+    max-height: fit-content;
+}
+.registration-container{
+    height: fit-content;
+    width: 50%;
+    border-radius: 1.2rem;
+    padding: 2rem 4rem; 
+    margin: 2rem;
+    box-shadow: 0 0 1rem rgb(205, 205, 205);
+}
+.registration-container form *{
+    width: 100%;
+}
+.registration-label{
+    margin-block: .2rem;
+}
+.registration-input{
+    border: none;
+    box-shadow: 0 0 1rem rgb(205, 205, 205);
+    padding: 1rem;
+    border-radius: .5rem;
+    margin-block-end: 1rem;
+}
+.reg-submit{
+    background-color: #5cdb95;
+    border-radius: .5rem;
+    border: none;
+    padding: 1rem;
+    margin-block-start: 1rem;
+    color: white;
+}
