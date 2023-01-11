@@ -3,6 +3,8 @@ nav{
     height: fit-content;
     position: sticky;
     top: -1.2vw;
+    background-color: var(--bg);
+    z-index: 1000;
 }
 nav div{
     display: flex;
@@ -14,7 +16,7 @@ nav div a{
 }
 nav div a span{
     display: block;
-    padding: 2.2rem 2rem;
+    padding: 2.2rem 2rem calc(2.2rem - 1.2vw);
 }
 .nav-highlight{
     color: var(--color);

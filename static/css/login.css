@@ -1,1 +1,45 @@
 @import url('main.css');
+.login-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.animation-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.animation-container div{
+    width: 75%;
+    aspect-ratio: 1/1;
+}
+.login-form-container{
+    background-color: var(--bg-1);
+    padding: 2.5rem 5rem;
+    border-radius: 1.6rem;
+}
+.login-form-container
+form
+label{
+    padding-block: .1rem;
+    border-block-end: 2px solid var(--color);
+    margin-block: .3rem;
+}
+.login-form-container
+form
+input{
+    width: 100%;
+    background-color: var(--bg-1);
+    margin-block-end: 1rem;
+    border-block-end: 2px solid var(--bg-2);
+    border-radius: 0;
+    padding-block-end: .5rem;
+    padding-inline: 0;
+    position: relative;
+}
+.submit-button{
+    width: 100%;
+    background-color: var(--color);
+    color: var(--bg-1);
+    margin-block: 1rem;
+}
+

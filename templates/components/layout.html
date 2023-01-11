@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>symbol recoginition</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script src="../static/js/navHighlighter.js" defer></script>
+    {% block links %} {% endblock links %}
+  </head>
+  {# header ends here #}
+  <body theme="dark">
+    <nav>
+      <div class="nav-wrapper">
+        <a class="no-text-decoration" href="/" id="index-nav-item"
+          ><span>home</span></a
+        >
+        <a class="no-text-decoration" href="/ocr" id="ocr-nav-item"
+          ><span>OCR</span></a
+        >
+        <a class="no-text-decoration" href="/blog" id="blog-nav-item"
+          ><span>blog</span></a
+        >
+        <a class="no-text-decoration" href="/profile" id="profile-nav-item"
+          ><span>profile</span></a
+        >
+        <a class="no-text-decoration" href="/login" id="login-nav-item"
+          ><span>login</span></a
+        >
+      </div>
+    </nav>
+    <div class="main-body">{% block body %} {% endblock body %}</div>
+    <footer>
+      <div class="rights">
+        2023© all rights reserved by SREYAS. He is a front-end developer working
+        for google and meta.
+      </div>
+    </footer>
+  </body>
+</html>

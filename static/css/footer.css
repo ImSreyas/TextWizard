@@ -1,0 +1,11 @@
+footer{
+    background-color: var(--bg-1);
+    min-height: 25rem;
+    max-height: fit-content;
+}
+footer .rights{
+    padding: 2.5rem;
+    display: flex;
+    justify-content: center;
+    border-block-end: 1px solid var(--bg-0);
+}

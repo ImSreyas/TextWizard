@@ -2,15 +2,24 @@
 @import url('nav.css');
 @import url('lib.css');
 @import url('scrollbar.css');
+@import url('footer.css');
+@import url('components.css');
 html{
     margin: 0;
     padding: 0;
 }
 *:has(body[theme='dark']){
-    --color: #f4e909;
+    --color: #f4e80c;
     --bg: #323337;
     --text-color: white;
     --text-secondary-color: #d1d0c5;
+
+    --bg-shadow: #222427;
+    --bg-0: #3c3e42;
+    --bg-0-5: #2c2e31;
+    --bg-1: #27282b;
+    --bg-1-5: #222326;
+    --bg-2: #212124;
 }
 *:has(body[theme='white']){
     --color: #BA68C8;
@@ -30,4 +39,10 @@ body{
 }
 input[type='submit']{
     cursor: pointer;
+}
+.main-body{
+    min-height: 80vh;
+    max-height: fit-content;
+    padding-inline: 5vw;
+    padding-block: 1.2rem;
 }

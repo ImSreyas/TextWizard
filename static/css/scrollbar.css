@@ -4,7 +4,7 @@
     color: black;
 }
 ::-webkit-scrollbar{
-    background-color: var(--bg-d);
+    background-color: var(--bg);
     border-radius: 100px;
     width: .4rem;
 }
@@ -14,7 +14,7 @@
 }
 ::-webkit-scrollbar-thumb{
     background-color: #424549;
-    background-color: var(--color-d);
+    background-color: var(--color);
     border-radius: 100px;
     /* border: .05rem solid rgb(255, 255, 255); */
 }

@@ -1,9 +1,30 @@
-{% extends 'layout.html' %}
-{% block css %}
-<link rel='stylesheet' href='../static/css/login.css'>
-{% endblock %}
+{% extends 'components/layout.html' %} 
+
+{% block links %}
+<link rel="stylesheet" href="../static/css/login.css" />
+<script src='../static/js/inputBorderAnimation.js' defer></script>
+{% endblock %} 
+
 {% block body %}
-<div class='index-container'>
-    <h1>login page</h1>
+<div class="login-container">
+  <div class='animation-container'>
+    <div>
+      {% include 'animation/login-page.html' %}
+    </div>
+  </div>
+  <div class='login-form-container'>
+    <form autocomplete='off' spellcheck='false'>
+      <label for='username' class='label username-label'>username</label>
+      <div class='input-container'>
+        <input type='text' name='username' class='input username'>
+      </div>
+
+      <label for='password' class='label password-label'>password</label>
+      <div class='input-login-container'>
+        <input type='password' name='password' class='input password'>
+      </div>
+      <button type='submit' name='username' class='btn submit-button'>log in</button>
+    </form>
+  </div>
 </div>
 {% endblock %}
