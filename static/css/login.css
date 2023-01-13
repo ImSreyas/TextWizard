@@ -15,31 +15,39 @@
 .login-form-container{
     background-color: var(--bg-1);
     padding: 2.5rem 5rem;
-    border-radius: 1.6rem;
+    border-radius: 1.5rem;
 }
 .login-form-container
 form
 label{
     padding-block: .1rem;
-    border-block-end: 2px solid var(--color);
+    /* border-block-end: 2px solid var(--color); */
     margin-block: .3rem;
 }
 .login-form-container
 form
 input{
     width: 100%;
-    background-color: var(--bg-1);
+    background-color: var(--bg-0);
     margin-block-end: 1rem;
-    border-block-end: 2px solid var(--bg-2);
-    border-radius: 0;
-    padding-block-end: .5rem;
-    padding-inline: 0;
+    /* border-block-end: 2px solid var(--bg--1); */
+    border-radius: .5rem;
     position: relative;
 }
 .submit-button{
     width: 100%;
-    background-color: var(--color);
     color: var(--bg-1);
-    margin-block: 1rem;
+    margin-block: 1.5rem;
+}
+.new-account-link-container 
+div{
+    display: flex;
+    gap: 1rem;
+}
+.new-account-link-container 
+div
+a{
+    text-align: center;
+    color: var(--color);
 }
 

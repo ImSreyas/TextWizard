@@ -13,18 +13,24 @@
     </div>
   </div>
   <div class='login-form-container'>
-    <form autocomplete='off' spellcheck='false'>
+    <form autocomplete='off' spellcheck='false' action='' method='POST'>
       <label for='username' class='label username-label'>username</label>
       <div class='input-container'>
-        <input type='text' name='username' class='input username'>
+        <input type='text' name='username' class='input username' name='username'>
       </div>
 
       <label for='password' class='label password-label'>password</label>
       <div class='input-login-container'>
-        <input type='password' name='password' class='input password'>
+        <input type='password' name='password' class='input password' name='password'>
       </div>
       <button type='submit' name='username' class='btn submit-button'>log in</button>
     </form>
+    <div class='new-account-link-container'>
+      <div>
+        <span>Don't have an account. Create one ?</span>
+        <a href='/registration' class='no-text-decoration'>sign in</a>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

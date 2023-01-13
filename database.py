@@ -1,10 +1,39 @@
-from flask import *
-from flask_mysqldb import MySQL
+import mysql.connector
 
-app = Flask(__name__)
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'test'
-
-mysql = MySQL(app)
+password=""
+database = "ocr_wizard"
+def select(q):
+	cnx = mysql.connector.connect(user="root", password=password, host="localhost", database=database,port=3306)
+	cur = cnx.cursor(dictionary=True)
+	cur.execute(q)
+	result = cur.fetchall()
+	cur.close()
+	cnx.close()
+	return result
+def update(q):
+	cnx = mysql.connector.connect(user="root", password=password, host="localhost", database=database,port=3306)
+	cur = cnx.cursor(dictionary=True)
+	cur.execute(q)
+	cnx.commit()
+	result = cur.rowcount
+	cur.close()
+	cnx.close()
+	return result
+def delete(q):
+	cnx = mysql.connector.connect(user="root", password=password, host="localhost", database=database,port=3306)
+	cur = cnx.cursor(dictionary=True)
+	cur.execute(q)
+	cnx.commit()
+	result = cur.rowcount
+	cur.close()
+	cnx.close()
+def insert(q):
+	cnx = mysql.connector.connect(user="root", password=password, host="localhost", database=database,port=3306)
+	cur = cnx.cursor(dictionary=True)
+	cur.execute(q)
+	cnx.commit()
+	result = cur.lastrowid
+	cur.close()
+	cnx.close()
+	return result
+	

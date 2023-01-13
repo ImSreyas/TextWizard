@@ -1,36 +1,96 @@
-@import url('../main.css');
-body{
-    display: flex;
-    justify-content: flex-end;
-    min-height: 100vh;
-    max-height: fit-content;
-}
+@import url('main.css');
 .registration-container{
-    height: fit-content;
+    display: flex;
+    padding-block-end: 2rem;
+}
+.registration-container>
+div{
     width: 50%;
-    border-radius: 1.2rem;
-    padding: 2rem 4rem; 
-    margin: 2rem;
-    box-shadow: 0 0 1rem rgb(205, 205, 205);
 }
-.registration-container form *{
+.registration-form-container{
+    background-color: var(--bg-1);
+    padding: 2rem 4rem;
+    border-radius: 1.5rem;
+}
+.registration-form-container
+form
+label{
+    padding-block: .1rem;
+    /* border-block-end: 2px solid var(--color); */
+    margin-block: .25rem;
+}
+.registration-form-container
+form
+input,
+.registration-form-container
+form
+textarea{
     width: 100%;
-}
-.registration-label{
-    margin-block: .2rem;
-}
-.registration-input{
-    border: none;
-    box-shadow: 0 0 1rem rgb(205, 205, 205);
-    padding: 1rem;
+    background-color: var(--bg-0);
+    margin-block-end: .9rem;
     border-radius: .5rem;
-    margin-block-end: 1rem;
+    position: relative;
+    resize: vertical;
 }
+.registration-form-container
+form
+textarea::-webkit-scrollbar{
+    display: none;
+}
+
 .reg-submit{
-    background-color: #5cdb95;
+    width: 100%;
+    color: var(--bg-1);
+    margin-block: 1.5rem;
+}
+.animation-container{
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    position: sticky;
+    top: 4.8rem;
+    transform: translateY(.6rem);
+}
+.animation-container div{
+    width: 80%;
+    aspect-ratio: 1/1;
+    position: sticky;
+    top: 5rem;
+}
+.username-label{
+    display: inline-block;
+    font-size: .5rem;
+    color: var(--bg);
+    background-color: var(--color);
+    position: relative;
+    padding: .12em .5em .07em;
+    border-radius: .25em;
+    transform: translateY(-.2em);
+    margin-inline: .1rem;
+}
+.gender-container{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
     border-radius: .5rem;
+    overflow: hidden;
+    margin-block-end: .9rem;
+}
+.gender-container button{
+    border-radius: 0;
+    display: block;
+    text-align: center;
+    padding-block: .9rem;
+    width: 100%;
+    background-color: var(--bg-0);
     border: none;
-    padding: 1rem;
-    margin-block-start: 1rem;
     color: white;
+    border-inline-end: 1px solid var(--bg-1);
+}
+.gender-container button:last-child{
+    border: none;
+}
+.gender-container button[selected='true']{
+    background-color: var(--color);
+    color: var(--bg-1);
 }

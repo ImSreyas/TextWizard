@@ -1,36 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../static/css/home/registration.css">
-</head>
-<body>
-    <div class="registration-container">
-        <form action="" class="reg-form">
+{% extends 'components/layout.html' %}
+
+{% block links %}
+<link rel="stylesheet" href="../static/css/registration.css">
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/registrationForm.js" defer></script>
+
+{% endblock links %}
+
+{% block body %}
+<div class="registration-container">
+    <div class='registration-form-container'>
+        <form action="" class="reg-form" autocomplete='off' spellcheck='false' method='POST'>
             <!-- *name input field  -->
-            <label for="name" class="registration-label name-label">Name</label>
-            <input type="text" class="registration-input name" name="name">
+            <label for="name" class="label registration-label name-label">Name</label>
+            <input type="text" class="input registration-input name" name="name">
+
+            <label for="gender" class="label registration-label gender-label">gender</label>
+            <div class='gender-container' id='genderContainer'>
+                <button type='button' class='btn' selected='true'>male</button>
+                <button type='button' class='btn' selected='false'>female</button>
+                <button type='button' class='btn' selected='false'>others</button>
+            </div>
             <!-- *address input field  -->
-            <label for="" class="registration-label address-label">Address</label>
-            <input type="text" class="registration-input address" name="address">
+            <label for="" class="label registration-label address-label">Address</label>
+            <textarea class="input registration-input address" name="address" rows='3'></textarea>
             <!-- *phone input field  -->
-            <label for="phone" class="registration-label phone-label">Phone</label>
-            <input type="text" class="registration-input phone" name="phone">
+            <label for="phone" class="label registration-label phone-label">Phone</label>
+            <input type="text" class="input registration-input phone" name="phone">
             <!-- *email input field  -->
-            <label for="" class="registration-label email-label">email</label>
-            <input type="text" class="registration-input email" name="email">
+            <label for="" class="label registration-label email-label">email</label>
+            <span class='username-label'>username</span>
+            <input type="text" class="input registration-input email" name="email">
             <!-- *password input field  -->
-            <label for="name" class="registration-label password-label">Password</label>
-            <input type="text" class="registration-input password" name="password">
+            <label for="name" class="label registration-label password-label">Password</label>
+            <input type="password" class="input registration-input password" name="password">
             <!-- *confirm password input field  -->
-            <label for="" class="registration-label confirm-password-label">Confirm password</label>
-            <input type="text" class="registration-input confirm-password" name="confirm-password">
+            <label for="" class="label registration-label confirm-password-label">Confirm password</label>
+            <input type="password" class="input registration-input confirm-password" name="confirm-password">
             <!-- -submit button  -->
-            <input type="submit" class="reg-submit" value="submit">
+            <button type="submit" class="btn reg-submit" value="create">create</button>
         </form>
     </div>
-</body>
-</html>
+    <div class='animation-container'>
+       <div>
+            {% include 'animation/sign-in.html' %}
+       </div>
+    </div>
+</div>
+{% endblock body %}
