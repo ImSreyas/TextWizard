@@ -14,6 +14,7 @@
             <!-- *name input field  -->
             <label for="name" class="label registration-label name-label">Name</label>
             <input type="text" class="input registration-input name" name="name">
+            <error></error>
 
             <label for="gender" class="label registration-label gender-label">gender</label>
             <div class='gender-container' id='genderContainer'>
@@ -24,21 +25,32 @@
             <!-- *address input field  -->
             <label for="" class="label registration-label address-label">Address</label>
             <textarea class="input registration-input address" name="address" rows='3'></textarea>
+            <error></error>
             <!-- *phone input field  -->
             <label for="phone" class="label registration-label phone-label">Phone</label>
             <input type="text" class="input registration-input phone" name="phone">
+            <error></error>
             <!-- *email input field  -->
-            <label for="" class="label registration-label email-label">email</label>
-            <span class='username-label'>username</span>
+            <label for="email" class="label registration-label email-label">email</label>
             <input type="text" class="input registration-input email" name="email">
+            <error></error>
+            
+            <span class='realme-label'>username</span>
+            <input type="text" class="input registration-input username" name="username">
+            <error></error>
             <!-- *password input field  -->
             <label for="name" class="label registration-label password-label">Password</label>
             <input type="password" class="input registration-input password" name="password">
+            <error></error>
             <!-- *confirm password input field  -->
             <label for="" class="label registration-label confirm-password-label">Confirm password</label>
             <input type="password" class="input registration-input confirm-password" name="confirm-password">
+            <error></error>
             <!-- -submit button  -->
-            <button type="submit" class="btn reg-submit" value="create">create</button>
+            <button type="button" class="btn reg-submit" value="create">create</button>
+            <div class='password-notifier'>
+                Note : Password must at least contain 6 characters and it should contain at least one uppercase, one lowercase, one special character and one digit.
+            </div>
         </form>
     </div>
     <div class='animation-container'>

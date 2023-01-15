@@ -18,6 +18,7 @@ label{
     padding-block: .1rem;
     /* border-block-end: 2px solid var(--color); */
     margin-block: .25rem;
+    display: block;
 }
 .registration-form-container
 form
@@ -57,16 +58,16 @@ textarea::-webkit-scrollbar{
     position: sticky;
     top: 5rem;
 }
-.username-label{
+.realme-label{
     display: inline-block;
-    font-size: .5rem;
+    font-size: .6rem;
     color: var(--bg);
     background-color: var(--color);
     position: relative;
-    padding: .12em .5em .07em;
+    padding: .12em .5em;
     border-radius: .25em;
     transform: translateY(-.2em);
-    margin-inline: .1rem;
+    margin: .35rem .2rem;
 }
 .gender-container{
     display: grid;
@@ -93,4 +94,16 @@ textarea::-webkit-scrollbar{
 .gender-container button[selected='true']{
     background-color: var(--color);
     color: var(--bg-1);
+}
+.password-notifier{
+    font-size: .7rem;
+    margin-block: .8rem;
+}
+error{
+    width: 100%;
+    display: block;
+    font-size: .7rem;
+    color: red;
+    transform: translateY(-.6rem);
+    margin-inline: .25rem;
 }
