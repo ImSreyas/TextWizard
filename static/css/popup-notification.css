@@ -1,0 +1,66 @@
+.popup-container{
+    width: fit-content;
+    padding: 1rem 1.5rem 1rem 1.8rem;
+    position: fixed;
+    right: 2rem;
+    bottom: 1rem;
+    border-radius: .6rem;
+    animation: fadeInOut ease-out;
+    visibility: hidden;
+    background-color: #202020;
+}
+@keyframes fadeInOut {
+    0%{
+        opacity: 0;
+        visibility: visible;
+    }
+    8%{
+        opacity: 1;
+    }
+    92%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.popup-text-container{
+    font-weight: 200;
+    font-size: .9rem;
+}
+.popup-text-container::before{
+    margin-inline-end: 0.5rem;
+    --size: 1.1rem;
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    aspect-ratio: 1/1;
+    background-image: url('../images/icons8-checkmark-480.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateY(.22rem);
+}
+.close-popup-button-container{
+    cursor: pointer;
+    margin-left: 1.2rem;
+    border: none;
+    background-color: transparent;
+    display: inline-block;
+    --size: 1.1rem;
+    width: 1rem;
+    aspect-ratio: 1/1;
+    background-image: url('../images/cross-small.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateY(.12rem);
+}
+@media (width <= 900px){
+    .popup-container{
+        right: 1.5rem;
+    }
+    .popup-text-container{
+        font-size: .6rem;
+    }
+}

@@ -2,6 +2,7 @@
 .login-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding-block: 1.1rem 2.2rem;
 }
 .animation-container{
     display: flex;
@@ -13,7 +14,7 @@
     aspect-ratio: 1/1;
 }
 .login-form-container{
-    background-color: var(--bg-1);
+    background-color: var(--bg-card);
     padding: 2.5rem 5rem;
     border-radius: 1.5rem;
 }
@@ -28,7 +29,7 @@ label{
 form
 input{
     width: 100%;
-    background-color: var(--bg-0);
+    background-color: var(--bg-input);
     margin-block-end: 1rem;
     /* border-block-end: 2px solid var(--bg--1); */
     border-radius: .5rem;
@@ -36,7 +37,7 @@ input{
 }
 .submit-button{
     width: 100%;
-    color: var(--bg-1);
+    color: var(--bg-card);
     margin-block: 1.5rem;
 }
 .new-account-link-container 

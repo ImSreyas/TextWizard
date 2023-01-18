@@ -4,23 +4,43 @@
 @import url('scrollbar.css');
 @import url('footer.css');
 @import url('components.css');
+@import url('popup-notification.css');
+@import url('loading-screen.css');
+
 html{
     margin: 0;
     padding: 0;
 }
-*:has(body[theme='dark']){
-    --color: #f4e80c;
+*:has(body[theme='yellow']){
+    --color: #fff716;
     --bg: #323337;
     --text-color: white;
     --text-secondary-color: #d1d0c5;
 
     --bg-shadow: #222427;
-    --bg--1: #585b60;
-    --bg-0: #3c3e42;
-    --bg-0-5: #2c2e31;
-    --bg-1: #27282b;
-    --bg-1-5: #222326;
+    --bg--2: #585b60;
+    --bg--1: #3c3e42;
+    --bg-card: #27282b;
+    --bg-input: #292a2e;
+    --gray-text: rgb(145, 145, 145);
     --bg-2: #212124;
+}
+*:has(body[theme='green']){
+    --color: #4ad295;
+    --bg: #e5e5e5;
+    --text-color: black;
+    --text-secondary-color: #d1d0c5;
+
+    --box-shadow: #222427;
+    --bg--2: #f6f6f6;
+    --bg--1: #f0f0f0;
+    --bg-card: #ffffff;
+    --bg-input: #e5e5e5;
+    --gray-text: rgb(145, 145, 145);
+    --bg-2: #212124;
+    
+    --footer-bg: #ffffff;
+    --text-highlighter: #202020;
 }
 *:has(body[theme='white']){
     --color: #BA68C8;

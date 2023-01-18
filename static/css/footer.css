@@ -1,11 +1,21 @@
 footer{
-    background-color: var(--bg-1);
+    background-color: var(--footer-bg);
     min-height: 25rem;
     max-height: fit-content;
 }
-footer .rights{
+footer 
+.rights{
     padding: 2.5rem;
     display: flex;
     justify-content: center;
-    border-block-end: 1px solid var(--bg-0);
+    border-block-end: 1px solid var(--bg-input);
+}
+footer
+.rights
+span{
+    color: var(--color);
+    padding-inline: .5rem;
+    margin-inline: .5rem;
+    background-color: var(--text-highlighter);
+    border-radius: .25rem;
 }

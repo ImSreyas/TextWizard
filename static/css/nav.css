@@ -12,7 +12,7 @@ nav div{
     padding-inline-end: 5vw;
 }
 nav div a{
-    color: white;
+    color: var(--text-color);
 }
 nav div a span{
     display: block;

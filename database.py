@@ -27,6 +27,7 @@ def delete(q):
 	result = cur.rowcount
 	cur.close()
 	cnx.close()
+	return result
 def insert(q):
 	cnx = mysql.connector.connect(user="root", password=password, host="localhost", database=database,port=3306)
 	cur = cnx.cursor(dictionary=True)
