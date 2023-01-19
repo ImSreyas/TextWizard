@@ -7,11 +7,15 @@
     <meta content="" name="keywords" />
     <meta content="" name="description" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script src='../static/js/jquery.js'></script>
     <script src="../static/js/navHighlighter.js" defer></script>
+    <script src='../static/js/themeSetter.js' defer></script>
     {% block links %} {% endblock links %}
   </head>
   {# header ends here #}
-  <body theme="green">
+  <body 
+  {% if session['theme'] == 'yellow' %} theme='yellow' {% else %} theme='green' {% endif %}
+  >
     <nav>
       <div class="nav-wrapper">
         <a class="no-text-decoration" href="/" id="nav-item" nav='index'
@@ -30,6 +34,11 @@
           ><span>login</span></a
         >
       </div>
+      {% if session['theme'] == 'yellow' %}
+      <button class='theme-button-day theme-button' themeMode='dark'></button>
+       {% else %} 
+       <button class='theme-button-night theme-button' themeMode='white'></button>
+       {% endif %}
     </nav>
     <div class="main-body">{% block body %} {% endblock body %}</div>
     <footer>

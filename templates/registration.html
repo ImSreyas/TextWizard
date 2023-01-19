@@ -2,9 +2,7 @@
 
 {% block links %}
 <link rel="stylesheet" href="../static/css/registration.css">
-<script src="../static/js/jquery.js"></script>
 <script src="../static/js/registrationForm.js" defer></script>
-
 {% endblock links %}
 
 {% block body %}
@@ -54,8 +52,11 @@
         </form>
     </div>
     <div class='animation-container'>
-       <div>
-            {% include 'animation/sign-in.html' %}
+       <div class='animation-theme' animation='green'>
+            {% include 'animation/green/registration.html' %}
+       </div>
+       <div class='animation-theme' animation='yellow'>
+            {% include 'animation/yellow/registration.html' %}
        </div>
     </div>
 </div>

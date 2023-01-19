@@ -10,8 +10,11 @@
 {% include 'loading-screen/loading-screen.html'%}
 <div class="login-container">
   <div class='animation-container'>
-    <div>
-      {% include 'animation/login-page.html' %}
+    <div class='animation-theme' animation='yellow'>
+      {% include 'animation/yellow/login.html' %}
+    </div>
+    <div class='animation-theme' animation='green'>
+      {% include 'animation/green/login.html' %}
     </div>
   </div>
   <div class='login-form-container'>

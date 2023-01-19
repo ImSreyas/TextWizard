@@ -5,11 +5,13 @@ nav{
     top: -1.2vw;
     background-color: var(--bg);
     z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    padding-inline-end: 5vw;
 }
 nav div{
     display: flex;
     justify-content: flex-end;
-    padding-inline-end: 5vw;
 }
 nav div a{
     color: var(--text-color);
@@ -20,4 +22,34 @@ nav div a span{
 }
 .nav-highlight{
     color: var(--color);
+}
+.theme-button-night{
+    display: block;
+    width: 1.2rem;
+    aspect-ratio: 1/1;
+    background: url('../images/brightness.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 2.3rem 1rem calc(2.2rem - 1.2vw) 1.5rem;
+    border: none;
+    transition: all 250ms linear;
+}
+.theme-button-night:hover{
+    cursor: pointer;
+}
+.theme-button-day{
+    display: block;
+    width: 1.2rem;
+    aspect-ratio: 1/1;
+    background: url('../images/moon-stars.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 2.3rem 1rem calc(2.2rem - 1.2vw) 1.5rem;
+    border: none;
+    transition: all 250ms linear;
+}
+.theme-button-day:hover{
+    cursor: pointer;
 }

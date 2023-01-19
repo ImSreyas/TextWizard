@@ -116,6 +116,8 @@ def registration():
         else : return y
     return render_template('registration.html')
 
-@public.route('/test')
-def test():
-    return '<h1>test successful</h1>'
+@public.route('/theme/<mode>')
+def theme(mode):
+    session['theme'] = mode
+    return 'success'
+    
