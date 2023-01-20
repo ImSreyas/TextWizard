@@ -27,7 +27,7 @@ nav div a span{
     display: block;
     width: 1.2rem;
     aspect-ratio: 1/1;
-    background: url('../images/brightness.png');
+    background: url('../images/moon-stars.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -42,7 +42,7 @@ nav div a span{
     display: block;
     width: 1.2rem;
     aspect-ratio: 1/1;
-    background: url('../images/moon-stars.png');
+    background: url('../images/brightness.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
