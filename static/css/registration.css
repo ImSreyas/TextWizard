@@ -17,7 +17,7 @@ form
 label{
     padding-block: .1rem;
     /* border-block-end: 2px solid var(--color); */
-    margin-block: .25rem;
+    margin: .25rem;
     display: block;
 }
 .registration-form-container
