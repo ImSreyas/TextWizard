@@ -36,8 +36,31 @@ def profile():
 @public.route('/login', methods = ['POST', 'GET'])
 def testPage():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form("password")
+        x = ['', '']
+        username = request.form.get('username')
+        password = request.form.get('password')
+        if username == None or username == "":
+            x[0] = "enter the username"
+            return x
+        result = database.select("SELECT * FROM login WHERE username='%s'" % (username))
+        if len(result) > 0 :
+            if password == None or password == "" :
+                x[1] = "enter the password"
+                return x
+            password = (hashlib.md5(password.encode())).hexdigest()
+            if result[0]['password'] == password :
+                if result[0]['user_type'] == 'user' :
+                    session['admin'] = result[0]['id']
+                    return 'user'
+                else : 
+                    session['user'] = result[0]['id']
+                    return 'admin'
+            else :
+                x[1] = 'wrong password'
+                return x
+        else : 
+            x[0] = 'invalid username'
+            return x
     return render_template('login.html')
 
 @public.route('/registration', methods = ['POST', 'GET'])
@@ -96,7 +119,7 @@ def registration():
             if password == confirm_password :
                 x[6] = ''
             else :
-                x[6] = 'enter the same password' 
+                x[6] = 'enter the password again' 
                 
         for val in x :
            if val == '' :

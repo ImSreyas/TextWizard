@@ -71,7 +71,7 @@ $(document).ready(()=>{
             },
             success: (data)=>{
                 if(data == 'success'){
-                   location.href = "/login?from=registration_successful&duration=5000"
+                   location.href = "/login?message=registration_successful&duration=5000"
                 }
                 else{
                     let errorContainer = $('error')

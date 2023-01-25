@@ -3,11 +3,11 @@
     padding: 1rem 1.5rem 1rem 1.8rem;
     position: fixed;
     right: 2rem;
-    bottom: 1rem;
-    border-radius: .6rem;
+    bottom: 1.2rem;
+    border-radius: .5rem;
     animation: fadeInOut ease-out;
     visibility: hidden;
-    background-color: #202020;
+    background-color: var(--popup-bg);
 }
 @keyframes fadeInOut {
     0%{
@@ -54,7 +54,7 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    transform: translateY(.12rem);
+    transform: translateY(.2rem);
 }
 @media (width <= 900px){
     .popup-container{

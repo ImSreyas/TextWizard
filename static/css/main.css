@@ -30,6 +30,8 @@ html{
 
     --footer-bg: #28292d;
     --text-highlighter: #202020;
+
+    --popup-bg: #0f0f0f;
 }
 *:has(body[theme='green']){
     --color: #4ad295;
@@ -47,7 +49,9 @@ html{
     --bg-2: #212124;
     
     --footer-bg: #ffffff;
-    --text-highlighter: #202020;
+    --text-highlighter: #171717;
+
+    --popup-bg: #191919;
 }
 body{
     color: var(--text-color);

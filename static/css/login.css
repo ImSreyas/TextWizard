@@ -23,7 +23,7 @@ form
 label{
     padding-block: .1rem;
     /* border-block-end: 2px solid var(--color); */
-    margin-block: .3rem;
+    margin: .3rem;
 }
 .login-form-container
 form
@@ -50,5 +50,13 @@ div
 a{
     text-align: center;
     color: var(--color);
+}
+error{
+    width: 100%;
+    display: block;
+    font-size: .7rem;
+    color: red;
+    transform: translateY(-.6rem);
+    margin-inline: .25rem;
 }
 

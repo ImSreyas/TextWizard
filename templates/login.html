@@ -2,12 +2,10 @@
 
 {% block links %}
 <link rel="stylesheet" href="../static/css/login.css" />
-<script src='../static/js/popup-notification.js'></script>
 <script src='../static/js/login.js' defer></script>
 {% endblock %} 
 
 {% block body %}
-{% include 'loading-screen/loading-screen.html'%}
 <div class="login-container">
   <div class='animation-container'>
     <div class='animation-theme' animation='yellow'>
@@ -22,13 +20,15 @@
       <label for='username' class='label username-label'>username</label>
       <div class='input-container'>
         <input type='text' name='username' class='input username' name='username'>
+        <error></error>
       </div>
 
       <label for='password' class='label password-label'>password</label>
       <div class='input-login-container'>
         <input type='password' name='password' class='input password' name='password'>
+        <error></error>
       </div>
-      <button type='submit' name='username' class='btn submit-button'>log in</button>
+      <button type='button' name='username' class='btn submit-button' onclick="userLogin();">log in</button>
     </form>
     <div class='new-account-link-container'>
       <div>

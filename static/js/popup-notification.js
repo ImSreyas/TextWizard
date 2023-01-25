@@ -11,7 +11,7 @@ function popup(str ='something went wrong', color = 'green', time='5s'){
     popups.reverse()
     let addOn = 0 
     popups.forEach((pop, index) =>{
-        if(index == 0) addOn = 1
+        if(index == 0) addOn = 1.2
         addOn += 4
         pop.style.bottom = addOn+'rem'
     })
