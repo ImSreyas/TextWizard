@@ -18,4 +18,5 @@ span{
     margin-inline: .5rem;
     background-color: var(--text-highlighter);
     border-radius: .25rem;
+    display: inline;
 }

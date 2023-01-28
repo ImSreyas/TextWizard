@@ -53,3 +53,27 @@ nav div a span{
 .theme-button-day:hover{
     cursor: pointer;
 }
+
+
+.res-nav-button{
+    --size: 3rem;
+    display: none;
+    width: var(--size);
+    height: var(--size);
+    background: url('../images/symbol.png');
+    background-color: rgb(39, 39, 39);
+    background-size: 1rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 1rem calc(5vw + .1rem) calc(1rem - 1.2vw);
+    border: none;
+    transition: all 250ms linear;
+    border-radius: 50rem;
+    z-index: 10;
+}
+.res-nav-button[onoff='true']{
+    background-image: url('../images/cross-small-white.png') !important;
+}
+.res-nav-button:hover{
+    cursor: pointer;
+}

@@ -41,11 +41,6 @@ input{
     margin-block: 1.5rem;
 }
 .new-account-link-container 
-div{
-    display: flex;
-    gap: 1rem;
-}
-.new-account-link-container 
 div
 a{
     text-align: center;
@@ -59,4 +54,17 @@ error{
     transform: translateY(-.6rem);
     margin-inline: .25rem;
 }
-
+@media (width<=900px) {
+    .main-body{
+        padding-inline: 6vw;
+    }
+    .login-container{
+        grid-template-columns: 1fr;
+    }
+    .animation-container{
+        grid-row: 2;
+    }
+    .login-form-container{
+        padding: 2rem 10vw;
+    }
+}

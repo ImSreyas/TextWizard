@@ -6,6 +6,7 @@
 @import url('components.css');
 @import url('popup-notification.css');
 @import url('loading-screen.css');
+@import url('responsiveNavigation.css');
 
 html{
     margin: 0;

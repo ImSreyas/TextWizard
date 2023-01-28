@@ -111,3 +111,22 @@ error{
     transform: translateY(-.6rem);
     margin-inline: .25rem;
 }
+
+@media (width<=900px) {
+    .main-body{
+        padding-inline: 6vw;
+    }
+    .registration-container{
+        display: block;
+    }
+    .registration-container>
+    div{
+        width: 100%;
+    }
+    .animation-container{
+        grid-row: 2;
+    }
+    .registration-form-container{
+        padding: 2rem 10vw;
+    }
+}
