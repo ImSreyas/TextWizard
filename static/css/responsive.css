@@ -1,0 +1,6 @@
+@media (width <= 900px) {
+    footer
+    .rights{
+        padding-inline: 8vw;
+    }
+}

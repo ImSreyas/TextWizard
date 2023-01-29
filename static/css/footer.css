@@ -12,6 +12,7 @@ footer
 }
 footer
 .rights
+span
 span{
     color: var(--color);
     padding-inline: .5rem;
@@ -19,4 +20,5 @@ span{
     background-color: var(--text-highlighter);
     border-radius: .25rem;
     display: inline;
+    height: fit-content;
 }
