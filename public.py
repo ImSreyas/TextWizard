@@ -1,6 +1,6 @@
 from flask import *
 from flask_mysqldb import MySQL
-import database
+import database as database
 import re, hashlib
 
 

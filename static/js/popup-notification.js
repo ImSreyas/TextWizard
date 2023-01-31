@@ -16,7 +16,7 @@ function popup(str ='something went wrong', color = 'green', time='5s'){
         pop.style.bottom = addOn+'rem'
     })
     mainPopupContainer.style.animationDuration = time
-    mainPopupContainer.style.color = color
+    mainPopupContainer.style.backgroundColor = color
     mainPopupContainer.classList.add('popup-container')
 
     //*TEXT container inside 

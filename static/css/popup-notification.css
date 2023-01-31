@@ -8,6 +8,7 @@
     animation: fadeInOut ease-out;
     visibility: hidden;
     background-color: var(--popup-bg);
+    color: white;
 }
 @keyframes fadeInOut {
     0%{
@@ -35,7 +36,7 @@
     display: inline-block;
     width: 1rem;
     aspect-ratio: 1/1;
-    background-image: url('../images/icons8-checkmark-480.png');
+    background-image: url('../images/icons8-checkmark-1600.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
