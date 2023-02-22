@@ -8,7 +8,6 @@
 @import url('loading-screen.css');
 @import url('responsiveNavigation.css');
 @import url('responsive.css');
-
 html{
     margin: 0;
     padding: 0;
@@ -37,6 +36,7 @@ html{
 }
 *:has(body[theme='green']){
     --color: #4ad295;
+    --color-dark: #41b883; 
     --bg: #e5e5e5;
     --text-color: black;
     --text-secondary-color: #d1d0c5;

@@ -43,6 +43,10 @@ textarea::-webkit-scrollbar{
     width: 100%;
     color: var(--bg-card);
     margin-block: 1.5rem;
+    transition: background-color 50ms ease-in-out;
+}
+.reg-submit:active{
+    background-color: var(--color-dark);
 }
 .animation-container{
     display: flex;

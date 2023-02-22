@@ -7,5 +7,5 @@ app.register_blueprint(public)
 app.config['SECRET_KEY'] = 'hello'
 
 if __name__ == "__main__" : 
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
 
