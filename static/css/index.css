@@ -1,1 +1,63 @@
 @import url('main.css');
+.container-1{
+    height: calc(100vw * 7 / 16);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+.main-body{
+    padding: 0 !important;
+}
+.container-1-img-wrapper{
+    width: 100%;
+    height: 100%;
+    padding: 3rem; 
+    transform: translateX(2.5rem);
+}
+.container-1-txt{
+    width: 100%;
+    padding:0 4rem 4rem 2rem;
+}
+customHead{
+    font-size: 4rem;
+    font-weight: 700;
+    background-color: var(--color);
+    border-radius: 1.3rem;
+    padding: 0rem 3rem;
+    color: var(--bg);
+    z-index: 0;
+    position: relative;
+}
+.to-ocr-page-link-container{
+    display: block;
+    position: absolute;
+    z-index: 10;
+    --value: 3.5;
+    width: calc(var(--size) * var(--value));
+    height: calc(var(--size) * var(--value));
+    top: calc(var(--size) * var(--value) / -2.4);
+    right: calc(var(--size) * var(--value) / -2.2);
+    background-color: var(--secondary);
+    border-radius: 1rem;
+    background-image: url('/static/images/images.png');
+    background-size: calc(var(--size) * 1.8);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.container-1-txt-content{
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.container-1:has(.animation-theme[animation='darkGreen']:not([style *= "display: none"])){
+    background-image: url('/static/assets/darkGreen/landingPage1.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.container-1:has(.animation-theme[animation='yellow']:not([style *= "display: none"])){
+    background-image: url('/static/assets/yellow/landingPage.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

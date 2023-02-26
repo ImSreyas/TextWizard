@@ -15,9 +15,9 @@ button.addEventListener('click', (e) => {
         e.target.classList.remove('theme-button-day')
         e.target.setAttribute('themeMode', 'white')
         e.target.classList.add('theme-button-night')
-        body.setAttribute('theme', 'green')
+        body.setAttribute('theme', 'darkGreen')
         $.ajax({
-            url: '/theme/green',
+            url: '/theme/darkGreen',
             type: "GET",
             data: {},
             success: ()=>{
