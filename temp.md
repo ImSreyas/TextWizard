@@ -8,3 +8,16 @@
     )
     tween.start()
 </script>
+
+
+
+
+
+<!-- dark mode or white mode  -->
+
+<div class='animation-theme' animation='darkGreen'>
+    {% include 'animation/darkGreen/registration.html'%}
+</div>
+<div class='animation-theme' animation='yellow'>
+    {% include 'animation/yellow/registration.html' %}
+</div>

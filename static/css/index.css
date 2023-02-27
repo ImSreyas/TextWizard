@@ -4,6 +4,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+    position: relative;
 }
 .main-body{
     padding: 0 !important;
@@ -60,4 +61,18 @@ customHead{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+@media (width <= 1000px) {
+    .container-1{
+        grid-template-columns: 1fr;
+        height: fit-content;
+        background-size: 250vw !important;
+    }
+    .container-1-img-wrapper{
+        transform: none;
+    }
+    .to-ocr-page-link-container{
+        border: 2px solid var(--color);
+    }
 }

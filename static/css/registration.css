@@ -67,7 +67,7 @@ div{
 .realme-label{
     display: inline-block;
     font-size: .8rem;
-    color: rgb(36, 36, 36);
+    color: var(--bg);
     background-color: var(--color);
     position: relative;
     padding: .12em .5em;

@@ -17,6 +17,7 @@ html{
 }
 *:has(body[theme='yellow']){
     --color: #f7ef0a;
+    /* --color: #865DFF; */
     --secondary: #5a5a5a;
     --bg: #323337;
     --text-color: white;
@@ -31,6 +32,8 @@ html{
     --bg-2: #212124;
 
     --footer-bg: #28292d;
+    --footer-text: #fff;
+    --footer-highlight-text: var(--color);
     --text-highlighter: #202020;
 
     --popup-bg: #0f0f0f;
@@ -51,7 +54,9 @@ html{
     --gray-text: rgb(145, 145, 145);
     --bg-2: #212124;
     
-    --footer-bg: #ffffff;
+    --footer-bg: var(--color);
+    --footer-text: #fff;
+    --footer-highlight-text: var(--color);
     --text-highlighter: #171717;
 
     --popup-bg: #191919;
@@ -73,7 +78,9 @@ html{
     --gray-text: rgb(145, 145, 145);
     --bg-2: #212124;
     
-    --footer-bg: #ffffff;
+    --footer-bg: var(--color);
+    --footer-text: #ffffff;
+    --footer-highlight-text: var(--secondary);
     --text-highlighter: #171717;
 
     --popup-bg: #191919;
@@ -97,5 +104,6 @@ input[type='submit']{
     min-height: 80vh;
     max-height: fit-content;
     padding-inline: 5vw;
-    padding-block: 1.2rem;
+    padding-block-start: 1.2rem;
+    padding-block-end: 1rem;
 }
