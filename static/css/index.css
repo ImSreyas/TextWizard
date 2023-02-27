@@ -50,7 +50,7 @@ customHead{
 }
 
 .container-1:has(.animation-theme[animation='darkGreen']:not([style *= "display: none"])){
-    background-image: url('/static/assets/darkGreen/landingPage1.svg');
+    background-image: url('/static/assets/darkGreen/landingPage.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
