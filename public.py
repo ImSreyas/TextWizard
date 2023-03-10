@@ -19,8 +19,7 @@ def root():
 
 @public.route('/index')
 def landingPage():
-    data = database.select('SELECT * FROM test')
-    return render_template('index.html', data = data[len(data) - 2]['name'])
+    return render_template('index.html')
 
 @public.route('/ocr')
 def OCRpage():
