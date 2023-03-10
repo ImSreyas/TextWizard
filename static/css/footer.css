@@ -4,6 +4,7 @@ footer{
     max-height: fit-content;
     color: var(--footer-text);
     position: relative;
+    z-index: 1001;
 }
 footer
 .footer-wave{
