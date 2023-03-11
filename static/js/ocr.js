@@ -29,7 +29,15 @@ container.addEventListener('click', () => {
         processData: false,
         contentType: false,
         success: (data) => {
-          $('.text-content').append(data);
+          // Split the OCR output into lines
+          const lines = data.split('\n');
+
+          // Display each line on a separate line in the browser
+          for (const line of lines) {
+            const p = document.createElement('p');
+            p.textContent = line;
+            $('.text-content').append(p);
+          }
         }
       });
     };
@@ -38,4 +46,5 @@ container.addEventListener('click', () => {
     fileChangeListenerAdded = true; // Set the flag variable to true
   }
 });
+
 
