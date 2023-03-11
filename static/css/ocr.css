@@ -92,6 +92,9 @@ img:last-child{
 }
 .text-content{
     padding: 2rem;
+    outline: none;
+    border: none;
+    text-decoration: none;
 }
 .text-file-download-container{
     display: flex;

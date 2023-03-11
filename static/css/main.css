@@ -17,6 +17,7 @@ html{
 }
 *:has(body[theme='yellow']){
     --color: #f7ef0a;
+    --onColor: rgb(21, 21, 21);
     /* --color: #865DFF; */
     --secondary: #5a5a5a;
     --bg: #323337;
@@ -27,9 +28,11 @@ html{
     --bg--2: #585b60;
     --bg--1: #3c3e42;
     --bg-card: #27282b;
+    --bg-card-2: rgba(83, 84, 89, 0.8);
     --bg-input: #3d3e43;
     --gray-text: rgb(145, 145, 145);
     --bg-2: #212124;
+    --shadow: rgb(47, 47, 47);
 
     --footer-bg: #28292d;
     --footer-text: #fff;
