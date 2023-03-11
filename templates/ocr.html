@@ -1,18 +1,21 @@
 {% extends 'components/layout.html' %} {% block links %}
 <link rel="stylesheet" href="../static/css/ocr.css" />
+<script src='static/js/jquery.js'></script>
+<script src='static/js/ocr.js' defer></script>
 {% endblock links %} {% block body %}
-<div class='animation-theme ocr-page-background' animation='darkGreen'>
-        {% include 'assets/darkGreen/ocr-page-background.svg' %}
-</div>
-<div class='animation-theme ocr-page-background' animation='yellow'>
-        {% include 'assets/yellow/footerWave.svg' %}
-</div>
 
-<div class='navigation-bar'>
-    
+<div class='navigation-bar' id='navigationBar'>
+        <div class='image-input-container'>
+                <form action='' name='form'>
+                        <input type='file' class='image-input' name='imageInput' accept="image/*" />
+                </form>
+        </div> 
+        <div class='drag-and-drop-icon-container'></div>
+        <div class='drag-and-drop-text-container'>Drag and Drop here</div>
 </div>
 <div class='content-bar'>
-
+        <div class='text-header'></div>
+        <div class='text-content'></div>
 </div>
 
 {% endblock body %}

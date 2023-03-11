@@ -1,4 +1,10 @@
 @import url('main.css');
+.main-body{
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 .ocr-page-background{
     width: 100vw;
     height: 100%;
@@ -10,12 +16,72 @@
     object-fit: cover;
 }
 .navigation-bar{
-    width: 30%;
-    height: 80vh;
-    position: fixed;
-    top: 13vh;
+    --size: 12vw;
+    width: calc(100% - 2 * var(--size));
+    height: 78vh;
     background-color: rgba(255, 255, 255, .5);
     border-radius: 2.5rem;
-    backdrop-filter: blur(10px);
-    z-index: 1000;
+    backdrop-filter: blur(16px);
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    margin-top: .5rem;
+    box-shadow: .1rem .1rem 2rem rgb(209, 209, 209);
+}
+.navigation-bar:hover{
+    cursor: pointer;
+}
+.image-input-container{
+    display: none;
+}
+.drag-and-drop-icon-container{
+    background-image: url('../../static/images/plus.svg');
+    background-repeat: no-repeat;
+    background-size: 5rem;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.drag-and-drop-text-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid var(--bg);
+    color: rgb(69, 69, 69);
+}
+.drag-and-drop-icon-container
+img{
+    object-fit: contain;
+    height: 50vh;
+    width: auto;
+    background-repeat: no-repeat;
+}
+/* .drag-and-drop-icon-container
+img:last-child{
+    display: block;
+} */
+.content-bar{
+    --size: 12vw;
+    width: calc(100% - 2 * var(--size));
+    min-height: 78vh;
+    max-height: fit-content;
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 2.5rem;
+    backdrop-filter: blur(16px);
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    margin-top: 1rem;
+    box-shadow: .1rem .1rem 2rem rgb(209, 209, 209);
+}
+.text-header{
+    border-bottom: 2px solid var(--bg);
+}
+.text-content{
+    padding: 1rem 2rem;
 }

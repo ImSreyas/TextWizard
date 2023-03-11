@@ -2,6 +2,10 @@ from flask import *
 from flask_mysqldb import MySQL
 import database as database
 import re, hashlib
+import os
+import uuid
+from ocr_core import ocr_core
+from flask import request
 
 
 public = Blueprint('public', __name__)
@@ -137,6 +141,37 @@ def registration():
             return 'success'
         else : return y
     return render_template('registration.html')
+
+
+UPLOAD_FOLDER = '/static/uploads/'
+ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+user=Blueprint('user',__name__)
+@public.route('/ocrCore', methods=['GET', 'POST'])
+def upload_page():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            return "no file selected"
+        file = request.files.get('file')
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename == '':
+            return "no file name"
+        # check if the file extension is allowed
+        if not allowed_file(file.filename):
+            return "invalid file type"
+        # save the file
+        file.save(os.path.join(os.getcwd() + UPLOAD_FOLDER, file.filename))
+        text = ocr_core(file)
+        return text
+    elif request.method == 'GET':
+        return "get method is called"
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 
 @public.route('/theme/<mode>')
 def theme(mode):
