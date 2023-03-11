@@ -67,12 +67,15 @@ html{
     --color-dark: #4d694d; 
     --bg: #DDDDDD;
     --text-color: black;
+    --onColor: white;
     --text-secondary-color: #d1d0c5;
 
     --box-shadow: #222427;
     --bg--2: #f6f6f6;
     --bg--1: #f0f0f0;
     --bg-card: #ffffff;
+    --bg-card-2: rgba(255, 255, 255, .5);
+    --shadow: rgb(197, 197, 197);
     
     --bg-input: #e5e5e5;
     --gray-text: rgb(145, 145, 145);

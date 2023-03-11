@@ -16,10 +16,10 @@
     object-fit: cover;
 }
 .navigation-bar{
-    --size: 12vw;
+    --size: 15vw;
     width: calc(100% - 2 * var(--size));
     height: 78vh;
-    background-color: rgba(255, 255, 255, .5);
+    background-color: var(--bg-card-2);
     border-radius: 2.5rem;
     backdrop-filter: blur(16px);
     overflow: hidden;
@@ -27,7 +27,7 @@
     display: grid;
     grid-template-rows: 4fr 1fr;
     margin-top: .5rem;
-    box-shadow: .1rem .1rem 2rem rgb(209, 209, 209);
+    box-shadow: .1rem .1rem 2rem var(--shadow);
 }
 .navigation-bar:hover{
     cursor: pointer;
@@ -51,7 +51,15 @@
     justify-content: center;
     align-items: center;
     border-top: 2px solid var(--bg);
-    color: rgb(69, 69, 69);
+}
+.drag-and-drop-text-container
+div{
+    width: fit-content;
+    padding: 1rem 2.5rem;
+    border-radius: 1rem;
+    /* background-color: var(--color); */
+    color: var(--color);
+    text-align: center;
 }
 .drag-and-drop-icon-container
 img{
@@ -65,23 +73,40 @@ img:last-child{
     display: block;
 } */
 .content-bar{
-    --size: 12vw;
+    --size: 15vw;
     width: calc(100% - 2 * var(--size));
     min-height: 78vh;
     max-height: fit-content;
-    background-color: rgba(255, 255, 255, .5);
+    background-color: var(--bg-card-2);
     border-radius: 2.5rem;
     backdrop-filter: blur(16px);
     overflow: hidden;
     position: relative;
-    display: grid;
-    grid-template-rows: 1fr 5fr;
-    margin-top: 1rem;
-    box-shadow: .1rem .1rem 2rem rgb(209, 209, 209);
+    display: none;
+    grid-template-rows: 4rem 1fr 6rem;
+    margin-top: 1.5rem;
+    box-shadow: .1rem .1rem 2rem var(--shadow);
 }
 .text-header{
     border-bottom: 2px solid var(--bg);
 }
 .text-content{
+    padding: 2rem;
+}
+.text-file-download-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-inline: 2rem;
+    padding-block-end: 2rem;
+}
+.txt-download-link{
+    width: fit-content;
     padding: 1rem 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    background-color: var(--color);
+    color: var(--onColor);
+    text-decoration: none;
+    display: none;
 }

@@ -1,7 +1,7 @@
 import mysql.connector
 
 password=""
-database = "ocr_wizard"
+database = "ocr-wizard"
 def select(q):
 	cnx = mysql.connector.connect(user="root", password=password, host="localhost", database=database,port=3306)
 	cur = cnx.cursor(dictionary=True)

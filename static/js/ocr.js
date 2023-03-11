@@ -29,6 +29,7 @@ container.addEventListener('click', () => {
         processData: false,
         contentType: false,
         success: (data) => {
+            document.querySelector('.content-bar').style.display = 'grid'
           // Split the OCR output into lines
           const lines = data.split('\n');
 
@@ -38,6 +39,10 @@ container.addEventListener('click', () => {
             p.textContent = line;
             $('.text-content').append(p);
           }
+
+          const downloadLink = document.querySelector('.txt-download-link');
+          downloadLink.href = URL.createObjectURL(new Blob([data], { type: 'text/plain' }));
+          downloadLink.style.display = 'block'
         }
       });
     };
