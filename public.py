@@ -29,8 +29,8 @@ def landingPage():
 def OCRpage():
     return render_template('ocr.html')
 
-@public.route('/blog')
-def blog(): return render_template('blog.html') 
+@public.route('/post')
+def post(): return render_template('post.html') 
 
 @public.route('/profile')
 def profile():
