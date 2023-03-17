@@ -6,6 +6,7 @@ import os
 import uuid
 from ocr_core import ocr_core
 from flask import request
+import myModule as myModule
 
 
 public = Blueprint('public', __name__)
@@ -29,6 +30,10 @@ def landingPage():
 def OCRpage():
     return render_template('ocr.html')
 
+@public.route('/message')
+def message():
+    return render_template('message.html')
+
 @public.route('/post')
 def post(): return render_template('post.html') 
 
@@ -45,19 +50,20 @@ def testPage():
         if username == None or username == "":
             x[0] = "enter the username"
             return x
-        result = database.select("SELECT * FROM login WHERE username='%s'" % (username))
+        selectUserAndPasswordQuery = "SELECT user_id, username, password, 'user' as userType FROM user WHERE username='"+ username +"' UNION ALL SELECT id, username, password, 'deo' as userType FROM deo WHERE username='"+ username +"'"
+        result = database.select(selectUserAndPasswordQuery)
         if len(result) > 0 :
             if password == None or password == "" :
                 x[1] = "enter the password"
                 return x
             password = (hashlib.md5(password.encode())).hexdigest()
             if result[0]['password'] == password :
-                if result[0]['user_type'] == 'user' :
-                    session['admin'] = result[0]['id']
+                if result[0]['userType'] == 'user' :
+                    session['user'] = result[0]['user_id']
                     return 'user'
                 else : 
-                    session['user'] = result[0]['id']
-                    return 'admin'
+                    session['deo'] = result[0]['user_id']
+                    return 'deo'
             else :
                 x[1] = 'wrong password'
                 return x
@@ -70,6 +76,7 @@ def testPage():
 def registration():
     if request.method == 'POST' :
         name = request.form.get('name')
+        userType = request.form.get('userType')
         gender = request.form.get('gender')
         address = request.form.get('address')
         email = request.form.get('email')
@@ -80,6 +87,7 @@ def registration():
         submit = request.form.get('submit')
         
         
+        userType = "user" if userType == "user" else "deo"
 
         x = ['', '', '', '', '', '', '']
         y = x
@@ -103,8 +111,9 @@ def registration():
             x[3] = 'please enter an email'
         elif not re.fullmatch(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', email) :
             x[3]  = 'invalid email id...!'
-            
-        result = database.select("SELECT * FROM login WHERE username='"+ username +"'")
+        
+        selectUsernameAndPasswordQuery = "SELECT username, password FROM user WHERE username='"+ username +"' UNION SELECT username, password FROM deo WHERE username='"+ username +"'"
+        result = database.select(selectUsernameAndPasswordQuery)
         if username == None or username == "" :
             username = ""
             x[4] = 'please enter a username'
@@ -131,12 +140,7 @@ def registration():
                return x
         if submit == 'true' :
             password = (hashlib.md5(password.encode())).hexdigest()
-            q = "INSERT INTO login SET username='"+ username +"', password='"+ password +"', user_type='user'"
-            result = database.insert(q)
-            q = "SELECT id FROM login WHERE username='"+ username+"'"
-            result = database.select(q)
-            result = str(result[0]['id'])
-            q = "INSERT INTO user SET id='"+ result +"', name='"+name+"', gender='"+gender+"', address='"+address+"', phone='"+phone+"', email='"+email+"'"
+            q = "INSERT INTO "+ userType +" SET username='"+ username +"', password='"+ password +"', name='"+name+"', gender='"+gender+"', address='"+address+"', phone='"+phone+"', email='"+email+"'"
             result = database.insert(q)
             return 'success'
         else : return y

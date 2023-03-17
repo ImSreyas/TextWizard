@@ -35,6 +35,15 @@ input{
     border-radius: .5rem;
     position: relative;
 }
+/* .small-email{
+    display: inline-block;
+    font-size: .65rem;
+    margin-inline-start: .3rem;
+    border-radius: .5rem;
+    padding: .15rem .5rem;
+    border: 1px solid var(--color);
+    transform: translateY(-.1rem);
+} */
 .submit-button{
     width: 100%;
     color: var(--bg-card);
@@ -46,6 +55,43 @@ a{
     text-align: center;
     color: var(--color);
 }
+/* .username_usertype__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user-type-container-wrapper{
+    display: inline-block;
+    width: fit-content;
+    margin: 0 .2rem .2rem 0;
+}
+.user-type-container{
+    display: grid;
+    width: fit-content;
+    grid-template-columns: 1fr 1fr;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+.user-type-container button{
+    border-radius: 0;
+    display: block;
+    text-align: center;
+    padding-block: .4rem;
+    padding-inline: .6rem;
+    width: 100%;
+    background-color: var(--bg-input);
+    border: none;
+    color: var(--text-color);
+    border-inline-end: 1px solid var(--bg-card);
+    font-size: .6rem;
+}
+.user-type-container button:last-child{
+    border: none;
+}
+.user-type-container button[selected='true']{
+    background-color: var(--color);
+    color: var(--bg-card);
+} */
 error{
     width: 100%;
     display: block;

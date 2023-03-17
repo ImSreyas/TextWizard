@@ -75,6 +75,34 @@ div{
     transform: translateY(-.2em);
     margin: .35rem .2rem;
 }
+
+.user-type-container{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    border-radius: .5rem;
+    overflow: hidden;
+    margin-block-end: .9rem;
+}
+.user-type-container button{
+    border-radius: 0;
+    display: block;
+    text-align: center;
+    padding-block: .9rem;
+    width: 100%;
+    background-color: var(--bg-input);
+    border: none;
+    color: var(--text-color);
+    border-inline-end: 1px solid var(--bg-card);
+}
+.user-type-container button:last-child{
+    border: none;
+}
+.user-type-container button[selected='true']{
+    background-color: var(--color);
+    color: var(--bg-card);
+}
+
 .gender-container{
     display: grid;
     width: 100%;
