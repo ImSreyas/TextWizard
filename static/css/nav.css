@@ -17,10 +17,59 @@ nav div{
 nav div a{
     color: var(--text-color);
 }
-nav div a span{
+nav div button{
+    background-color: transparent;
+    font-size: 1.1rem;
+    outline: none;
+    border: none;
+    color: var(--text-color);
+    position: relative;
+}
+nav div button:hover{
+    cursor: pointer;
+}
+nav div a span,
+nav div button span{
     display: block;
     padding: 2.2rem 2rem calc(2.2rem - 1.2vw);
 }
+
+
+ /* -logout options start */
+
+.logout-option-container[visible='false']{
+    display: none;
+}
+.logout-option-container[visible='true']{
+    display: block;
+    position: absolute;
+    bottom: -100%;
+    right: 0;
+    width: 100%;
+    height: fit-content;
+    border-radius: 1rem;
+    padding: .3rem .6rem;
+    background-color: var(--bg);
+    box-shadow: .1rem .1rem .5rem var(--shadow);
+}
+.logout-option-container
+option{
+    display: block;
+    width: 100%;
+    padding: .2rem;
+    border-radius: .5rem;
+    color: var(--text-color);
+    margin-block: .3rem;
+    color: var(--text-color);
+}
+.logout-option-container
+option:hover{
+    background-color: var(--color);
+    color: white;
+}
+
+ /* -logout option end  */
+
 .nav-highlight{
     color: var(--color);
 }

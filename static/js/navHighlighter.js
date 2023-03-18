@@ -15,5 +15,5 @@ let login = [
 ]
 
 login.forEach(item => {
-    if(currentPage.includes(item)) nav[5].classList.add('nav-highlight')
+    if(currentPage.includes(item)) nav[3].classList.add('nav-highlight')
 })

@@ -25,15 +25,19 @@
     overflow: hidden;
     position: relative;
     display: grid;
-    grid-template-rows: 4fr 1fr;
+    grid-template-rows: 4.5fr 1fr;
     margin-top: .5rem;
     box-shadow: .1rem .1rem 2rem var(--shadow);
 }
-.navigation-bar:hover{
-    cursor: pointer;
-}
 .image-input-container{
-    display: none;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+}
+.drag-and-drop-icon-container:hover{
+    cursor: pointer;
 }
 .drag-and-drop-icon-container{
     background-image: url('../../static/images/plus.svg');
@@ -46,11 +50,21 @@
     justify-content: center;
     align-items: center;
 }
-.drag-and-drop-text-container{
+.convert-btn-container{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    border-top: 2px solid var(--bg);
+    border-block-start: 2px solid var(--bg);
+    padding-inline: 2rem;
+}
+.convert-btn{
+    background-color: var(--color);
+    color: var(--onColor);
+    border-radius: 1rem;
+    padding: .8rem 2rem;
+    outline: none;
+    border: none;
+    font-size: 1rem;
 }
 .drag-and-drop-text-container
 div{
@@ -75,8 +89,7 @@ img:last-child{
 .content-bar{
     --size: 15vw;
     width: calc(100% - 2 * var(--size));
-    min-height: 78vh;
-    max-height: fit-content;
+    height: 78vh;
     background-color: var(--bg-card-2);
     border-radius: 2.5rem;
     backdrop-filter: blur(16px);
@@ -95,6 +108,7 @@ img:last-child{
     outline: none;
     border: none;
     text-decoration: none;
+    overflow-y: scroll;
 }
 .text-file-download-container{
     display: flex;

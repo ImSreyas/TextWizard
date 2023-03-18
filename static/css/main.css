@@ -41,36 +41,13 @@ html{
 
     --popup-bg: #0f0f0f;
 }
-*:has(body[theme='green']){
-    --color: #4ad295;
-    --color-dark: #41b883; 
-    --bg: #e5e5e5;
-    --text-color: black;
-    --text-secondary-color: #d1d0c5;
-
-    --box-shadow: #222427;
-    --bg--2: #f6f6f6;
-    --bg--1: #f0f0f0;
-    --bg-card: #ffffff;
-    
-    --bg-input: #e5e5e5;
-    --gray-text: rgb(145, 145, 145);
-    --bg-2: #212124;
-    
-    --footer-bg: var(--color);
-    --footer-text: #fff;
-    --footer-highlight-text: var(--color);
-    --text-highlighter: #171717;
-
-    --popup-bg: #191919;
-}
 *:has(body[theme='darkGreen']){
     --color: #658864;
+    --onColor: white;
     --secondary: #B7B78A;
     --color-dark: #4d694d; 
     --bg: #DDDDDD;
     --text-color: black;
-    --onColor: white;
     --text-secondary-color: #d1d0c5;
 
     --box-shadow: #222427;

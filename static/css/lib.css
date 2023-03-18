@@ -1,3 +1,10 @@
+button{
+    border: none;
+    outline: none;
+}
+button:hover{
+    cursor: pointer;
+}
 .no-text-decoration{
     text-decoration: none;
 }

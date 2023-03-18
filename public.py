@@ -32,7 +32,9 @@ def OCRpage():
 
 @public.route('/message')
 def message():
-    return render_template('message.html')
+    if session.get('user'):
+        return render_template('message.html')
+    return root()
 
 @public.route('/post')
 def post(): return render_template('post.html') 
@@ -42,7 +44,7 @@ def profile():
     return render_template('profile.html')
 
 @public.route('/login', methods = ['POST', 'GET'])
-def testPage():
+def login():
     if request.method == 'POST':
         x = ['', '']
         username = request.form.get('username')
@@ -71,6 +73,11 @@ def testPage():
             x[0] = 'invalid username'
             return x
     return render_template('login.html')
+
+@public.route('/logout')
+def logout():
+    session['user'] = None
+    return 'success'
 
 @public.route('/registration', methods = ['POST', 'GET'])
 def registration():
