@@ -36,6 +36,15 @@
     height: 100%;
     inset: 0;
 }
+.image-input-container
+form{
+    width: 100%;
+    height: 100%;
+}
+.image-input{
+    width: 100%;
+    height: 100%;
+}
 .drag-and-drop-icon-container:hover{
     cursor: pointer;
 }
@@ -95,7 +104,7 @@ img{
     right: 0;
     bottom: calc(100% + 1rem);
     width: fit-content;
-    height: 41vh;
+    height: 52vh;
     overflow-y: scroll;
     background-color: var(--bg-card);
     box-shadow: .1rem .1rem 1rem var(--shadow);
@@ -103,6 +112,7 @@ img{
     border-radius: 1.3rem;
 }
 .language-list-container::-webkit-scrollbar{
+    display: none;
     background-color: transparent !important;
 }
 .language-list-container

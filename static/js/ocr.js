@@ -67,8 +67,10 @@ const langBtn = document.querySelector('.language-btn')
 const langListContainer = document.querySelector('.language-list-container')
 
 langBtn.addEventListener('click', ()=> {
+  const inputBtn = document.querySelector('.language-search-input-field')
   if(langListContainer.getAttribute('vis') == 'false') langListContainer.setAttribute('vis', 'true')
   else langListContainer.setAttribute('vis', 'false')
+  inputBtn.focus()
 })
 
 // -search in language list 
