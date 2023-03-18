@@ -172,8 +172,9 @@ def upload_page():
         if not allowed_file(file.filename):
             return "invalid file type"
         # save the file
+        lang = request.form.to_dict()
         file.save(os.path.join(os.getcwd() + UPLOAD_FOLDER, file.filename))
-        text = ocr_core(file)
+        text = ocr_core(file, lang['language'])
         return text
     elif request.method == 'GET':
         return "get method is called"

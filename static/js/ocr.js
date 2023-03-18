@@ -23,6 +23,8 @@ container.addEventListener('click', () => {
 
       // Send the form data via Ajax
       document.querySelector('.convert-btn').addEventListener('click', ()=> {
+        const language = document.querySelector(".language-list-container option[selected='true']").getAttribute('val')
+        formData.append('language', language)
         $.ajax({
           url: '/ocrCore',
           type: "POST",
@@ -40,10 +42,14 @@ container.addEventListener('click', () => {
               p.textContent = line;
               $('.text-content').append(p);
             }
-  
+            document.querySelector('.content-bar').scrollIntoView({behavior: "smooth",block: "center", blockOffset: 500})
+            setTimeout(()=> {
+              window.scrollBy(0, -16); // adjust by 50 pixels
+            }, 500);
             const downloadLink = document.querySelector('.txt-download-link');
             downloadLink.href = URL.createObjectURL(new Blob([data], { type: 'text/plain' }));
             downloadLink.style.display = 'block'
+
           }
         });
       })
@@ -53,5 +59,47 @@ container.addEventListener('click', () => {
     fileChangeListenerAdded = true; // Set the flag variable to true
   }
 });
+
+
+// -language dropdown start 
+
+const langBtn = document.querySelector('.language-btn')
+const langListContainer = document.querySelector('.language-list-container')
+
+langBtn.addEventListener('click', ()=> {
+  if(langListContainer.getAttribute('vis') == 'false') langListContainer.setAttribute('vis', 'true')
+  else langListContainer.setAttribute('vis', 'false')
+})
+
+// -search in language list 
+
+const searchField = document.querySelector('.language-search-input-field')
+searchField.addEventListener('keyup', ()=>{
+  const optionList = document.querySelectorAll('.language-list-container option')
+  optionList.forEach(option => {
+    option.style.display = 'none'
+  })
+  optionList.forEach(option => {
+    if(((option.innerText).toLowerCase()).includes((searchField.value).toLowerCase())){
+      option.style.display = 'block'
+    }
+  })
+})
+
+// -option selection
+const optionList = document.querySelectorAll('.language-list-container option')
+optionList.forEach(option => {
+  option.addEventListener('click', (e)=>{
+    optionList.forEach(op => {
+      op.setAttribute('selected', 'false')
+    })
+    e.target.setAttribute('selected', 'true')
+    document.querySelector('.language-list-container').setAttribute('vis', 'false')
+    const langBtn = document.querySelector('.language-name-shower')
+    langBtn.innerText = e.target.innerText
+  })
+})
+
+// -language dropdown end
 
 

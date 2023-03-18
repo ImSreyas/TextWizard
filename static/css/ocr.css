@@ -25,7 +25,7 @@
     overflow: hidden;
     position: relative;
     display: grid;
-    grid-template-rows: 4.5fr 1fr;
+    grid-template-rows: 5.5fr 1fr;
     margin-top: .5rem;
     box-shadow: .1rem .1rem 2rem var(--shadow);
 }
@@ -53,6 +53,7 @@
 .convert-btn-container{
     display: flex;
     justify-content: flex-end;
+    gap: .8rem ;
     align-items: center;
     border-block-start: 2px solid var(--bg);
     padding-inline: 2rem;
@@ -61,7 +62,7 @@
     background-color: var(--color);
     color: var(--onColor);
     border-radius: 1rem;
-    padding: .8rem 2rem;
+    padding: .6rem 2rem;
     outline: none;
     border: none;
     font-size: 1rem;
@@ -82,6 +83,68 @@ img{
     width: auto;
     background-repeat: no-repeat;
 }
+.language-selector-container{
+    position: relative;
+}
+.language-list-container[vis='false']{
+    display: none;
+}
+.language-list-container[vis='true']{
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 1rem);
+    width: fit-content;
+    height: 41vh;
+    overflow-y: scroll;
+    background-color: var(--bg-card);
+    box-shadow: .1rem .1rem 1rem var(--shadow);
+    padding: 1rem 1rem;
+    border-radius: 1.3rem;
+}
+.language-list-container::-webkit-scrollbar{
+    background-color: transparent !important;
+}
+.language-list-container
+option{
+    width: 100%;
+    padding: .5rem 1rem;
+    border-radius: .8rem;
+    margin-block: .3rem;
+}
+.language-list-container
+option:hover{
+    cursor: pointer;
+    background-color: var(--color);
+    color: var(--onColor);
+}
+.language-search-input-field{
+    width: 100% !important;
+    border-radius: .8rem;
+    padding: .6rem 1rem;
+    outline: none;
+    border: none;
+    background-color: var(--bg-input);
+    font-size: 1rem;
+    color: var(--text-color);
+}
+.language-btn{
+    padding: .6rem 1.5rem .6rem 2rem;
+    background-color: var(--color);
+    border-radius: 1rem;
+    color: var(--onColor);
+}
+.drop-down-arrow{
+    display: inline-block;
+    width: 1em;
+    aspect-ratio: 1/1;
+    background-image: url('../images/caret-down.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateY(.1rem);
+    margin-inline-start: 1.2rem;
+}
 /* .drag-and-drop-icon-container
 img:last-child{
     display: block;
@@ -89,14 +152,14 @@ img:last-child{
 .content-bar{
     --size: 15vw;
     width: calc(100% - 2 * var(--size));
-    height: 78vh;
+    height: 80vh;
     background-color: var(--bg-card-2);
     border-radius: 2.5rem;
     backdrop-filter: blur(16px);
     overflow: hidden;
     position: relative;
     display: none;
-    grid-template-rows: 4rem 1fr 6rem;
+    grid-template-rows: fit-content 1fr fit-content;
     margin-top: 1.5rem;
     box-shadow: .1rem .1rem 2rem var(--shadow);
 }
@@ -112,14 +175,15 @@ img:last-child{
 }
 .text-file-download-container{
     display: flex;
-    align-items: center;
     justify-content: flex-end;
+    align-items: center;
     padding-inline: 2rem;
-    padding-block-end: 2rem;
+    padding-block: 1rem;
+    border-block-start: 2px solid var(--bg);
 }
 .txt-download-link{
     width: fit-content;
-    padding: 1rem 2rem;
+    padding: .6rem 2rem;
     border-radius: 1rem;
     text-align: center;
     background-color: var(--color);

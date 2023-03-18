@@ -10,7 +10,108 @@
                 </form>
         </div> 
         <div class='drag-and-drop-icon-container'></div>
-        <div class='convert-btn-container'><div><button class='convert-btn' type='button'>convert</button></div></div>
+        <div class='convert-btn-container'>
+                <div class='language-selector-container'>
+                        <button class='language-btn'><span class='language-name-shower'>English</span><span class='drop-down-arrow'></span></button>
+                        <div class='language-list-container' vis='false'>
+                                <div><input placeholder='search' type='text' class='language-search-input-field' /></div>
+                                <option class='language-name' val='afr' selected='false'>Afrikaans</option>
+                                <option class='language-name' val='amh' selected='false'>Amharic</option>
+                                <option class='language-name' val='ara' selected='false'>Arabic</option>
+                                <option class='language-name' val='asm' selected='false'>Assamese</option>
+                                <option class='language-name' val='aze' selected='false'>Azerbaijani</option>
+                                <option class='language-name' val='aze_cyrl' selected='false'>Azerbaijani - Cyrilic</option>
+                                <option class='language-name' val='bel' selected='false'>Belarusian</option>
+                                <option class='language-name' val='ben' selected='false'>Bengali</option>
+                                <option class='language-name' val='bod' selected='false'>Tibetan</option>
+                                <option class='language-name' val='bos' selected='false'>Bosnian</option>
+                                <option class='language-name' val='bre' selected='false'>Breton</option>
+                                <option class='language-name' val='bul' selected='false'>Bulgarian</option>
+                                <option class='language-name' val='cat' selected='false'>Catalan; Valencian</option>
+                                <option class='language-name' val='ceb' selected='false'>Cebuano</option>
+                                <option class='language-name' val='ces' selected='false'>Czech</option>
+                                <option class='language-name' val='chi_sim' selected='false'>Chinese - Simplified</option>
+                                <option class='language-name' val='chi_tra' selected='false'>Chinese - Traditional</option>
+                                <option class='language-name' val='chr' selected='false'>Cherokee</option>
+                                <option class='language-name' val='cos' selected='false'>Corsican</option>
+                                <option class='language-name' val='cym' selected='false'>Welsh</option>
+                                <option class='language-name' val='dan' selected='false'>Danish</option>
+                                <option class='language-name' val='dan_frak' selected='false'>Danish - Fraktur (contrib)</option>
+                                <option class='language-name' val='deu' selected='false'>German</option>
+                                <option class='language-name' val='deu_frak' selected='false'>German - Fraktur (contrib)</option>
+                                <option class='language-name' val='dzo' selected='false'>Dzongkha</option>
+                                <option class='language-name' val='ell' selected='false'>Greek, Modern (1453-)</option>
+                                <option class='language-name' val='eng' selected='true'>English</option>
+                                <option class='language-name' val='enm' selected='false'>English, Middle (1100-1500)</option>
+                                <option class='language-name' val='epo' selected='false'>Esperanto</option>
+                                <option class='language-name' val='equ' selected='false'>Math / equation detection module</option>
+                                <option class='language-name' val='est' selected='false'>Estonian</option>
+                                <option class='language-name' val='eus' selected='false'>Basque</option>
+                                <option class='language-name' val='fao' selected='false'>Faroese</option>
+                                <option class='language-name' val='fas' selected='false'>Persian</option>
+                                <option class='language-name' val='fil' selected='false'>Filipino (old - Tagalog)</option>
+                                <option class='language-name' val='fin' selected='false'>Finnish</option>
+                                <option class='language-name' val='fra' selected='false'>French</option>
+                                <option class='language-name' val='frk' selected='false'>German - Fraktur</option>
+                                <option class='language-name' val='frm' selected='false'>French, Middle (ca.1400-1600)</option>
+                                <option class='language-name' val='fry' selected='false'>Western Frisian</option>
+                                <option class='language-name' val='gla' selected='false'>Scottish Gaelic</option>
+                                <option class='language-name' val='gle' selected='false'>Irish</option>
+                                <option class='language-name' val='glg' selected='false'>Galician</option>
+                                <option class='language-name' val='grc' selected='false'>Greek, Ancient (to 1453)</option>
+                                <option class='language-name' val='guj' selected='false'>Gujarati</option>
+                                <option class='language-name' val='hat' selected='false'>Haitian; Haitian Creole</option>
+                                <option class='language-name' val='heb' selected='false'>Hebrew</option>
+                                <option class='language-name' val='hin' selected='false'>Hindi</option>
+                                <option class='language-name' val='hrv' selected='false'>Croatian</option>
+                                <option class='language-name' val='hun' selected='false'>Hungarian</option>
+                                <option class='language-name' val='hye' selected='false'>Armenian</option>
+                                <option class='language-name' val='iku' selected='false'>Inuktitut</option>
+                                <option class='language-name' val='ind' selected='false'>Indonesian</option>
+                                <option class='language-name' val='isl' selected='false'>Icelandic</option>
+                                <option class='language-name' val='ita' selected='false'>Italian</option>
+                                <option class='language-name' val='ita_old' selected='false'>Italian - Old</option>
+                                <option class='language-name' val='jav' selected='false'>Javanese</option>
+                                <option class='language-name' val='jpn' selected='false'>Japanese</option>
+                                <option class='language-name' val='kan' selected='false'>Kannada</option>
+                                <option class='language-name' val='kat' selected='false'>Georgian</option>
+                                <option class='language-name' val='kat_old' selected='false'>Georgian - Old</option>
+                                <option class='language-name' val='kaz' selected='false'>Kazakh</option>
+                                <option class='language-name' val='khm' selected='false'>Central Khmer</option>
+                                <option class='language-name' val='kir' selected='false'>Kirghiz; Kyrgyz</option>
+                                <option class='language-name' val='kmr' selected='false'>Kurmanji (Kurdish - Latin Script)</option>
+                                <option class='language-name' val='kor' selected='false'>Korean</option>
+                                <option class='language-name' val='kor_vert' selected='false'>Korean (vertical)</option>
+                                <option class='language-name' val='kur' selected='false'>Kurdish (Arabic Script)</option>
+                                <option class='language-name' val='lao' selected='false'>Lao</option>
+                                <option class='language-name' val='lat' selected='false'>Latin</option>
+                                <option class='language-name' val='lav' selected='false'>Latvian</option>
+                                <option class='language-name' val='lit' selected='false'>Lithuanian</option>
+                                <option class='language-name' val='ltz' selected='false'>Luxembourgish</option>
+                                <option class='language-name' val='mal' selected='false'>Malayalam</option>
+                                <option class='language-name' val='mar' selected='false'>Marathi</option>
+                                <option class='language-name' val='mkd' selected='false'>Macedonian</option>
+                                <option class='language-name' val='mlt' selected='false'>Maltese</option>
+                                <option class='language-name' val='mon' selected='false'>Mongolian</option>
+                                <option class='language-name' val='mri' selected='false'>Maori</option>
+                                <option class='language-name' val='msa' selected='false'>Malay</option>
+                                <option class='language-name' val='mya' selected='false'>Burmese</option>
+                                <option class='language-name' val='nep' selected='false'>Nepali</option>
+                                <option class='language-name' val='nld' selected='false'>Dutch; Flemish</option>
+                                <option class='language-name' val='nor' selected='false'>Norwegian</option>
+                                <option class='language-name' val='oci' selected='false'>Occitan (post 1500)</option>
+                                <option class='language-name' val='ori' selected='false'>Oriya</option>
+                                <option class='language-name' val='osd' selected='false'>Orientation and script detection module</option>
+                                <option class='language-name' val='pan' selected='false'>Panjabi; Punjabi</option>
+                                <option class='language-name' val='pol' selected='false'>Polish</option>
+                                <option class='language-name' val='por' selected='false'>Portuguese</option>
+                                <option class='language-name' val='pus' selected='false'>Pushto; Pashto</option>
+                                <option class='language-name' val='que' selected='false'>Quechua</option>
+
+                        </div>
+                </div>
+                <div><button class='convert-btn' type='button'>convert</button></div>
+        </div>
 </div>
 <div class='content-bar'>
         <div class='text-header'></div>
