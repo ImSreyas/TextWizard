@@ -10,7 +10,6 @@
 }
 ::-webkit-scrollbar-track{
     width: 10px;
-    margin-bottom: -10px; 
 }
 ::-webkit-scrollbar-thumb{
     background-color: #424549;

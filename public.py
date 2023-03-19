@@ -7,6 +7,8 @@ import uuid
 from ocr_core import ocr_core
 from flask import request
 import myModule as myModule
+from werkzeug.utils import secure_filename
+
 
 
 public = Blueprint('public', __name__)
@@ -17,6 +19,7 @@ public = Blueprint('public', __name__)
 # app.config['MYSQL_PASSWORD'] = ''
 # app.config['MYSQL_DB'] = 'test'
 # mysql = MySQL(public)
+
 
 @public.route("/")
 def root():
@@ -173,8 +176,16 @@ def upload_page():
             return "invalid file type"
         # save the file
         lang = request.form.to_dict()
-        file.save(os.path.join(os.getcwd() + UPLOAD_FOLDER, file.filename))
+        
+        filename = secure_filename(file.filename) # assuming you have imported the `secure_filename` function from the appropriate module
+        unique_id = str(uuid.uuid4())
+        file_ext = os.path.splitext(filename)[1]
+        new_filename = unique_id + file_ext
+        file.save(os.path.join(os.getcwd() + UPLOAD_FOLDER, new_filename))
         text = ocr_core(file, lang['language'])
+        if(session.get('user')):
+            userId = session.get('user')
+            database.insert("INSERT INTO text SET user_id='"+ str(userId) +"', text='"+ text +"', language='"+ lang['language'] +"', file_name='"+ new_filename +"'")   
         return text
     elif request.method == 'GET':
         return "get method is called"

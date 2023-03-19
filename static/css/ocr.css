@@ -64,7 +64,7 @@ form{
     justify-content: flex-end;
     gap: .8rem ;
     align-items: center;
-    border-block-start: 2px solid var(--bg);
+    border-block-start: 1px solid var(--bg);
     padding-inline: 2rem;
 }
 .convert-btn{
@@ -128,6 +128,42 @@ option:hover{
     background-color: var(--color);
     color: var(--onColor);
 }
+.link-format__container{
+    position: relative;
+}
+.file-format-option-container[vis='false']{
+    display: none;
+}
+.file-format-option-container[vis='true']{
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 1rem);
+    width: fit-content;
+    height: fit-content;
+    overflow-y: scroll;
+    background-color: var(--bg-card);
+    box-shadow: .1rem .1rem 1rem var(--shadow);
+    padding: 1rem 1rem;
+    border-radius: 1.3rem;
+}
+.file-format-option-container::-webkit-scrollbar{
+    display: none;
+    background-color: transparent !important;
+}
+.file-format-option-container
+option{
+    width: 100%;
+    padding: .5rem 1rem;
+    border-radius: .8rem;
+    margin-block: .3rem;
+}
+.file-format-option-container
+option:hover{
+    cursor: pointer;
+    background-color: var(--color);
+    color: var(--onColor);
+}
 .language-search-input-field{
     width: 100% !important;
     border-radius: .8rem;
@@ -169,12 +205,14 @@ img:last-child{
     overflow: hidden;
     position: relative;
     display: none;
-    grid-template-rows: fit-content 1fr fit-content;
+    grid-template-rows: 1.1fr 4.5fr 1fr;
     margin-top: 1.5rem;
     box-shadow: .1rem .1rem 2rem var(--shadow);
 }
 .text-header{
-    border-bottom: 2px solid var(--bg);
+    border-bottom: 1px solid var(--bg);
+    display: flex;
+    align-items: center;
 }
 .text-content{
     padding: 2rem;
@@ -189,15 +227,43 @@ img:last-child{
     align-items: center;
     padding-inline: 2rem;
     padding-block: 1rem;
-    border-block-start: 2px solid var(--bg);
+    border-block-start: 1px solid var(--bg);
+}
+.link-format__container{
+    width: fit-content;
 }
 .txt-download-link{
     width: fit-content;
     padding: .6rem 2rem;
-    border-radius: 1rem;
+    border-radius: 1rem 0 0 1rem;
     text-align: center;
     background-color: var(--color);
     color: var(--onColor);
     text-decoration: none;
-    display: none;
+    display: inline-block;
 }
+.txt-download-link:hover{
+    cursor: pointer;
+}
+.file-format-container{
+    padding: .6rem 1.5rem .6rem 2rem;
+    width: fit-content;
+    border-radius: 0 1rem 1rem 0;
+    background-color: var(--color);
+    color: var(--onColor);
+    border-inline-start: 1px solid var(--bg);
+    /* border-inline-start: 1px solid var(--bg); */
+}
+
+ /* -file name  */
+ .file-name-input{
+    width: 30vw;
+    font-size: 1rem;
+    padding: .6rem 1rem;
+    border-radius: .8rem;
+    outline: none;
+    border: none;
+    background-color: var(--bg-input);
+    color: var(--text-color);
+    margin-inline-start: 2rem;
+ }

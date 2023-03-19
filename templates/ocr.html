@@ -1,7 +1,7 @@
 {% extends 'components/layout.html' %} {% block links %}
 <link rel="stylesheet" href="../static/css/ocr.css" />
 <script src='static/js/jquery.js'></script>
-<script src='static/js/ocr.js' defer></script>
+<script src='static/js/ocr.js' type='module' defer></script>
 {% endblock links %} {% block body %}
 <div class='navigation-bar' id='navigationBar'>
         <div class='image-input-container'>
@@ -114,9 +114,27 @@
         </div>
 </div>
 <div class='content-bar'>
-        <div class='text-header'></div>
-        <div class='text-content' spellcheck='false' contenteditable='true'></div>
-        <div class='text-file-download-container'><a class='txt-download-link' download>download (.txt)</a></div>
+        <div class='text-header'>
+                <span class='file-name-container'>
+                        <input class='file-name-input' placeholder='file name'/>
+                </span>
+        </div>
+        <div class='text-content' spellcheck='true' contenteditable='true'></div>
+        <div class='text-file-download-container'>
+                <div class='link-format__container'>
+                        <a class='txt-download-link' download>download</a><button class='file-format-container'>.txt<span class='drop-down-arrow'></span></button>
+                        <div class='file-format-option-container' vis='false'>
+                                <option class='file-format' selected='false'>.txt</option>
+                                <option class='file-format' selected='false'>.html</option>
+                                <option class='file-format' selected='false'>.css</option>
+                                <option class='file-format' selected='false'>.json</option>
+                                <option class='file-format' selected='false'>.xml</option>
+                                <option class='file-format' selected='false'>.csv</option>
+                                <option class='file-format' selected='false'>.md</option>
+                                <option class='file-format' selected='false'>.pdf</option>
+                        </div>
+                </div>
+        </div>
 </div>
 
 {% endblock body %}
