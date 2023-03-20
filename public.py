@@ -33,10 +33,12 @@ def landingPage():
 def OCRpage():
     return render_template('ocr.html')
 
-@public.route('/message')
+@public.route('/message', methods = ['POST', 'GET'])
 def message():
     if session.get('user'):
-        return render_template('message.html')
+        userData = database.select("SELECT * FROM USER")
+        chats = database.select("SELECT * FROM message")
+        return render_template('message.html', userData = userData, chats = chats)
     return root()
 
 @public.route('/post')

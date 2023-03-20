@@ -1,0 +1,129 @@
+@import url('main.css');
+.main-body{
+    display: flex;
+    justify-content: center;
+}
+.message-main-container{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    background-color: var(--bg-card-2);
+    border-radius: 2.5rem;
+    width: 80vw;
+    height: 77vh;
+    padding: 1rem;
+}
+/* -left side  */
+.user-list-container{
+    border-inline-end: 1px solid var(--bg);
+    overflow-y: scroll;
+}
+.user-list-container::-webkit-scrollbar{
+    display: none;
+}
+/* ?user search  */
+.user-search-container{
+    margin: .6rem 1.2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--bg);
+    margin-bottom: 1rem;
+}
+.user-search{
+    background-color: var(--bg);
+    border-radius: 1rem;
+    padding: 1rem 1.2rem;
+    color: var(--text-color);
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+/* ?individual data of users */
+.user-data-container{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    align-items: center;
+    background-color: var(--bg);
+    border-radius: 1.2rem;
+    padding: .6rem 1rem;
+    margin:.6rem 1.2rem;
+    transition: all 300ms ease-in-out;
+}
+.user-data-container[selected='true'],
+.user-data-container:hover{
+    cursor: pointer;
+    background-color: var(--color);
+    color: var(--onColor);
+}
+.user-image-container{
+    height: 80%;
+    aspect-ratio: 1/1;
+    background-color: var(--bg-card-2);
+    border-radius: 100rem;
+    overflow: hidden;
+}
+.user-image-container
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.user-name{
+    font-size: 1rem;
+    padding-block-end: .2rem;
+}
+.user-username{
+    font-size: .7rem;
+    padding: .1rem .5rem;
+    background-color: var(--secondary);
+    color: var(--onColor);
+    border-radius: .5rem;
+    width: fit-content;
+}
+ /* -right side  */
+.user-chat-container{
+    margin: .5rem 2.2rem;
+}
+.user-chat-container-inside[show='false']{
+    display: none;
+}
+.user-chat-container-inside[show='true']{
+    display: grid;
+    grid-template-rows: 6.2fr 1fr;
+    height: 100%;
+}
+.user-chat-list{
+    overflow-y: scroll;
+}
+.user-chat-list::-webkit-scrollbar{
+    display: none;
+}
+.message-input-container{
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.message-input{
+    border: none;
+    outline: none;
+    background-color: var(--bg);
+    color: var(--text-color);
+    border-radius: .8rem;
+    padding: 1rem 1.2rem;
+    width: 100%;
+    font-size: 1rem;
+    margin-inline-end: .5rem;
+}
+.message-send-btn{
+    height: 3.2rem;
+    aspect-ratio: 1/1;
+    background-color: var(--color);
+    background-image: url('../images/paper-plane.png');
+    background-size: 1rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    outline: none;
+    border-radius: 100rem;
+}
