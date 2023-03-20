@@ -8,6 +8,7 @@ from ocr_core import ocr_core
 from flask import request
 import myModule as myModule
 from werkzeug.utils import secure_filename
+from datetime import datetime
 
 
 
@@ -36,13 +37,25 @@ def OCRpage():
 @public.route('/message', methods = ['POST', 'GET'])
 def message():
     if session.get('user'):
+        today = datetime.now().strftime("%d-%m-%Y")
         userData = database.select("SELECT * FROM USER")
         chats = database.select("SELECT * FROM message")
-        return render_template('message.html', userData = userData, chats = chats)
+        return render_template('message.html', userData = userData, chats = chats, today = today)
     return root()
 
+@public.route('/sendMessage', methods = ['POST', 'GET'])
+def sendMessage():
+    if request.method == 'POST':
+        message = request.form.get('message')
+        sender = session.get('user')
+        receiver = request.form.get('receiver')
+        
+        database.insert("INSERT INTO message SET sender_id='%s', receiver_id='%s', text='%s'" % (sender, receiver, message))
+        return 'success'
+        
 @public.route('/post')
-def post(): return render_template('post.html') 
+def post(): 
+    return render_template('post.html') 
 
 @public.route('/profile')
 def profile():

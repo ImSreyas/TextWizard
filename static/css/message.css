@@ -83,17 +83,18 @@ img{
  /* -right side  */
 .user-chat-container{
     margin: .5rem 2.2rem;
+    height: 100%;
 }
 .user-chat-container-inside[show='false']{
     display: none;
 }
 .user-chat-container-inside[show='true']{
-    display: grid;
-    grid-template-rows: 6.2fr 1fr;
     height: 100%;
 }
 .user-chat-list{
     overflow-y: scroll;
+    display: block;
+    height: 75%;
 }
 .user-chat-list::-webkit-scrollbar{
     display: none;
@@ -102,7 +103,7 @@ img{
     height: fit-content;
     display: flex;
     align-items: center;
-    height: 100%;
+    height: 20%;
 }
 .message-input{
     border: none;
@@ -120,10 +121,55 @@ img{
     aspect-ratio: 1/1;
     background-color: var(--color);
     background-image: url('../images/paper-plane.png');
-    background-size: 1rem;
+    background-size: 1.2rem;
     background-repeat: no-repeat;
     background-position: center;
     border: none;
     outline: none;
     border-radius: 100rem;
+}
+.alignment-setter{
+    width: 100%;
+    display: flex;
+    margin-block: .2rem;
+}
+.alignment-setter:has(.user-chat-left){
+    justify-content: flex-start;
+}
+.alignment-setter:has(.user-chat-right){
+    justify-content: flex-end;
+}
+.user-chat-right,
+.user-chat-left{
+    padding: .5rem 1rem;
+    color: var(--onColor);
+    font-size: .9rem;
+    height: fit-content;
+    width: fit-content;
+    max-width: 80%;
+    border-radius: 1rem;
+}
+.user-chat-right{
+    background-color: var(--color);
+}
+.user-chat-left{
+    background-color: var(--secondary);
+}
+.user-chat-time{
+    margin-block-start: .3rem;
+    display: flex;
+    justify-content: flex-end;
+    font-size: .6rem;
+}
+.date-shower{
+    display: flex;
+    justify-content: center;
+}
+.date-shower
+div{
+    width: fit-content;
+    padding: .2rem 1rem;
+    font-size: .8rem;
+    border-radius: .5rem;
+    background-color: var(--bg);
 }

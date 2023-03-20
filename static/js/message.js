@@ -36,11 +36,15 @@ messageButtons.forEach(messageBtn => {
                 message: message
             },
             success: () => {
-                const newMessage = document.createElement('div.user-chat-right')
+                const newMessage = document.createElement('div')
+                newMessage.className = 'user-chat-right'
                 newMessage.innerText = message
+                const alignmentSetter = document.createElement('div')
+                alignmentSetter.className = 'alignment-setter'
                 const userChatContainer = document.querySelector(".user-chat-container-inside[id='"+ selectedUserId +"']")
                 const userChat = userChatContainer.children[0]
-                userChat.append(newMessage)
+                alignmentSetter.append(newMessage)
+                userChat.append(alignmentSetter)
             }
         })
     })

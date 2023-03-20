@@ -1,4 +1,5 @@
-{% extends 'components/layout.html' %} {% block links %}
+{% extends 'components/layout.html' %} 
+{% block links %}
 <link rel="stylesheet" href="../static/css/message.css" />
 <script src='../static/js/jquery.js'></script>
 <script src='../static/js/message.js' defer></script>
@@ -22,26 +23,61 @@
     </div>
     <div class='user-chat-container'>
         {% for individualData in userData %}
-            <div class='user-chat-container-inside' show='false' id='{{individualData['user_id']}}'>
-                <div class='user-chat-list'>
-                    {% for chat in chats %}
-                    {% if chat['sender_id'] == session.get('user') %}
-                        <div class='user-chat-right'>
-                            {{chat['text']}}
-                        </div>
-                    {% else %}
-                        <div class='user-chat-left'>
-                            {{chat['text']}}
-                        </div>
+    <div class='user-chat-container-inside' show='false' id='{{individualData['user_id']}}'>
+        <div class='user-chat-list'>
+            {% set dates = [] %}
+            {% for chat in chats %}
+                {% if chat['sender_id'] == session.get('user') and chat['receiver_id'] == individualData['user_id'] or chat['receiver_id'] == session.get('user') and chat['sender_id'] == individualData['user_id'] %}
+                    {% set date = chat['time'].date() %}
+                    {% if date not in dates %}
+                        {% set _ = dates.append(date) %}
                     {% endif %}
-                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            {% for date in dates %}
+                <div class='date-shower'>
+                    {% if today == date.strftime("%d-%m-%Y") %}
+                        <div>today</div>
+                    {% else %}
+                        <div>{{ date.strftime("%d-%m-%Y") }}</div>
+                    {% endif %}
                 </div>
-                <div class='message-input-container'>
-                    <input class='message-input' placeholder='Enter a message...' id='{{individualData['user_id']}}' />
-                    <button class='message-send-btn'></button>
-                </div>
-            </div>
-        {% endfor %}
+                {% for chat in chats %}
+                    {% if chat['sender_id'] == session.get('user') and chat['receiver_id'] == individualData['user_id'] or chat['receiver_id'] == session.get('user') and chat['sender_id'] == individualData['user_id'] %}
+                        {% if chat['time'].date() == date %}
+                            <div class='alignment-setter'>
+                                {% if chat['sender_id'] == session.get('user') %}
+                                    <div class='user-chat-right'>
+                                        <div class='user-chat-text-content'>
+                                            {{ chat['text'] }}
+                                        </div>
+                                        <div class='user-chat-time'>
+                                            {{ chat['time'].time().strftime('%I:%M %p') }}
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class='user-chat-left'>
+                                        <div class='user-chat-text-content'>
+                                            {{ chat['text'] }}
+                                        </div>
+                                        <div class='user-chat-time'>
+                                            {{ chat['time'].time().strftime('%I:%M %p') }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <div class='message-input-container'>
+            <input class='message-input' placeholder='Enter a message...' id='{{individualData['user_id']}}' />
+            <button class='message-send-btn'></button>
+        </div>
+    </div>
+{% endfor %}
+
     </div>
 </div>
 {% endblock body %}
