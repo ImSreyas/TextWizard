@@ -43,7 +43,7 @@
     grid-template-columns: 1fr 5fr;
     align-items: center;
     background-color: var(--bg);
-    border-radius: 1.2rem;
+    border-radius: 1.1rem;
     padding: .6rem 1rem;
     margin:.6rem 1.2rem;
     transition: all 300ms ease-in-out;
@@ -89,12 +89,15 @@ img{
     display: none;
 }
 .user-chat-container-inside[show='true']{
-    height: 100%;
+    max-height: 70vh;
+    display: grid;
+    grid-template-rows: 6.2fr 1fr;
 }
 .user-chat-list{
     overflow-y: scroll;
     display: block;
-    height: 75%;
+    height: 100%;
+    transition: all 500ms ease-out;
 }
 .user-chat-list::-webkit-scrollbar{
     display: none;
@@ -103,7 +106,8 @@ img{
     height: fit-content;
     display: flex;
     align-items: center;
-    height: 20%;
+    height: 100%;
+    padding-block: .5rem;
 }
 .message-input{
     border: none;

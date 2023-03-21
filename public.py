@@ -200,7 +200,7 @@ def upload_page():
         text = ocr_core(file, lang['language'])
         if(session.get('user')):
             userId = session.get('user')
-            database.insert("INSERT INTO text SET user_id='"+ str(userId) +"', text='"+ text +"', language='"+ lang['language'] +"', file_name='"+ new_filename +"'")   
+            database.insert("INSERT INTO text SET user_id='"+ str(userId) +"', text='"+ text +"', new_text='"+ text +"', language='"+ lang['language'] +"', file_name='"+ new_filename +"'")   
         return text
     elif request.method == 'GET':
         return "get method is called"

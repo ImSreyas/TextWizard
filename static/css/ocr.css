@@ -212,6 +212,7 @@ img:last-child{
 .text-header{
     border-bottom: 1px solid var(--bg);
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 .text-content{
@@ -259,7 +260,7 @@ img:last-child{
  .file-name-input{
     width: 30vw;
     font-size: 1rem;
-    padding: .6rem 1rem;
+    padding: .8rem 1rem;
     border-radius: .8rem;
     outline: none;
     border: none;
@@ -267,3 +268,28 @@ img:last-child{
     color: var(--text-color);
     margin-inline-start: 2rem;
  }
+  /* -tool buttons  */
+.tool-box{
+    width: fit-content;
+}
+.tool-box
+.copy{
+    width: 3rem;
+    aspect-ratio: 1/1;
+    background-color: var(--color);
+    
+}
+.tool-box
+.share{
+    width: 3rem;
+    aspect-ratio: 1/1;
+    background-color: var(--color);
+
+}
+.tool-box
+.post{
+    width: 3rem;
+    aspect-ratio: 1/1;
+    background-color: var(--color);
+
+}
