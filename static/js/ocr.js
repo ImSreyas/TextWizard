@@ -131,14 +131,14 @@ const options = document.querySelectorAll('.file-format-option-container option'
 options.forEach(option => {
   option.addEventListener('click', (e) => {
     optionContainer.setAttribute('vis', 'false')
-    formatSelectorBtn.innerText = e.target.innerText
+    formatSelectorBtn.children[0].innerText = e.target.innerText
   })
 })
 // -end of file format selection 
 // - download btn 
 const downloadBtn = document.querySelector('.txt-download-link')
 downloadBtn.addEventListener('click', () => {
-  const textFormat = document.querySelector('.file-format-container').innerText
+  const textFormat = document.querySelector('.file-format-container .actualFileFormat').innerText
   const text = getTextFromEditor()
   const fileName = document.querySelector('.file-name-input').value
   switch(textFormat){
@@ -164,12 +164,15 @@ downloadBtn.addEventListener('click', () => {
 // - end of download btn
 //? function for getting the text from editor 
 const getTextFromEditor = () => {
-  let paragraphs = document.querySelectorAll('.text-content p')
-  let data = ""
-  paragraphs.forEach( p => {
-    data = data + p.innerText + '\n'
-  })
-  return data
+  let paragraphs = document.querySelectorAll('.text-content p');
+  let data = "";
+  paragraphs.forEach((p, index) => {
+    data += p.innerText.trim();
+    if (index < paragraphs.length - 1) {
+      data += "\n"; // Add newline character if this is not the last paragraph
+    }
+  });
+  return data;
 }
 //? txt download function
 function txtDownload(data, fileName){
@@ -246,3 +249,101 @@ function pdfDownload(data, fileName){
 //   const downloadLink = document.querySelector('.txt-download-link');
 //   downloadLink.href = URL.createObjectURL(new Blob([pdfBytes], { type: 'application/pdf' }));
 // }
+
+
+//-toolbox
+//?copy
+const copyBtn = document.querySelector('.tool-box .copy')
+copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(getTextFromEditor())
+})
+//?share
+const shareBtn = document.querySelector('.tool-box .share')
+if(shareBtn){
+    shareBtn.addEventListener('click', () => {
+        const textFormat = document.querySelector('.file-format-container-new .actualFileFormatNew').innerText
+        const shareList = document.querySelector('.share-list-container')
+        if(shareList.getAttribute('vis') == 'false') shareList.setAttribute('vis', 'true')
+        else shareList.setAttribute('vis', 'false')
+    })
+}
+
+const formatSelectorBtnNew = document.querySelector('.file-format-container-new')
+const optionContainerNew = document.querySelector('.file-format-option-container-new')
+if(formatSelectorBtnNew){
+    formatSelectorBtnNew.addEventListener('click', ()=>{
+        if(optionContainerNew.getAttribute('vis') == 'false') optionContainerNew.setAttribute('vis', 'true')
+        else optionContainerNew.setAttribute('vis', 'false')
+    })
+}
+
+
+const optionsNew = document.querySelectorAll('.file-format-option-container-new option')
+if(optionsNew){
+    optionsNew.forEach(option => {
+        option.addEventListener('click', (e) => {
+            optionContainerNew.setAttribute('vis', 'false')
+            formatSelectorBtnNew.children[0].innerText = e.target.innerText
+        })
+    })
+}
+
+// - select user 
+const users = document.querySelectorAll('.user-data-container')
+users.forEach(user => {
+    user.addEventListener('click', (e) => {
+        if(user.getAttribute('selected') == 'true') user.setAttribute('selected', 'false')
+        else user.setAttribute('selected', 'true')
+    })
+})
+// -search 
+const userSearch = document.querySelector('.user-search')
+if(userSearch){
+    userSearch.addEventListener('keyup', (e)=>{
+        let searchValue = e.target.value
+        searchValue = searchValue.toLowerCase()
+        const userList = document.querySelectorAll('.user-data-container')
+        userList.forEach(user => {
+            user.style.display = 'none'
+        })
+        userList.forEach(user => {
+            if((user.children[1].children[0].innerText + user.children[1].children[1].innerText).toLowerCase().includes(searchValue)){
+                user.style.display = 'grid'
+            }
+        })
+    })
+}
+// -final share btn 
+const finalShare = document.querySelector('.share-btn-final')
+if(finalShare){
+    finalShare.addEventListener('click', () => {
+        const selectedUsers = document.querySelectorAll(".user-data-container[selected='true']")
+        let selectedUserIds = []
+        selectedUsers.forEach(user => {
+            selectedUserIds.push(parseInt(user.id))
+        })
+        const fileName = document.querySelector('.file-name-input').value
+        const fileFormat = document.querySelector('.file-format-container-new .actualFileFormatNew').innerHTML
+        const text = getTextFromEditor()
+        $.ajax({
+            url: '/share',
+            type: "POST",
+            data: {
+                userList: JSON.stringify(selectedUserIds),
+                text: text,
+                fileName: fileName,
+                fileFormat: fileFormat
+            },
+            success: () => {
+                const users = document.querySelectorAll('.user-data-container')
+                users.forEach(user => {
+                    user.setAttribute('selected', 'false')
+                })
+                document.querySelector('.share-list-container').setAttribute('vis', 'false')
+                popup('shared successfully', 'green', '4s')
+            }
+        })
+    })
+}
+
+

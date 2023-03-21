@@ -9,6 +9,7 @@ from flask import request
 import myModule as myModule
 from werkzeug.utils import secure_filename
 from datetime import datetime
+import json as json
 
 
 
@@ -32,13 +33,33 @@ def landingPage():
 
 @public.route('/ocr')
 def OCRpage():
-    return render_template('ocr.html')
+    userData = database.select("SELECT * FROM USER")
+    if(session.get('user')) : return render_template('ocr.html', userData = userData, userLoginStatus = True)
+    return render_template('ocr.html', userData = userData, userLoginStatus = False)
+@public.route('/share', methods=['POST', 'GET'])
+def share():
+    if(session.get('user')):
+        if(request.method == 'POST'):
+            user = session.get('user')
+            receiverList = request.form.get('userList')
+            text = str(request.form.get('text'))
+            fileName = request.form.get('fileName')
+            fileFormat = request.form.get('fileFormat')
+            
+            receiverListNew = json.loads(receiverList)
+            
+            for receiver in receiverListNew :                 
+                database.insert("INSERT INTO message SET sender_id='%s', receiver_id='%s', text='%s', file_name='%s', file_type='%s'" % (user, receiver, text, fileName, fileFormat))
+
+            return 'success'
+        else: return 'get method is called, post required'
+
 
 @public.route('/message', methods = ['POST', 'GET'])
 def message():
     if session.get('user'):
         today = datetime.now().strftime("%d-%m-%Y")
-        userData = database.select("SELECT * FROM USER")
+        userData = database.select("SELECT * FROM user")
         chats = database.select("SELECT * FROM message")
         return render_template('message.html', userData = userData, chats = chats, today = today)
     return root()

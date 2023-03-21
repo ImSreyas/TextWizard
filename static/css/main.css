@@ -29,6 +29,7 @@ html{
     --bg--1: #3c3e42;
     --bg-card: #27282b;
     --bg-card-2: rgba(83, 84, 89, 0.8);
+    --bg-card-3: rgb(83, 84, 89);
     --bg-input: #3d3e43;
     --gray-text: rgb(145, 145, 145);
     --bg-2: #212124;
@@ -39,7 +40,7 @@ html{
     --footer-highlight-text: var(--color);
     --text-highlighter: #202020;
 
-    --popup-bg: #0f0f0f;
+    --popup-bg: #161616;
 }
 *:has(body[theme='darkGreen']){
     --color: #658864;
@@ -55,6 +56,7 @@ html{
     --bg--1: #f0f0f0;
     --bg-card: #ffffff;
     --bg-card-2: rgba(255, 255, 255, .5);
+    --bg-card-3: rgb(255, 255, 255);
     --shadow: rgb(197, 197, 197);
     
     --bg-input: #e5e5e5;
@@ -66,7 +68,7 @@ html{
     --footer-highlight-text: var(--secondary);
     --text-highlighter: #171717;
 
-    --popup-bg: #191919;
+    --popup-bg: #1e1f1f;
 }
 body{
     color: var(--text-color);

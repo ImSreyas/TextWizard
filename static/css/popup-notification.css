@@ -9,7 +9,8 @@
     animation: fadeInOut ease-out;
     visibility: hidden;
     background-color: var(--popup-bg);
-    color: white;
+    /* color: white;  */
+    font-weight: 500;
 }
 @keyframes fadeInOut {
     0%{
@@ -27,7 +28,7 @@
     }
 }
 .popup-text-container{
-    font-weight: 200;
+    font-weight: 500;
     font-size: .9rem;
 }
 .popup-text-container::before{
