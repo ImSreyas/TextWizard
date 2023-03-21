@@ -1,1 +1,142 @@
 @import url('main.css');
+.main-body{
+    display: flex;
+    justify-content: center;
+}
+.profile-container-main{
+    display: grid;
+    grid-template-columns: 6fr 4fr;
+    width: 90%;
+    height: 76vh;
+    background-color: var(--bg-card-2);
+    padding: 1rem;
+    border-radius: 3rem;
+
+    
+}
+.profile-container{
+    width: 100%;
+    height: calc(76vh - 2rem);
+    border-inline-end: 1px solid var(--bg);
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    padding: 1rem;
+}
+.first-container{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.profile-pic-container{
+    width: 100%;
+    height: fit-content;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+.profile-pic{
+    display: block;
+    width: 100%;
+    height: 8rem;
+    object-fit: cover;
+    background-color: var(--bg);
+}
+.name-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    background-color: var(--color);
+    color: var(--onColor);
+    border-radius: 1.5rem;
+    margin-inline-start: .5rem;
+}
+.username-container{
+    display: flex;
+    align-items: start;
+    padding: .5rem 1rem;
+}
+.username-content{
+    padding: .4rem 1.2rem;
+    border-radius: 1rem;
+    background-color: var(--secondary);
+    color: var(--onColor);
+    width: fit-content;
+    margin-block-end: .2rem;
+    display: inline-block;
+    position: relative;
+}
+.second-container{
+    padding: 2rem 1rem;
+    overflow-y: scroll;
+}
+.second-container::-webkit-scrollbar{
+    display: none;
+}
+.second-container
+div{
+    display: flex;
+    align-items: start;
+}
+.second-container
+div
+div:nth-child(1){
+    padding: .4rem 1.2rem;
+    border-radius: 1rem;
+    background-color: var(--bg);
+    color: var(--text-color);
+    width: fit-content;
+    margin-block-end: .3rem;
+    display: inline-block;
+}
+.second-container
+div
+div:nth-child(2){
+    padding: .4rem 1.2rem;
+    border-radius: 1rem;
+    background-color: var(--color);
+    color: var(--onColor);
+    width: fit-content;
+    margin-block-end: .2rem;
+    display: inline-block;
+    position: relative;
+    margin-left: .6rem;
+}
+.second-container
+div
+div:nth-child(2)::before{
+    content: '';   
+    display: inline-block;
+    width: 1rem;
+    aspect-ratio: 1/1;
+    background-color: var(--color);
+    border-radius: 2px;
+    transform: rotate(45deg);
+    position: absolute;
+    left: -.25rem;
+    top: .7rem;
+}
+
+.quick-settings-container{
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1rem;
+}
+.quick-settings-container
+div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+    background-color: var(--color);
+    color: var(--onColor);
+    border-radius: 2.1rem;
+}
+.quick-settings-container
+div:hover{
+    cursor: pointer;
+}

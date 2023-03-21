@@ -4,5 +4,43 @@
 <script src='static/js/popup-notification.js'></script>
 <script src='static/js/profile.js'></script>
 {% endblock links %} {% block body %}
-<h1>This is profile page</h1>
+<div class='profile-container-main'>
+    <div class='profile-container'>
+        <div class='first-container'>
+            <span class='profile-pic-container'>
+                <img class='profile-pic' src='static/uploads/{{userData[0].profile_pic}}' />
+            </span>
+            <div>
+                <div class='name-container'>{{userData[0].name}}</div>
+                 <div class='username-container'>
+                    <div class='username-content'>{{userData[0].username}}</div>
+                </div>
+            </div>
+        </div>
+        <div class='second-container'>
+            <div class='gender-container'>
+                <div class='gender-label'>Gender</div>
+                <div class='gender-content'>{{userData[0].gender}}</div>
+            </div>
+            <div class='email-container'>
+                <div class='email-label'>Email</div>
+                <div class='email-content'>{{userData[0].email}}</div>
+            </div>
+            <div class='phone-container'>
+                <div class='phone-label'>Phone</div>
+                <div class='phone-content'>{{userData[0].phone}}</div>
+            </div>
+            <div class='address-container'>
+                <div class='address-label'>Address</div>
+                <div class='address-content'>{{ userData[0].address|replace(' ', '<br>')|safe }}</div>
+            </div>
+        </div>
+    </div>
+    <div class='quick-settings-container'>
+        <div class='update-profile-btn-top'>Update profile</div>
+        <div class='history-btn-top'>History</div>
+        <div class='update-password-btn-top'>Update password</div>
+        <div class='feedback-btn-top'>Feedback</div>
+    </div>
+</div>
 {% endblock body %}

@@ -80,7 +80,10 @@ def post():
 
 @public.route('/profile')
 def profile():
-    return render_template('profile.html')
+    if(session.get('user')):
+        userId = session.get('user')
+        userData = database.select("SELECT * FROM user where user_id='%s'" % (userId))
+        return render_template('profile.html', userData = userData)
 
 @public.route('/login', methods = ['POST', 'GET'])
 def login():
