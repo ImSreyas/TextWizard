@@ -1,7 +1,10 @@
 @import url('main.css');
+@import url('registration.css');
+@import url('ocr.css');
 .main-body{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 .profile-container-main{
     display: grid;
@@ -11,8 +14,6 @@
     background-color: var(--bg-card-2);
     padding: 1rem;
     border-radius: 3rem;
-
-    
 }
 .profile-container{
     width: 100%;
@@ -140,3 +141,43 @@ div{
 div:hover{
     cursor: pointer;
 }
+ /* - history container   */
+.history-container-main{
+    width: 90%;
+    background-color: var(--bg-card-2);
+    border-radius: 3rem;
+    height: fit-content;
+    display: block;
+    gap: 1rem 2rem;
+    margin-block-start: 2rem;
+    padding: 1rem 5rem;
+}
+.content-bar{
+    display: block;
+    background-color: var(--bg-card-3);
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    margin-block: 1rem;
+    width: 100%;
+    height: fit-content;
+}
+.text-header{
+    height: 6rem;
+}
+.text-content{
+    overflow: visible;
+}
+ /* - update profile  */
+ .profile-update-container-main{
+    width: 90%;
+    padding-block: 2rem;
+ }
+ /* - registration  */
+ .registration-form-container{
+    width: 100% !important;
+    border-radius: 3rem;
+    background-color: var(--bg-card-2);
+    padding: 2rem 18vw;
+ }
+
+ 

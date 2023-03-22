@@ -1,8 +1,3 @@
-// import { PDFDocument, StandardFonts } from 'pdf-lib';
-
-
-
-
 let container = document.querySelector('.drag-and-drop-icon-container');
 let fileChangeListenerAdded = false;
 

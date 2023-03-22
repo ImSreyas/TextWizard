@@ -82,8 +82,68 @@ def post():
 def profile():
     if(session.get('user')):
         userId = session.get('user')
+        ud = database.select("SELECT * FROM USER")
         userData = database.select("SELECT * FROM user where user_id='%s'" % (userId))
-        return render_template('profile.html', userData = userData)
+        history = database.select("SELECT * FROM text WHERE user_id='%s'" % (userId))
+        print(history)
+        return render_template('profile.html', userData = userData, ud = ud, history = history)
+    
+@public.route('/updateProfile', methods = ['POST', 'GET'])
+def updateProfile():
+    if session.get('user'):
+        if request.method == 'POST' :
+            userId = session.get('user')
+            name = request.form.get('name')
+            gender = request.form.get('gender')
+            address = request.form.get('address')
+            email = request.form.get('email')
+            phone = request.form.get('phone')
+            username = request.form.get('username')
+            submit = request.form.get('submit')
+            
+            
+            x = ['', '', '', '', '']
+            y = x
+            
+            if name == None or name == "" :
+                name = ""
+                x[0] = 'please enter a name' 
+                
+            if address == None or address == "" :
+                address = ""
+                x[1] = 'please enter an address'
+                
+            if phone == None or phone == "" :
+                phone = ""
+                x[2] = 'please enter a phone number'
+            elif not re.fullmatch(r'^[0-9]{10}$', phone) :
+                x[2] = 'invalid phone number...!'
+                
+            if email == None or email == "" :
+                email = ""
+                x[3] = 'please enter an email'
+            elif not re.fullmatch(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', email) :
+                x[3]  = 'invalid email id...!'
+            
+            selectUsernameAndPasswordQuery = "SELECT user_id, username, password FROM user WHERE username='"+ username +"' && user_id!='"+ str(userId) +"'"
+            result = database.select(selectUsernameAndPasswordQuery)
+            if username == None or username == "" :
+                username = ""
+                x[4] = 'please enter a username'
+            elif len(result) > 0 :
+                x[4] = 'username has been already taken...!'
+                    
+            for val in x :
+                if val == '' :
+                    continue
+                else :
+                    return x
+            if submit == 'true' :
+                q = "UPDATE user SET username='" + username + "', name='" + name + "', gender='" + gender + "', address='" + address + "', phone='" + phone + "', email='" + email + "' WHERE user_id='" + str(userId) + "'"
+                result = database.insert(q)
+                return 'success'
+            else : return y
+    return 'failed'
 
 @public.route('/login', methods = ['POST', 'GET'])
 def login():
