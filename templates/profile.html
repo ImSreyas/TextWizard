@@ -89,7 +89,11 @@
                             <span class='post'></span>
                 </span>
         </div>
-        <div class='text-content' spellcheck='true' contenteditable='true'>{{item.text|replace('\n', '<br>')|safe}}</div>
+        <div class='text-content' spellcheck='true' contenteditable='true'>
+            {% for line in item.text.split('\n') %}
+                <p>{{ line }}</p>
+            {% endfor %}
+        </div>
         <div class='text-file-download-container'>
                     <div class='link-format__container'>
                             <a class='txt-download-link' download>download</a><button class='file-format-container'><span class='actualFileFormat'>.txt</span><span class='drop-down-arrow'></span></button>
