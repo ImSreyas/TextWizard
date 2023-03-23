@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>OCR-wizard</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script src='../static/js-admin/jquery.js'></script>
+    <script src='../static/js-admin/nav.js' defer></script>
+    <script src='../static/js-admin/popup-notification.js'></script>
+    <script src="../static/js-admin/navHighlighter.js" defer></script>
+    <script src='../static/js-admin/themeSetter.js' defer></script>
+    {% block links %} {% endblock links %}
+  </head>
+  <body 
+  {% if session['theme'] == 'yellow' %} theme='yellow' {% else %} theme='darkGreen' {% endif %}
+  >
+    <nav>
+      <div class="nav-wrapper">
+        <a class="no-text-decoration" href="/admin" id="nav-item" nav='admin'>
+          <span>OCR results</span>
+        </a>
+          <a class="no-text-decoration" href="/admin/user" id="nav-item" nav='user'>
+            <span>user</span>
+          </a>
+          <a class="no-text-decoration" href="/admin/deo" id="nav-item" nav='deo'>
+            <span>deo</span>
+          </a>
+          <a class="no-text-decoration" href="/admin/feedback" id="nav-item" nav='feedback'>
+          <span>feedback</span>
+        </a>
+           <button type='button' class="no-text-decoration logout-btn" id="nav-item" nav='logout'>
+            <span>logout</span>
+            <div class='logout-option-container' visible='false'>
+              <option class='goToLogout'>yes</option>
+              <option>no</option>
+            </div>
+          </button>
+      </div>
+      {% if session['theme'] == 'yellow' %}
+      <button class='theme-button-day theme-button' themeMode='dark'></button>
+       {% else %} 
+       <button class='theme-button-night theme-button' themeMode='white'></button>
+       {% endif %}
+       <button onoff='false' type='button' class='res-nav-button'></button>
+    </nav>
+    <div class="main-body">
+      {% include 'components/loader.html' %}
+      {% block body %} {% endblock body %}</div>
+      <div class='footer-wave'>
+        <div class='animation-theme' animation='darkGreen'>
+              {% include 'assets/darkGreen/footerWave.svg' %}
+        </div>
+        <div class='animation-theme' animation='yellow'>
+              {% include 'assets/yellow/footerWave.svg' %}
+        </div>
+      </div>
+    <footer>
+      <span class="rights">
+        <span>
+        2023© all rights reserved by <span>SREYAS</span>. He is a front-end developer
+        </span>
+      </span>
+    </footer>
+  </body>
+</html>
+

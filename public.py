@@ -59,7 +59,8 @@ def share():
 def message():
     if session.get('user'):
         today = datetime.now().strftime("%d-%m-%Y")
-        userData = database.select("SELECT * FROM user")
+        userListQuery = "SELECT * FROM user"
+        userData = database.select(userListQuery)
         chats = database.select("SELECT * FROM message")
         return render_template('message.html', userData = userData, chats = chats, today = today)
     return root()

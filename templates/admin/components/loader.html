@@ -1,0 +1,63 @@
+<div id='loader' class='loader'>
+    <div class="loadingio-spinner-eclipse-wp6nj1dw6lr">
+        <div class="ldio-7mls6c71o">
+        <div>
+        </div>
+        </div>
+    </div>
+</div>
+<script>
+    function getParameter(parameterName){
+        let parameter= new URLSearchParams(window.location.search)
+        return parameter.get(parameterName)
+    }
+    const duration = getParameter("duration")
+
+    const arr = [
+        "logging_in",
+        "logging_out",
+        "product_updating",
+        "updating_details",
+        "deleting_seller",
+        "order",
+        "registration_successful",
+        "profile_update_successful"
+    ]
+    const notification = [
+        "successfully logged in",
+        "successfully logged out",
+        "successfully updated product",
+        "successfully updated details",
+        "your account has been deleted successfully",
+        "order placed successfully",
+        "successfully registered",
+        "profile updated successfully"
+    ]
+    let color = 'green'
+    if(getParameter("message") != null) {
+        let str = notification[arr.indexOf(getParameter("message"))]
+        setTimeout(() => {
+            popup(str, color, '4.5s')
+        }, parseInt(duration)+350)
+    }
+    if(arr.includes(getParameter("message"))){
+        document.getElementById("loader").style.display = "flex"
+        document.querySelector("body").style.overflow = "hidden"
+        window.addEventListener("load" , () => {
+        setTimeout(() => {
+            document.getElementById("loader").style.display = "none"
+            document.querySelector("body").style.overflow = "visible"
+        }, duration)
+    })
+    }
+    else{
+        document.getElementById("loader").style.display = "flex"
+        document.querySelector("body").style.overflow = "hidden"
+        window.addEventListener("load" ,() => {
+        setTimeout(() => {
+            document.getElementById("loader").style.display = "none"
+            document.querySelector("body").style.overflow = "visible"
+        }, duration)
+    })
+    }
+</script>
