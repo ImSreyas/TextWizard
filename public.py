@@ -294,7 +294,32 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-
+@public.route('/adminLogin', methods = ['POST', 'GET'])
+def adminLogin():
+    if request.method == 'POST':
+        x = ['', '']
+        username = request.form.get('username')
+        password = request.form.get('password')
+        if username == None or username == "":
+            x[0] = "enter the username"
+            return x
+        selectUserAndPasswordQuery = "SELECT id, username, password FROM admin WHERE username='"+ username +"'"
+        result = database.select(selectUserAndPasswordQuery)
+        if len(result) > 0 :
+            if password == None or password == "" :
+                x[1] = "enter the password"
+                return x
+            # password = (hashlib.md5(password.encode())).hexdigest()
+            if result[0]['password'] == password :
+                session['admin'] = result[0]['id']
+                return 'success'  
+            else :
+                x[1] = 'wrong password'
+                return x
+        else : 
+            x[0] = 'invalid username'
+            return x
+    return render_template('adminLogin.html')
 
 @public.route('/theme/<mode>')
 def theme(mode):

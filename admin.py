@@ -39,4 +39,5 @@ def feedback():
 @admin.route('/admin/logout')
 def ocrResults():
     # if session.get('admin') :
-        pass
+        session['admin'] = None
+        return 'success'

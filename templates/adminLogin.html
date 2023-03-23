@@ -1,0 +1,37 @@
+{% extends 'components/layout.html' %} 
+
+{% block links %}
+<link rel="stylesheet" href="../static/css/login.css" />
+<script src='../static/js/adminlogin.js' defer></script>
+{% endblock %} 
+
+{% block body %}
+<div class="login-container">
+  <div class='animation-container'>
+    <div class='animation-theme' animation='yellow'>
+      {% include 'animation/yellow/login.html' %}
+    </div>
+    <div class='animation-theme' animation='darkGreen'>
+      {% include 'animation/darkGreen/login.html' %}
+    </div>
+  </div>
+  <div class='login-form-container'>
+    <form autocomplete='off' spellcheck='false' action='' method='POST'>
+      <label for='username' class='label username-label'>username</label>
+      <div class='input-container'>
+        <input type='text' name='username' class='input username' name='username'>
+        <error></error>
+      </div>
+
+      <label for='password' class='label password-label'>password</label>
+      <div class='input-login-container'>
+        <input type='password' name='password' class='input password' name='password'>
+        <error></error>
+      </div>
+      <button style='margin-bottom: 0 !important' type='submit' name='username' class='btn submit-button'>log in</button>
+    </form>
+    <div class='new-account-link-container'>
+    </div>
+  </div>
+</div>
+{% endblock %}
