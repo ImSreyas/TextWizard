@@ -1,5 +1,46 @@
 {% extends 'admin/components/layout.html' %} {% block links %}
 <link rel="stylesheet" href="../static/css-admin/deo.css" />
+<script src='../static/js-admin/jquery.js'></script>
+<script src='../static/js-admin/popup-notification.js'></script>
+<script src='../static/js-admin/deo.js' defer></script>
 {% endblock links %} {% block body %}
-<h1>this is the deo index</h1>
+{% for deo in deoData %}
+<div class='profile-container-main' id='{{ deo.id }}'>
+    <div class='profile-container'>
+        <div class='first-container'>
+            <span class='profile-pic-container'>
+                <img class='profile-pic' src='/static/uploads/{{deo.profile_pic}}' />
+            </span>
+            <div>
+                <div class='name-container'>{{deo.name}}</div>
+                 <div class='username-container'>
+                    <div class='username-content'><span class='username-actual-text'>username</span><span class='actual-username-value'>{{deo.username}}</span></div>
+                </div>
+            </div>
+        </div>
+        <div class='second-container'>
+            <div class='gender-container'>
+                <div class='gender-label'>Gender</div>
+                <div class='gender-content'>{{deo.gender}}</div>
+            </div>
+            <div class='email-container'>
+                <div class='email-label'>Email</div>
+                <div class='email-content'>{{deo.email}}</div>
+            </div>
+            <div class='phone-container'>
+                <div class='phone-label'>Phone</div>
+                <div class='phone-content'>{{deo.phone}}</div>
+            </div>
+            <div class='address-container'>
+                <div class='address-label'>Address</div>
+                <div class='address-content'>{{ deo.address|replace(' ', '<br>')|safe }}</div>
+            </div>
+            <div class='third-container'>
+                <button class='block-btn' id='{{ deo.id }}'>{{ "block" if deo.block == 0 else "unblock" }}</button>
+                <button class='delete-btn' id='{{ deo.id }}'>Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 {% endblock body %}

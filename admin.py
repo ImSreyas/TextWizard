@@ -26,12 +26,41 @@ def adminIndex():
 @admin.route('/admin/user')
 def user():
     if session.get('admin'):
-        return render_template('admin/user.html')
+        usersData = database.select("SELECT * FROM user")
+        return render_template('admin/user.html', usersData = usersData)
+
+@admin.route('/admin/deleteUser', methods = ['POST', 'GET'])
+def deleteUser():
+    if session.get('admin'):
+        userId = request.form.get('userId')
+        database.delete("DELETE FROM user WHERE user_id='%s'" % (userId))
+        return 'success'
+    else:
+        return render_template('404.html')
+    
+@admin.route('/admin/deleteDeo', methods = ['POST', 'GET'])
+def deleteDeo():
+    if session.get('admin'):
+        deoId = request.form.get('deoId')
+        database.delete("DELETE FROM deo WHERE id='%s'" % (deoId))
+        return 'success'
+    else:
+        return render_template('404.html')
+    
+@admin.route('/admin/blockDeo', methods = ['POST', 'GET'])
+def blockDeo():
+    if session.get('admin'):
+        deoId = request.form.get('deoId')
+        database.update("UPDATE deo SET block = NOT block WHERE id='%s'" % (deoId))
+        return 'success'
+    else:
+        return render_template('404.html')
 
 @admin.route('/admin/deo')
 def deo():
     if session.get('admin'):
-        return render_template('admin/deo.html')
+        deoData = database.select("SELECT * FROM deo")
+        return render_template('admin/deo.html', deoData = deoData)
 
 
 @admin.route('/admin/feedback')

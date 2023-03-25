@@ -1,1 +1,13 @@
 @import url('../css/main.css');
+@import url('user.css');
+.main-body{
+    display: flex;
+    justify-content: center;
+}
+.block-btn{
+    padding: .4rem 1rem;
+    background-color: var(--color);
+    color: var(--onColor);
+    border-radius: .8rem;
+    margin-inline-end: .5rem;
+}

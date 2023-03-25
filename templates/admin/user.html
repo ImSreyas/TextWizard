@@ -1,5 +1,45 @@
 {% extends 'admin/components/layout.html' %} {% block links %}
 <link rel="stylesheet" href="../static/css-admin/user.css" />
+<script src='../static/js-admin/jquery.js'></script>
+<script src='../static/js-admin/popup-notification.js'></script>
+<script src='../static/js-admin/user.js' defer></script>
 {% endblock links %} {% block body %}
-<h1>this is the user index</h1>
+{% for userData in usersData %}
+<div class='profile-container-main' id='{{ userData.user_id }}'>
+    <div class='profile-container'>
+        <div class='first-container'>
+            <span class='profile-pic-container'>
+                <img class='profile-pic' src='/static/uploads/{{userData.profile_pic}}' />
+            </span>
+            <div>
+                <div class='name-container'>{{userData.name}}</div>
+                 <div class='username-container'>
+                    <div class='username-content'><span class='username-actual-text'>username</span><span class='actual-username-value'>{{userData.username}}</span></div>
+                </div>
+            </div>
+        </div>
+        <div class='second-container'>
+            <div class='gender-container'>
+                <div class='gender-label'>Gender</div>
+                <div class='gender-content'>{{userData.gender}}</div>
+            </div>
+            <div class='email-container'>
+                <div class='email-label'>Email</div>
+                <div class='email-content'>{{userData.email}}</div>
+            </div>
+            <div class='phone-container'>
+                <div class='phone-label'>Phone</div>
+                <div class='phone-content'>{{userData.phone}}</div>
+            </div>
+            <div class='address-container'>
+                <div class='address-label'>Address</div>
+                <div class='address-content'>{{ userData.address|replace(' ', '<br>')|safe }}</div>
+            </div>
+            <div class='third-container'>
+                <button class='delete-btn' id='{{ userData.user_id }}'>Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 {% endblock body %}
