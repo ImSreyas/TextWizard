@@ -1,0 +1,35 @@
+@import url('../css/main.css');
+@import url('../css/profile.css');
+.ocr-result-container{
+    width: 90%;
+}
+.text-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-inline: 0;
+}
+.text-content
+div{
+    padding-inline: 1rem;
+}
+.text-content-new{
+    border-inline-start: 1px solid var(--bg);
+}
+.text-file-download-container{
+    justify-content: space-between;
+}
+.user-name_{
+    font-size: .9rem;
+    color: var(--color);
+    padding: .2rem .5rem;
+    border-radius: .6rem;
+    border: 1px solid var(--color);
+}
+.file-created-time_,
+.file-edited-time_{
+    background-color: var(--color);
+    color: var(--onColor);
+    padding: .2rem .5rem;
+    border-radius: .5rem;
+    font-size: .7rem;
+}

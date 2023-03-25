@@ -86,7 +86,6 @@ def profile():
         ud = database.select("SELECT * FROM USER")
         userData = database.select("SELECT * FROM user where user_id='%s'" % (userId))
         history = database.select("SELECT * FROM text WHERE user_id='%s'" % (userId))
-        print(history)
         return render_template('profile.html', userData = userData, ud = ud, history = history)
     
 @public.route('/updateProfile', methods = ['POST', 'GET'])
