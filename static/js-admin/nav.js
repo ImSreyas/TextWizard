@@ -25,7 +25,7 @@ document.querySelector('.goToLogout').addEventListener('click', ()=> {
     url: '/admin/logout',
     type: 'GET',
     success: (data)=>{
-        if(data == 'success') location.href='index?message=logging_out&duration=4000'
+        if(data == 'success') location.href='../index?message=logging_out&duration=4000'
     }
    })
 })

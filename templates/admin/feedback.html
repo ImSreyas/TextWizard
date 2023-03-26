@@ -1,5 +1,43 @@
 {% extends 'admin/components/layout.html' %} {% block links %}
 <link rel="stylesheet" href="../static/css-admin/feedback.css" />
+<script src='../static/js-admin/jquery.js'></script>
+<script src='../static/js-admin/popup-notification.js'></script>
+<script src='../static/js-admin/feedback.js' defer></script>
 {% endblock links %} {% block body %}
-<h1>this is the feedback index</h1>
+<div class='user-feedback-main-container'>
+    <div class='user-search-container'>
+        <input type='text' class='user-search' placeholder='search...' />
+    </div>
+    <div class='user-feedback-list-container'>
+        {% for feedback in feedbacks %}
+            {% if feedback.user_type == 'user' %}
+                <div class='user-feedback-card'>
+                    <div class='__name'>{{ feedback.name }}</div>
+                    <div class='__username'>{{ feedback.username }}</div>
+                    <div class='__subject'>{{ feedback.subject }}</div>
+                    <div class='__message'>{{ feedback.message }}</div>
+                    <div class='__date'>{{feedback.date.strftime("%A, %d/%m/%Y, %I:%M %p")}}</div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class='deo-feedback-main-container'>
+    <div class='deo-search-container'>
+        <input type='text' class='deo-search' placeholder='search...' />
+    </div>
+    <div class='deo-feedback-list-container'>
+        {% for feedback in feedbacks %}
+            {% if feedback.user_type == 'deo' %}
+                <div class='deo-feedback-card'>
+                    <div class='__name'>{{ feedback.name }}</div>
+                    <div class='__username'>{{ feedback.username }}</div>
+                    <div class='__subject'>{{ feedback.subject }}</div>
+                    <div class='__message'>{{ feedback.message }}</div>
+                    <div class='__date'>{{feedback.date.strftime("%A, %d/%m/%Y, %I:%M %p")}}</div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
 {% endblock body %}

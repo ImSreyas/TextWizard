@@ -1,1 +1,107 @@
 @import url('../css/main.css');
+.main-body{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-inline: 5vw;
+    gap: 2rem;
+}
+.user-feedback-main-container,
+.deo-feedback-main-container{
+    overflow-y: scroll;
+    height: 80vh;
+    padding-inline: 1rem;
+}
+.user-feedback-main-container::-webkit-scrollbar,
+.deo-feedback-main-container::-webkit-scrollbar{
+    display: none;
+}
+.user-search,
+.deo-search{
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background-color: var(--bg-card-2);
+    color: var(--text-color);
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    margin-block-start: 1rem;
+}
+.user-feedback-card,
+.deo-feedback-card{
+    height: fit-content;
+    border-radius: 1.8rem;
+    margin-block-start: 1.8rem;
+    padding: 1.5rem 2rem 1rem;
+    background-color: var(--bg-card-2);
+    color: var(--text-color);
+    position: relative;
+}
+.user-feedback-card::after{
+    content: 'user';
+    position: absolute;
+    top: -.8rem;
+    right: 1.5rem;
+    display: inline-block;
+    padding: .1rem 1.5rem;
+    border-radius: .7rem;
+    background-color: var(--color);
+    color: var(--onColor);
+    width: fit-content;
+}
+.deo-feedback-card::after{
+    content: 'deo';
+    position: absolute;
+    top: -.8rem;
+    right: 1.5rem;
+    display: inline-block;
+    padding: .1rem 1.5rem;
+    border-radius: .7rem;
+    background-color: var(--color);
+    color: var(--onColor);
+    width: fit-content;
+}
+.__name{
+    padding: .2rem .8rem;
+    border-radius: .7rem;
+    background-color: var(--color);
+    color: var(--onColor);
+    width: fit-content;
+    display: inline-block;
+}
+.__username{
+    padding: .1rem .6rem;
+    border-radius: .5rem;
+    background-color: var(--secondary);
+    color: var(--onColor);
+    width: fit-content;
+    font-size: .7rem;
+    margin-block-start: .5rem;
+    display: inline-block;
+}
+.__subject{
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--bg-card-3);
+    color: var(--text-color);
+    width: 100%;
+    margin-block-start: .6rem;
+    display: block;
+}
+.__message{
+    padding: 1rem 1.5rem;
+    border-radius: 1.2rem;
+    background-color: var(--bg-card-3);
+    color: var(--text-color);
+    width: 100%;
+    margin-block-start: .8rem;
+    display: block;
+}
+.__date{
+    font-size: .7rem;
+    width: 100%;
+    text-align: end;
+    margin-block-start: .5rem;
+    padding-inline: .8rem;
+}
+
