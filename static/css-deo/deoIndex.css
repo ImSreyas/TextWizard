@@ -1,0 +1,15 @@
+@import url('../css-admin/adminIndex.css');
+.text-content-image{
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: scroll;
+}
+.text-content-image::-webkit-scrollbar{
+    display: none;
+}
+.item-image{
+    object-fit: contain;
+    width: 100%;
+    height: fit-content;
+}

@@ -1,0 +1,105 @@
+{% extends 'deo/components/layout.html' %} {% block links %}
+<link rel="stylesheet" href="../static/css-deo/profile.css" />
+<script src='../static/js-deo/jquery.js'></script>
+<script src='../static/js-deo/popup-notification.js'></script>
+<script src='../static/js-deo/profile.js' defer></script>
+{% endblock links %} {% block body %}
+<div class='profile-container-main'>
+    <div class='profile-container'>
+        <div class='first-container'>
+            <span class='profile-pic-container'>
+                <img class='profile-pic' src='/static/uploads/{{deoData[0].profile_pic}}' />
+            </span>
+            <div>
+                <div class='name-container'>{{deoData[0].name}}</div>
+                 <div class='username-container'>
+                    <div class='username-content'>{{deoData[0].username}}</div>
+                </div>
+            </div>
+        </div>
+        <div class='second-container'>
+            <div class='gender-container'>
+                <div class='gender-label'>Gender</div>
+                <div class='gender-content'>{{deoData[0].gender}}</div>
+            </div>
+            <div class='email-container'>
+                <div class='email-label'>Email</div>
+                <div class='email-content'>{{deoData[0].email}}</div>
+            </div>
+            <div class='phone-container'>
+                <div class='phone-label'>Phone</div>
+                <div class='phone-content'>{{deoData[0].phone}}</div>
+            </div>
+            <div class='address-container'>
+                <div class='address-label'>Address</div>
+                <div class='address-content'>{{ deoData[0].address|replace(' ', '<br>')|safe }}</div>
+            </div>
+        </div>
+    </div>
+    <div class='quick-settings-container'>
+        <div class='update-profile-btn-top'>Update profile</div>
+        <div class='update-password-btn-top'>Update password</div>
+        <div class='feedback-btn-top'>Feedback</div>
+    </div>
+</div>
+<div class='profile-update-container-main'>
+    <div class="registration-container">
+        <div class='registration-form-container'>
+            <form action="" class="reg-form" autocomplete='off' spellcheck='false' method='POST'>
+                <!-- *name input field  -->
+                <label for="name" class="label registration-label name-label">Name</label>
+                <input type="text" class="input registration-input name" name="name" value="{{deoData[0].name}}">
+                <error></error>
+
+                <label for="gender" class="label registration-label gender-label">gender</label>
+                <div class='gender-container' id='genderContainer'>
+                    <button type='button' class='btn' selected='{{ "true" if deoData[0].gender == "male" else "false" }}'>male</button>
+                    <button type='button' class='btn' selected='{{ "true" if deoData[0].gender == "female" else "false" }}'>female</button>
+                    <button type='button' class='btn' selected='{{ "true" if deoData[0].gender == "others" else "false" }}'>others</button>
+
+                </div>
+                <!-- *address input field  -->
+                <label for="" class="label registration-label address-label">Address</label>
+                <textarea class="input registration-input address" name="address" rows='3'>{{deoData[0].address}}</textarea>
+                <error></error>
+                <!-- *phone input field  -->
+                <label for="phone" class="label registration-label phone-label">Phone</label>
+                <input type="text" class="input registration-input phone" name="phone" value="{{deoData[0].phone}}">
+                <error></error>
+                <!-- *email input field  -->
+                <label for="email" class="label registration-label email-label">email</label>
+                <input type="text" class="input registration-input email" name="email" value="{{deoData[0].email}}">
+                <error></error>
+
+                <span class='realme-label'>username</span>
+                <input type="text" class="input registration-input username" name="username" value="{{deoData[0].username}}">
+                <error></error>
+                <!-- -submit button  -->
+                <button type="button" class="btn reg-submit" value="create">update</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class='password-update-container-main registration-form-container'>
+    <!-- *old password input field  -->
+    <label for="oldPassword" class="label registration-label phone-label">old password</label>
+    <input type="password" class="input registration-input-password old-password" name="oldPassword" >
+    <error></error>
+    <!-- *new password input field  -->
+    <label for="newPassword" class="label registration-label email-label">new password</label>
+    <input type="password" class="input registration-input-password new-password" name="newPassword" >
+    <error></error>
+    <!-- *confirm password input field  -->
+    <label for="confirmPassword" class="label registration-label email-label">confirm password</label>
+    <input type="password" class="input registration-input-password confirm-password" name="confirmPassword" >
+    <error></error>
+    <!-- -submit button  -->
+    <button type="button" class="btn reg-submit-password" value="updatePass">update</button>
+    <div class='password-notifier'>
+        Note : Password must at least contain 6 characters and it should contain at least one uppercase, one lowercase, one special character and one digit.
+    </div>
+</div>
+<div class='feedback-container-main'>
+
+</div>
+{% endblock body %}

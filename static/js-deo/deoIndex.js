@@ -143,7 +143,7 @@ downloadBtns.forEach((downloadBtn, index) => {
 // ? end of download btn
 //? function for getting the text from editor 
 const getTextFromEditor = (i) => {
-  let paragraphs = document.querySelectorAll(".text-content")[i].querySelectorAll('p');
+  let paragraphs = document.querySelectorAll(".text-content-new")[i].querySelectorAll('p');
   let data = "";
   paragraphs.forEach((p, index) => {
     data += p.innerText.trim();
@@ -354,63 +354,23 @@ finalShare_.forEach((finalShare, index) => {
         })
     }
 })
-// -update password
-
-$.each($('.registration-input-password'), (index, item) => {
-    $(item).keyup(()=>{
-        let oldPassword = $('.old-password').val()
-        let newPassword = $('.new-password').val()
-        let confirmPassword = $('.confirm-password').val()
-        $.ajax({
-            url: '/updatePassword',
-            type: "POST",
-            data : {
-              oldPassword: oldPassword,
-              newPassword: newPassword,
-              confirmPassword: confirmPassword,
-              submit: false
-            },
-            success: (data)=>{
-                let errorContainer = $('.password-update-container-main error')
-                $.each(errorContainer, (i, error) => {
-                    if(index < i) {
-                        data[i] = ''
-                    }
-                    $(error).html(data[i])
-                    
-                })
-            }
-        })
-
-    })
-})
-
-$(document).ready(()=>{
-    $('.reg-submit-password').click(()=>{
-        let oldPassword = $('.old-password').val()
-        let newPassword = $('.new-password').val()
-        let confirmPassword = $('.confirm-password').val()
-        $.ajax({
-          url: '/updatePassword',
-          type: "POST",
-          data : {
-            oldPassword: oldPassword,
-            newPassword: newPassword,
-            confirmPassword: confirmPassword,
-            submit: true
-          },
-          success: (data)=>{
-              if(data == 'success'){
-              location.href = "profile?message=profile_update_successful&duration=3000"
-              }
-              else{
-                  let errorContainer = $('.password-update-container-main error')
-                  $.each(errorContainer, (index, error) => {
-                      $(error).html(data[index])
-                  })
-              }
-          }
+//- text edit updater
+const td = document.querySelectorAll('.text-content-new')
+if(td){
+  td.forEach((t, index) => {
+    t.addEventListener('keyup', (e) => {
+      const ti = e.target.id
+      const tc = getTextFromEditor(index)
+      $.ajax({
+        url: '/deo/updateText',
+        type: "POST",
+        data: {
+          textId: ti,
+          textContent: tc
+        }
       })
     })
-})
+  })
+}
+
 //  -ocr js end 

@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-inline: 5vw;
 }
 .profile-container-main{
     display: grid;
@@ -179,5 +180,31 @@ div:hover{
     background-color: var(--bg-card-2);
     padding: 2rem 18vw;
  }
+
+
+ /* ?password update  */
+.password-update-container-main
+.registration-label{
+    width: 100%;
+    display: block;
+    margin-block-end: .3rem;
+}
+.password-update-container-main
+.registration-input-password{
+    width: 100%;
+    display: block;
+    margin-block-end: 1.5rem;
+    background-color: var(--bg-input);
+}
+.password-update-container-main
+.reg-submit-password{
+    width: 100%;
+    display: block;
+    color: var(--onColor);
+    margin-block: 2rem 1.5rem;
+}
+.password-update-container-main{
+    width: 90% !important;
+}
 
  

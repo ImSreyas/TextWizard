@@ -255,6 +255,48 @@ def registration():
         else : return y
     return render_template('registration.html')
 
+@public.route('/updatePassword', methods = ["POST", "GET"])
+def updatePassword():
+    if session.get('user'):
+        userId = session.get('user')
+        op = request.form.get('oldPassword')
+        np = request.form.get('newPassword')
+        cp = request.form.get('confirmPassword')
+        submit = request.form.get('submit')
+        
+        opM = (hashlib.md5(op.encode())).hexdigest()
+        
+        
+        x = ['', '', '']
+        y = x
+        
+        opQuery = database.select("SELECT * FROM user WHERE user_id='%s' && password='%s'" % (userId, opM))
+        if len(opQuery) == 0 :
+            x[0] = 'old password is wrong'
+        if np == None or np == "" :
+            np = ""
+            x[1] = 'please enter a password'
+        elif not re.fullmatch(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$', np) :
+            x[1] = 'read the note below'
+        else : 
+            if np == cp :
+                x[2] = ''
+            else :
+                x[2] = 'enter the password again' 
+        for val in x :
+           if val == '' :
+               continue
+           else :
+               return x
+        if submit == 'true' :
+            password = (hashlib.md5(np.encode())).hexdigest()
+            q = "UPDATE user SET password='%s' WHERE user_id='%s'" % (password, userId)
+            result = database.insert(q)
+            return 'success'
+        else : return y
+    else:
+        return redirect('/index')
+
 
 UPLOAD_FOLDER = '/static/uploads/'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}

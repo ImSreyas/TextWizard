@@ -1,0 +1,27 @@
+@import url('../css/profile.css');
+.main-body{
+    padding-inline: 8vw;
+}
+.password-update-container-main
+.registration-label{
+    width: 100%;
+    display: block;
+    margin-block-end: .3rem;
+}
+.password-update-container-main
+.registration-input-password{
+    width: 100%;
+    display: block;
+    margin-block-end: 1.5rem;
+    background-color: var(--bg-input);
+}
+.password-update-container-main
+.reg-submit-password{
+    width: 100%;
+    display: block;
+    color: var(--onColor);
+    margin-block: 2rem 1.5rem;
+}
+.password-update-container-main{
+    width: 90% !important;
+}

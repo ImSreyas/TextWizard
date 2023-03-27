@@ -7,11 +7,11 @@
     <meta content="" name="keywords" />
     <meta content="" name="description" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <script src='../static/js/jquery.js'></script>
-    <script src='../static/js/nav.js' defer></script>
-    <script src='../static/js/popup-notification.js'></script>
-    <script src="../static/js/navHighlighter.js" defer></script>
-    <script src='../static/js/themeSetter.js' defer></script>
+    <script src='../static/js-deo/jquery.js'></script>
+    <script src='../static/js-deo/nav.js' defer></script>
+    <script src='../static/js-deo/popup-notification.js'></script>
+    <script src="../static/js-deo/navHighlighter.js" defer></script>
+    <script src='../static/js-deo/themeSetter.js' defer></script>
     {% block links %} {% endblock links %}
   </head>
   <body 
@@ -19,26 +19,12 @@
   >
     <nav>
       <div class="nav-wrapper">
-        <a class="no-text-decoration" href="/" id="nav-item" nav='index'>
+        <a class="no-text-decoration" href="/deo/home" id="nav-item" nav='home'>
           <span>home</span>
         </a>
-        <a class="no-text-decoration" href="/ocr" id="nav-item" nav='ocr'>
-          <span>OCR</span>
-        </a>
-        {% if session['user'] %}
-          <a class="no-text-decoration" href="/message" id="nav-item" nav='message'>
-            <span>message</span>
-          </a>
-        {% endif %}
-        <a class="no-text-decoration" href="/post" id="nav-item" nav='post'>
-          <span>post</span>
-        </a>
-        {% if session['user'] %}
-          <a class="no-text-decoration" href="/profile" id="nav-item" nav='profile'>
+          <a class="no-text-decoration" href="/deo/profile" id="nav-item" nav='profile'>
             <span>profile</span>
           </a>
-        {% endif %}
-        {% if session['user'] %}
            <button type='button' class="no-text-decoration logout-btn" id="nav-item" nav='logout'>
             <span>logout</span>
             <div class='logout-option-container' visible='false'>
@@ -46,11 +32,6 @@
               <option>no</option>
             </div>
           </button>
-        {% else %}
-          <a class="no-text-decoration" href="/login" id="nav-item" nav='login'>
-            <span>login</span>
-          </a>
-        {% endif %}
       </div>
       {% if session['theme'] == 'yellow' %}
       <button class='theme-button-day theme-button' themeMode='dark'></button>

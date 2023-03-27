@@ -3,11 +3,6 @@
 <script src='static/js/jquery.js'></script>
 <script src='static/js/popup-notification.js'></script>
 <script src='static/js/profile.js' defer></script>
-<script>
-    setTimeout(() => {
-        window.history.replaceState({}, document.title, window.location.pathname);
-    }, 4000);
-</script>
 {% endblock links %} {% block body %}
 <div class='profile-container-main'>
     <div class='profile-container'>
@@ -111,7 +106,6 @@
             </div>
     </div>
     {% endfor %}
-    </div>
 </div>
 <div class='profile-update-container-main'>
     <div class="registration-container">
@@ -151,8 +145,24 @@
         </div>
     </div>
 </div>
-<div class='password-update-container-main'>
-
+<div class='password-update-container-main registration-form-container'>
+    <!-- *old password input field  -->
+    <label for="oldPassword" class="label registration-label phone-label">old password</label>
+    <input type="password" class="input registration-input-password old-password" name="oldPassword" >
+    <error></error>
+    <!-- *new password input field  -->
+    <label for="newPassword" class="label registration-label email-label">new password</label>
+    <input type="password" class="input registration-input-password new-password" name="newPassword" >
+    <error></error>
+    <!-- *confirm password input field  -->
+    <label for="confirmPassword" class="label registration-label email-label">confirm password</label>
+    <input type="password" class="input registration-input-password confirm-password" name="confirmPassword" >
+    <error></error>
+    <!-- -submit button  -->
+    <button type="button" class="btn reg-submit-password" value="updatePass">update</button>
+    <div class='password-notifier'>
+        Note : Password must at least contain 6 characters and it should contain at least one uppercase, one lowercase, one special character and one digit.
+    </div>
 </div>
 <div class='feedback-container-main'>
 

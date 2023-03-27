@@ -22,10 +22,10 @@ document.querySelector('.logout-btn').addEventListener('click', ()=> {
 
 document.querySelector('.goToLogout').addEventListener('click', ()=> {
    $.ajax({
-    url: '/logout',
+    url: '/deo/deoLogout',
     type: 'GET',
     success: (data)=>{
-        if(data == 'success') location.href='index?message=logging_out&duration=4000'
+        if(data == 'success') location.href='../index?message=logging_out&duration=4000'
     }
    })
 })
