@@ -297,6 +297,22 @@ def updatePassword():
     else:
         return redirect('/index')
 
+@public.route('/sendFeedback', methods = ["POST", "GET"])
+def sendFeedback():
+    if(session.get('user')):
+        userId = session.get('user')
+        feedbackSub = request.form.get('feedbackSub')
+        feedbackContent = request.form.get('feedbackContent')
+        
+        x = ['', '']
+        if feedbackSub == '' or feedbackSub == None :
+            x[0] = 'subject should not be empty'
+        if feedbackContent == '' or feedbackContent == None :
+            x[1] = 'feedback should not be empty'
+        for val in x :
+           if val is not '' : return x
+        database.insert("INSERT INTO feedback set user_id='%s', subject='%s', message='%s', user_type='user'" % (str(userId), feedbackSub.replace("'", "\\'"), feedbackContent.replace("'", "\\'")))
+        return 'success'
 
 UPLOAD_FOLDER = '/static/uploads/'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}

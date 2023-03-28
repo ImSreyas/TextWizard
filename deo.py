@@ -134,7 +134,22 @@ def updateDeoPassword():
     else:
         return redirect('/index')
         
-    
+@deo.route('/deo/sendFeedback', methods = ["POST", "GET"])
+def sendFeedback():
+    if(session.get('deo')):
+        deoId = session.get('deo')
+        feedbackSub = request.form.get('feedbackSub')
+        feedbackContent = request.form.get('feedbackContent')
+        
+        x = ['', '']
+        if feedbackSub == '' or feedbackSub == None :
+            x[0] = 'subject should not be empty'
+        if feedbackContent == '' or feedbackContent == None :
+            x[1] = 'feedback should not be empty'
+        for val in x :
+           if val is not '' : return x
+        database.insert("INSERT INTO feedback set user_id='%s', subject='%s', message='%s', user_type='deo'" % (str(deoId), feedbackSub.replace("'", "\\'"), feedbackContent.replace("'", "\\'")))
+        return 'success'
     
 
 @deo.route('/deo/profile')

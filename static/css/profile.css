@@ -205,6 +205,45 @@ div:hover{
 }
 .password-update-container-main{
     width: 90% !important;
+    margin-block-end: 2rem;
 }
-
+ /* -feedback container  */
+.feedback-container-main{
+    height: fit-content;
+    width: 90%;
+    padding: 2rem 18vw;
+    background-color: var(--bg-card-2);
+    border-radius: 2rem;
+}
+.feedback-container-main
+label{
+    display: block;
+    width: 100%;
+    margin-block-end: .1rem;
+}
+.feedback-container-main
+input,
+.feedback-container-main
+textarea{
+    display: block;
+    width: 100%;
+    margin-block-end: 1rem;
+    outline: none;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    background-color: var(--bg-input);
+    border-radius: .6rem;
+    resize: vertical;
+}
+.feedback-send-btn{
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: .6rem;
+    padding: .8rem 1.5rem;
+    background-color: var(--color);
+    color: var(--onColor);
+    margin-block-start: 1rem;
+}
  

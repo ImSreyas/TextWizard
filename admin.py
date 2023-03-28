@@ -71,7 +71,7 @@ def deo():
 @admin.route('/admin/feedback')
 def feedback():
     if session.get('admin'):
-        feedbacks = database.select("SELECT f.*, u.* FROM feedback f JOIN user u ON f.user_id = u.user_id AND f.user_type = 'user' UNION SELECT f.*, d.* FROM feedback f JOIN deo d ON f.user_id = d.id AND f.user_type = 'deo'")
+        feedbacks = database.select("SELECT f.*, u.name, u.username FROM feedback f JOIN user u ON f.user_id = u.user_id AND f.user_type = 'user' UNION SELECT f.*, d.name, d.username FROM feedback f JOIN deo d ON f.user_id = d.id AND f.user_type = 'deo'")
         return render_template('admin/feedback.html', feedbacks = feedbacks)
     else:
         return redirect('/index')

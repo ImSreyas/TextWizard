@@ -145,3 +145,30 @@ $(document).ready(()=>{
       })
     })
 })
+// -feedback 
+document.querySelector('.feedback-send-btn').addEventListener('click', (e) => {
+    const feedbackSub = $('.feedback-sub').val()
+    const feedbackContent = $('.feedback-content').val()
+    $.ajax({
+        url: '/deo/sendFeedback',
+        type: "POST",
+        data: {
+            feedbackSub: feedbackSub,
+            feedbackContent: feedbackContent
+        },
+        success: (data) => {
+            if(data == 'success'){
+                popup("feedback send successfully", 'blue', '3s')
+                $('.feedback-container-main error').each((i, error) => {
+                    error.innerText = ''
+                })
+                $('.feedback-sub').val('')
+                $('.feedback-content').val('') 
+            } else {
+                $('.feedback-container-main error').each((i, error) => {
+                    error.innerText = data[i]
+                })
+            }
+        }
+    })
+})
