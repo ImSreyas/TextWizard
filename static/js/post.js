@@ -15,9 +15,16 @@ $('.post-btn').click(() => {
                 popup("post added successfully", 'green', '3s')
                 $('.caption-input').val('')
                 $('.post-content-input').val('')
+                $('.post-input-container-main error').each((i, error) => {
+                    error.innerText = ''
+                })
                 getPosts()
-            } else {
+            } else if(data == 'not logged in') {
                 location.href = '/login'
+            } else {
+                $('.post-input-container-main error').each((i, error) => {
+                    error.innerText = data[i]
+                })
             }
         }
     })

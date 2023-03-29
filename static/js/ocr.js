@@ -340,5 +340,18 @@ if(finalShare){
         })
     })
 }
+$('.post').click((e) => {
+  const text = getTextFromEditor()
+  $.ajax({
+    url: '/sharePost',
+    type: "POST",
+    data: {
+      text: text
+    },
+    success: () => {
+      location.href = '/post'
+    }
+  })
+})
 
 

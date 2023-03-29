@@ -44,3 +44,11 @@ button:hover{
     height: 100%;
     position: relative;
 }
+error{
+    width: 100%;
+    display: block;
+    font-size: .7rem;
+    color: red;
+    transform: translateY(-.6rem);
+    margin-inline: .25rem;
+}

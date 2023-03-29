@@ -36,6 +36,7 @@ def OCRpage():
     userData = database.select("SELECT * FROM USER")
     if(session.get('user')) : return render_template('ocr.html', userData = userData, userLoginStatus = True)
     return render_template('ocr.html', userData = userData, userLoginStatus = False)
+
 @public.route('/share', methods=['POST', 'GET'])
 def share():
     if(session.get('user')):
@@ -77,7 +78,11 @@ def sendMessage():
         
 @public.route('/post')
 def post(): 
-    return render_template('post.html') 
+    text = ''
+    if session.get('post') :
+        text = session.get('post')
+        session['post'] = None
+    return render_template('post.html', text = text) 
 
 @public.route('/addPost', methods = ['POST', 'GET'])
 def addPost(): 
@@ -85,6 +90,14 @@ def addPost():
         userId = session.get('user')
         caption = request.form.get('caption')
         content = request.form.get('content')
+        
+        x = ['', '']
+        if caption == '' or caption == None :
+            x[0] = 'caption should not be empty'
+        if content == '' or content == None :
+            x[1] = 'content should not be empty'
+        for val in x :
+           if val is not '' : return x
         
         database.insert("INSERT INTO post SET user_id='%s', caption='%s', content='%s'" % (userId, caption, content))
         return 'success'
@@ -334,6 +347,7 @@ def sendFeedback():
 UPLOAD_FOLDER = '/static/uploads/'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 user=Blueprint('user',__name__)
+
 @public.route('/ocrCore', methods=['GET', 'POST'])
 def upload_page():
     if request.method == 'POST':
@@ -357,6 +371,7 @@ def upload_page():
         new_filename = unique_id + file_ext
         file.save(os.path.join(os.getcwd() + UPLOAD_FOLDER, new_filename))
         text = ocr_core(file, lang['language'])
+        text = text.replace("'", "\\'")
         if(session.get('user')):
             userId = session.get('user')
             database.insert("INSERT INTO text SET user_id='"+ str(userId) +"', text='"+ text +"', new_text='"+ text +"', language='"+ lang['language'] +"', file_name='"+ new_filename +"'")   
@@ -367,6 +382,14 @@ def upload_page():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@public.route('/sharePost', methods = ["POST", "GET"])
+def sharePost() : 
+    if(session.get('user')) :
+        text = request.form.get('text')
+        session['post'] = text
+        return 'success'
+    else : return redirect('/index')
 
 @public.route('/adminLogin', methods = ['POST', 'GET'])
 def adminLogin():
