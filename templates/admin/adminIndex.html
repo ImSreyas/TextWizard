@@ -21,7 +21,7 @@
                     <p>{{ line }}</p>
                 {% endfor %}
             </div>
-            <div class='text-content-new'>
+            <div class='text-content-new' id='{{ item.text_id }}' contenteditable='true'>
                 {% for line in item.new_text.split('\n') %}
                     <p>{{ line }}</p>
                 {% endfor %}

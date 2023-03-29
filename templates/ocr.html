@@ -108,7 +108,6 @@
                                 <option class='language-name' val='por' selected='false'>Portuguese</option>
                                 <option class='language-name' val='pus' selected='false'>Pushto; Pashto</option>
                                 <option class='language-name' val='que' selected='false'>Quechua</option>
-
                         </div>
                 </div>
                 <div><button class='convert-btn' type='button'>convert</button></div>
@@ -157,6 +156,11 @@
         </div>
         <div class='text-content' spellcheck='true' contenteditable='true'></div>
         <div class='text-file-download-container'>
+                <div class='send-text-to-deo-container'>
+                        {% if userLoginStatus %}
+                                <button class='send-text-to-deo-btn'>send to data entry</button>
+                        {% endif %}
+                </div>
                 <div class='link-format__container'>
                         <a class='txt-download-link' download>download</a><button class='file-format-container'><span class='actualFileFormat'>.txt</span><span class='drop-down-arrow'></span></button>
                         <div class='file-format-option-container' vis='false'>

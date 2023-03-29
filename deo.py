@@ -153,7 +153,7 @@ def sendFeedback():
     
 
 @deo.route('/deo/profile')
-def deoProfile():
+def deoProfile() :
     if session.get('deo'):
         deoId = session.get('deo')
         deoData = database.select("SELECT * FROM deo where id='%s'" % (deoId))

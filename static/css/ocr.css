@@ -224,7 +224,7 @@ img:last-child{
 }
 .text-file-download-container{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding-inline: 2rem;
     padding-block: 1rem;
@@ -478,4 +478,10 @@ img{
 }
 .share-btn-final:hover{
     cursor: pointer;
+}
+.send-text-to-deo-btn{
+    background-color: var(--color);
+    color: var(--onColor);
+    border-radius: .9rem;
+    padding: .4rem 1rem;
 }

@@ -259,3 +259,11 @@ textarea{
     background-color: var(--bg-card-3);
     box-shadow: .1rem .1rem 2rem var(--shadow);
 }
+.data-entry-status-red{
+    color: red;
+    font-size: .8rem;
+}
+.data-entry-status-green{
+    color: rgb(0, 255, 0);
+    font-size: .8rem;
+}

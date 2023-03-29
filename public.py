@@ -97,7 +97,7 @@ def addPost():
         if content == '' or content == None :
             x[1] = 'content should not be empty'
         for val in x :
-           if val is not '' : return x
+           if val != '' : return x
         
         database.insert("INSERT INTO post SET user_id='%s', caption='%s', content='%s'" % (userId, caption, content))
         return 'success'
@@ -121,9 +121,22 @@ def profile():
         userId = session.get('user')
         ud = database.select("SELECT * FROM USER")
         userData = database.select("SELECT * FROM user where user_id='%s'" % (userId))
-        history = database.select("SELECT * FROM text WHERE user_id='%s'" % (userId))
+        history = database.select("SELECT * FROM text WHERE user_id='%s' ORDER BY text_id DESC" % (userId))
         return render_template('profile.html', userData = userData, ud = ud, history = history)
-    
+
+@public.route('/updateText', methods = ["POST", "GET"])
+def updateText():
+    if session.get('user'):
+        if request.method == 'POST':
+            textId = request.form.get('textId')
+            textContent = request.form.get('textContent')
+            database.update("UPDATE text SET new_text='%s' WHERE text_id='%s'" % (textContent, textId))
+            return 'success'
+        else: 
+            return redirect('/index')
+    else:
+        return redirect('/index')
+
 @public.route('/updateProfile', methods = ['POST', 'GET'])
 def updateProfile():
     if session.get('user'):
@@ -346,7 +359,7 @@ def sendFeedback():
         if feedbackContent == '' or feedbackContent == None :
             x[1] = 'feedback should not be empty'
         for val in x :
-           if val is not '' : return x
+           if val != '' : return x
         database.insert("INSERT INTO feedback set user_id='%s', subject='%s', message='%s', user_type='user'" % (str(userId), feedbackSub.replace("'", "\\'"), feedbackContent.replace("'", "\\'")))
         return 'success'
 
@@ -380,14 +393,23 @@ def upload_page():
         text = text.replace("'", "\\'")
         if(session.get('user')):
             userId = session.get('user')
-            database.insert("INSERT INTO text SET user_id='"+ str(userId) +"', text='"+ text +"', new_text='"+ text +"', language='"+ lang['language'] +"', file_name='"+ new_filename +"'")   
-        return text
+            result = database.insert("INSERT INTO text SET user_id='"+ str(userId) +"', text='"+ text +"', new_text='"+ text +"', language='"+ lang['language'] +"', file_name='"+ new_filename +"'")   
+        return [text, result]
     elif request.method == 'GET':
         return "get method is called"
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@public.route('/fileGiven', methods = ["POST", "GET"])
+def fileGiven() :
+    if(session.get('user')) :
+        text_id = request.form.get('id')
+        database.update("UPDATE text SET file_given= NOT file_given WHERE text_id='%s'" % (text_id))
+        val = database.select("SELECT file_given from text WHERE text_id='%s'" % (text_id))
+        return str(val[0]['file_given'])
+    else : return redirect('/index')
 
 @public.route('/sharePost', methods = ["POST", "GET"])
 def sharePost() : 

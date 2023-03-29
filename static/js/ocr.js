@@ -48,8 +48,9 @@ function convertImage() {
     data: formData,
     processData: false,
     contentType: false,
-    success: (data) => {
+    success: ([data, id]) => {
       document.querySelector('.content-bar').style.display = 'grid'
+      document.querySelector('.content-bar').id = id
       // Split the OCR output into lines
       const lines = data.split('\n');
       const para = document.querySelectorAll('.text-content p')
@@ -350,6 +351,24 @@ $('.post').click((e) => {
     },
     success: () => {
       location.href = '/post'
+    }
+  })
+})
+//- file given 
+$('.send-text-to-deo-btn').click(() => {
+  const id = $('.content-bar').attr('id')
+  $.ajax({
+    url: '/fileGiven',
+    type: "POST",
+    data: {
+      id: id
+    },
+    success: (data) => {
+      data = parseInt(data)
+      if(data) popup("request send successfully", 'green', '3s')
+      else popup("request canceled", 'red', '3s')
+      data = (data == 1) ? 'sended' : 'send to data entry'
+      $('.send-text-to-deo-btn').text(data)
     }
   })
 })

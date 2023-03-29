@@ -540,4 +540,22 @@ document.querySelector('.feedback-send-btn').addEventListener('click', (e) => {
         }
     })
 })
+//- text updater
+const td = document.querySelectorAll('.text-content')
+if(td){
+  td.forEach((t, index) => {
+    t.addEventListener('keyup', (e) => {
+      const ti = e.target.id
+      const tc = getTextFromEditor(index)
+      $.ajax({
+        url: '/updateText',
+        type: "POST",
+        data: {
+          textId: ti,
+          textContent: tc
+        }
+      })
+    })
+  })
+}
 //  -ocr js end 

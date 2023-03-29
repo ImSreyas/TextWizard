@@ -85,26 +85,31 @@
                             <span class='post'></span>
                 </span>
         </div>
-        <div class='text-content' spellcheck='true' contenteditable='true'>
-            {% for line in item.text.split('\n') %}
+        <div class='text-content' spellcheck='true' contenteditable='true' id='{{ item.text_id }}'>
+            {% for line in item.new_text.split('\n') %}
                 <p>{{ line }}</p>
             {% endfor %}
         </div>
         <div class='text-file-download-container'>
-                    <div class='link-format__container'>
-                            <a class='txt-download-link' download>download</a><button class='file-format-container'><span class='actualFileFormat'>.txt</span><span class='drop-down-arrow'></span></button>
-                            <div class='file-format-option-container' vis='false'>
-                                <option class='file-format' selected='false'>.txt</option>
-                                <option class='file-format' selected='false'>.html</option>
-                                <option class='file-format' selected='false'>.css</option>
-                                <option class='file-format' selected='false'>.json</option>
-                                <option class='file-format' selected='false'>.xml</option>
-                                <option class='file-format' selected='false'>.csv</option>
-                                <option class='file-format' selected='false'>.md</option>
-                                <option class='file-format' selected='false'>.pdf</option>
-                            </div>
+            {% if item.file_given == 1 and item.file_given_done == 0%}
+                <div class='data-entry-status-red' class='data-entry-red'>Data entry</div>
+            {% elif item.file_given == 1 and item.file_given_done == 1 %}
+                <div class='data-entry-status-green'>Data entry</div>
+            {% endif %} 
+            <div class='link-format__container'>
+                    <a class='txt-download-link' download>download</a><button class='file-format-container'><span class='actualFileFormat'>.txt</span><span class='drop-down-arrow'></span></button>
+                    <div class='file-format-option-container' vis='false'>
+                        <option class='file-format' selected='false'>.txt</option>
+                        <option class='file-format' selected='false'>.html</option>
+                        <option class='file-format' selected='false'>.css</option>
+                        <option class='file-format' selected='false'>.json</option>
+                        <option class='file-format' selected='false'>.xml</option>
+                        <option class='file-format' selected='false'>.csv</option>
+                        <option class='file-format' selected='false'>.md</option>
+                        <option class='file-format' selected='false'>.pdf</option>
                     </div>
             </div>
+        </div>
     </div>
     {% endfor %}
 </div>

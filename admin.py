@@ -24,6 +24,19 @@ def adminIndex():
         return render_template('admin/adminIndex.html', userData = userData, history = history)
     else:
         return redirect('/index')
+    
+@admin.route('/admin/updateText', methods = ["POST", "GET"])
+def updateText():
+    if session.get('admin'):
+        if request.method == 'POST':
+            textId = request.form.get('textId')
+            textContent = request.form.get('textContent')
+            database.update("UPDATE text SET new_text='%s' WHERE text_id='%s'" % (textContent, textId))
+            return 'success'
+        else: 
+            return redirect('/index')
+    else:
+        return redirect('/index')
 
 @admin.route('/admin/user')
 def user():

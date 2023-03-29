@@ -354,5 +354,23 @@ finalShare_.forEach((finalShare, index) => {
         })
     }
 })
+//- text edit updater
+const td = document.querySelectorAll('.text-content-new')
+if(td){
+  td.forEach((t, index) => {
+    t.addEventListener('keyup', (e) => {
+      const ti = e.target.id
+      const tc = getTextFromEditor(index)
+      $.ajax({
+        url: '/admin/updateText',
+        type: "POST",
+        data: {
+          textId: ti,
+          textContent: tc
+        }
+      })
+    })
+  })
+}
 
 //  -ocr js end 
