@@ -107,6 +107,12 @@ def addPost():
 @public.route('/getPosts', methods = ['POST', 'GET'])
 def getPosts() : return database.select("SELECT post.*, user.username, user.name, user.profile_pic FROM post JOIN user ON post.user_id = user.user_id ORDER BY post.post_id DESC")
     
+@public.route('/getPostsSelf', methods = ['POST', 'GET'])
+def getPostsOwn() : 
+    if(session.get("user")) :
+        userId = session.get('user')
+        return database.select("SELECT post.*, user.username, user.name, user.profile_pic FROM post JOIN user ON post.user_id = user.user_id WHERE post.user_id='%s' ORDER BY post.post_id DESC" % (userId))
+    else : return redirect('/index')
     
 
 @public.route('/profile')

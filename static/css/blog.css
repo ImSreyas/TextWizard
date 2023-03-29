@@ -81,7 +81,7 @@ label{
     font-size: .85rem;
     margin-inline-start: .5rem;
 }
-.username-container{
+.username-container_{
     display: inline-block;
     padding: .2rem .8rem;
     border-radius: .6rem;

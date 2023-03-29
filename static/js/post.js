@@ -64,7 +64,7 @@ function getPosts(){
 
                 //?container for displaying username of the user
                 const username = document.createElement('div')
-                username.className = 'username-container'
+                username.className = 'username-container_'
                 username.innerHTML = post.username
 
                 //-appending user profile pic, user name and username to the user row container 
