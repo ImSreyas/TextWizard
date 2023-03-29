@@ -79,6 +79,23 @@ def sendMessage():
 def post(): 
     return render_template('post.html') 
 
+@public.route('/addPost', methods = ['POST', 'GET'])
+def addPost(): 
+    if(session.get('user')) :
+        userId = session.get('user')
+        caption = request.form.get('caption')
+        content = request.form.get('content')
+        
+        database.insert("INSERT INTO post SET user_id='%s', caption='%s', content='%s'" % (userId, caption, content))
+        return 'success'
+    else :
+        return 'not logged in'
+    
+@public.route('/getPosts', methods = ['POST', 'GET'])
+def getPosts() : return database.select("SELECT post.*, user.username, user.name, user.profile_pic FROM post JOIN user ON post.user_id = user.user_id ORDER BY post.post_id DESC")
+    
+    
+
 @public.route('/profile')
 def profile():
     if(session.get('user')):

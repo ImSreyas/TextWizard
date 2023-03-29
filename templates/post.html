@@ -1,5 +1,19 @@
 {% extends 'components/layout.html' %} {% block links %}
 <link rel="stylesheet" href="../static/css/blog.css" />
+<script src='../static/js/post.js' defer></script>
 {% endblock links %} {% block body %}
-<h1>This is blog page</h1>
+<div class='post-input-container-main'>
+    <div class='caption-container'>
+        <label>caption</label>
+        <input type='text' class='caption-input input' name='caption' />
+    </div>
+    <div class='post-content-container'>
+        <label>content</label>
+        <textarea rows='8' class='post-content-input input' name='post-content'></textarea>
+    </div>
+    <button class='post-btn'>post</button>
+</div>
+<div class='post-output-container-main'>
+
+</div>
 {% endblock body %}
