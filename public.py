@@ -98,6 +98,9 @@ def addPost():
             x[1] = 'content should not be empty'
         for val in x :
            if val != '' : return x
+           
+        caption = caption.replace("'", "\\'")
+        content = content.replace("'", "\\'")
         
         database.insert("INSERT INTO post SET user_id='%s', caption='%s', content='%s'" % (userId, caption, content))
         return 'success'
