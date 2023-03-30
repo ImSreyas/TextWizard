@@ -14,10 +14,10 @@ nav.forEach(n => {
 
 
 
-// let login = [
-//     'registration'
-// ]
+let req = [
+    'request'
+]
 
-// login.forEach(item => {
-//     if(currentPage.includes(item)) nav[3].classList.add('nav-highlight')
-// })
+req.forEach(item => {
+    if(item.includes(currentPage)) nav[1].classList.add('nav-highlight')
+})

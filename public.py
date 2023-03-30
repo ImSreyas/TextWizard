@@ -215,6 +215,9 @@ def login():
                     session['user'] = result[0]['user_id']
                     return 'user'
                 else : 
+                    status = (database.select("SELECT status FROM deo WHERE id='%s'" % (result[0]['user_id'])))[0]['status']
+                    if status == 0 :
+                        return 'DNV'
                     session['deo'] = result[0]['user_id']
                     return 'deo'
             else :

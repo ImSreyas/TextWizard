@@ -73,11 +73,28 @@ def blockDeo():
     else:
         return redirect('/index')
 
+@admin.route('/admin/verifyDeo', methods = ['POST', 'GET'])
+def verifyDeo():
+    if session.get('admin'):
+        deoId = request.form.get('deoId')
+        database.update("UPDATE deo SET status = NOT status WHERE id='%s'" % (deoId))
+        return 'success'
+    else:
+        return redirect('/index')
+
 @admin.route('/admin/deo')
 def deo():
-    if session.get('admin'):
-        deoData = database.select("SELECT * FROM deo")
+    if session.get('admin') :
+        deoData = database.select("SELECT * FROM deo WHERE status='1'")
         return render_template('admin/deo.html', deoData = deoData)
+    else:
+        return redirect('/index')
+
+@admin.route('/admin/req')
+def req():
+    if session.get('admin') :
+        deoData = database.select("SELECT * FROM deo WHERE status='0'")
+        return render_template('admin/request.html', deoData = deoData)
     else:
         return redirect('/index')
 
