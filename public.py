@@ -397,6 +397,7 @@ def upload_page():
         file.save(os.path.join(os.getcwd() + UPLOAD_FOLDER, new_filename))
         text = ocr_core(file, lang['language'])
         text = text.replace("'", "\\'")
+        result = 0
         if(session.get('user')):
             userId = session.get('user')
             result = database.insert("INSERT INTO text SET user_id='"+ str(userId) +"', text='"+ text +"', new_text='"+ text +"', language='"+ lang['language'] +"', file_name='"+ new_filename +"'")   

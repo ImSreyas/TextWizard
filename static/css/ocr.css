@@ -53,7 +53,8 @@ form{
     background-repeat: no-repeat;
     background-size: 5rem;
     background-position: center;
-    width: 100%;
+    width: 60vw;
+    margin: 0 auto;
     height: 100%;
     display: flex;
     justify-content: center;

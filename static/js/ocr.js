@@ -52,7 +52,7 @@ function convertImage() {
       document.querySelector('.content-bar').style.display = 'grid'
       document.querySelector('.content-bar').id = id
       // Split the OCR output into lines
-      const lines = data.split('\n');
+      const lines = data.split('\n')
       const para = document.querySelectorAll('.text-content p')
       para.forEach(p=>{
         p.remove()
