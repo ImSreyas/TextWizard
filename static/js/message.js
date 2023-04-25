@@ -33,6 +33,7 @@ messageButtons.forEach(messageBtn => {
         const message = inputField.value
         inputField.value = ""
         inputField.focus()
+        if (!message) return
 
         $.ajax({
             url: '/sendMessage',

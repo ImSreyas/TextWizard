@@ -166,6 +166,7 @@ img{
     font-size: .6rem;
 }
 .date-shower{
+    margin-block: .5rem;
     display: flex;
     justify-content: center;
 }

@@ -267,3 +267,38 @@ textarea{
     color: rgb(0, 255, 0);
     font-size: .8rem;
 }
+.download-and-delete-btn-wrapper{
+    display: flex;
+    height: fit-content;
+    align-items: center;
+}
+.history-delete-btn{
+    display: block;
+    margin-inline-start: .5rem;
+    height: 2.75rem;
+    aspect-ratio: 1/1;
+    background-color: var(--color);
+    border-radius: 50rem;
+    background-image: url('/static/images/trash.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.2rem;
+}
+.history-delete-btn:hover{
+    cursor: pointer;
+}
+
+/* -delete post btn and its container  */
+.delete-post-btn-container{
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+.delete-post-btn{
+    width: fit-content;
+    padding: .2rem 1rem;
+    border-radius: .65rem;
+    font-size: .9rem;
+    background-color: var(--color);
+    color: var(--onColor);
+}

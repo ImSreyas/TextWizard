@@ -369,6 +369,26 @@ def sendFeedback():
         database.insert("INSERT INTO feedback set user_id='%s', subject='%s', message='%s', user_type='user'" % (str(userId), feedbackSub.replace("'", "\\'"), feedbackContent.replace("'", "\\'")))
         return 'success'
 
+@public.route('/deleteHistoryItem', methods = ["POST", "GET"])
+def deleteHistoryItem():
+    if(session.get('user')):
+        userId = session.get('user')
+        textId = request.form.get('textId')
+        
+        database.delete("DELETE FROM text WHERE user_id='%s' && text_id='%s'" % (userId, textId))
+        return 'success'
+    else : return redirect('/index')
+
+@public.route('/deletePost', methods = ["POST", "GET"])
+def deletePost():
+    if(session.get('user')):
+        userId = session.get('user')
+        postId = request.form.get('postId')
+        
+        database.delete("DELETE FROM post WHERE user_id='%s' && post_id='%s'" % (userId, postId))
+        return 'success'
+    else : return redirect('/index')
+
 UPLOAD_FOLDER = '/static/uploads/'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 user=Blueprint('user',__name__)
