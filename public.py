@@ -389,6 +389,27 @@ def deletePost():
         return 'success'
     else : return redirect('/index')
 
+@public.route('/getComments', methods = ["POST", "GET"])
+def getComments():
+    if(session.get('user')):
+        userId = session.get('user')
+        postId = request.form.get('postId')
+        
+        data = database.select("SELECT comment.*, user.* FROM comment JOIN user ON comment.user_id = user.user_id WHERE comment.post_id = '%s'" % (postId))
+        return data
+    else : return redirect('/index')
+    
+@public.route('/addPostComment', methods = ["POST", "GET"])
+def addPostComment():
+    if(session.get('user')):
+        postId = request.form.get('postId')
+        userId = session.get('user')
+        commentContent = request.form.get('commentContent')
+        
+        data = database.insert("INSERT INTO comment SET post_id='%s', user_id='%s', text='%s'" % (postId, userId, commentContent.replace("'", "\\'")))
+        return 'success'
+    else : return redirect('/index')
+
 UPLOAD_FOLDER = '/static/uploads/'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 user=Blueprint('user',__name__)

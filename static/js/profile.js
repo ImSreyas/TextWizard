@@ -415,8 +415,8 @@ function getPosts() {
     url: "/getPostsSelf",
     type: "POST",
     success: (posts) => {
-      console.log(posts);
       $(".post-output-container-main").html("");
+      $(".list-own-post-container").html("");
       posts.forEach((post) => {
         //-main container
         const mainContainer = document.createElement("div");
@@ -449,21 +449,26 @@ function getPosts() {
         username.className = "username-container_";
         username.innerHTML = post.username;
 
-        //?container for delete btn 
-        const deletePostBtnContainer = document.createElement('div')
-        deletePostBtnContainer.className = "delete-post-btn-container"
+        //?container for delete btn
+        const deletePostBtnContainer = document.createElement("div");
+        deletePostBtnContainer.className = "delete-post-btn-container";
 
         //?actual post delete btn
-        const deletePostBtn = document.createElement('button')
-        deletePostBtn.className = "delete-post-btn"
-        deletePostBtn.id = post.post_id
-        deletePostBtn.innerText = "delete"
+        const deletePostBtn = document.createElement("button");
+        deletePostBtn.className = "delete-post-btn";
+        deletePostBtn.id = post.post_id;
+        deletePostBtn.innerText = "delete";
 
         //-appending btn to the main container
-        deletePostBtnContainer.append(deletePostBtn)
+        deletePostBtnContainer.append(deletePostBtn);
 
         //-appending user profile pic, user name, username and delete btn to the user row container
-        userRow.append(userImageContainer, userName, username, deletePostBtnContainer);
+        userRow.append(
+          userImageContainer,
+          userName,
+          username,
+          deletePostBtnContainer
+        );
 
         //-caption container
         const caption = document.createElement("div");
@@ -483,6 +488,7 @@ function getPosts() {
         const commentIcon = document.createElement("div");
         commentIcon.className = "comment-icon-container";
         commentIcon.id = post.post_id;
+        commentIcon.setAttribute("show", false);
 
         //? time container
         const date = new Date(post.time);
@@ -507,16 +513,122 @@ function getPosts() {
         //-appending comment and time container to the tools container
         tools.append(commentIcon, time);
 
-        //? cr
+        //? creating the comment container
+        const commentContainer = document.createElement("div");
+        commentContainer.className = "comment-container";
+        commentContainer.id = post.post_id;
+        commentContainer.setAttribute("show", false);
+
+        //?creating a wrapper inside the comment container
+        const commentWrapper = document.createElement("div");
+        commentWrapper.className = "comment-wrapper";
+
+        //? creating each of the components
+        //*comments
+
+        $.ajax({
+          url: "/getComments",
+          type: "POST",
+          data: {
+            postId: post.post_id,
+          },
+          success: (response) => {
+            $.each(response, (index, res) => {
+              if (res) {
+                const individualCommentWrapper = document.createElement("div");
+                commentWrapper.append(individualCommentWrapper);
+                individualCommentWrapper.className = "individualCommentWrapper";
+
+                const individualCommentTopBar = document.createElement("div");
+                individualCommentWrapper.append(individualCommentTopBar);
+                individualCommentTopBar.className = "individualCommentTopBar";
+
+                const profilePicContainer = document.createElement("div");
+                individualCommentTopBar.append(profilePicContainer);
+                profilePicContainer.className =
+                  "individual-profile-pic-container";
+
+                const profilePic = document.createElement("img");
+                profilePicContainer.append(profilePic);
+                profilePic.className = "individual-profile-pic";
+                profilePic.src = "/static/uploads/" + res.profile_pic;
+
+                const name = document.createElement("span");
+                individualCommentTopBar.append(name);
+                name.className = "individual-comment-name";
+                name.innerText = res.name;
+
+                const username = document.createElement("span");
+                individualCommentTopBar.append(username);
+                username.className = "individual-comment-username";
+                username.innerText = res.username;
+
+                const content = document.createElement("div");
+                individualCommentWrapper.append(content);
+                content.className = "individual-comment-content";
+                content.innerText = res.text;
+
+                const date = new Date(res.time);
+                const dayOfWeek = date.toLocaleString("en-us", {
+                  weekday: "short",
+                }); // get the abbreviated day of the week
+                const dayOfMonth = date.getDate();
+                const month = date.toLocaleString("en-us", { month: "short" }); // get the abbreviated month
+                const year = date.getFullYear();
+                const hours = date.getHours();
+                const minutes = date.getMinutes();
+                const ampm = hours >= 12 ? "PM" : "AM";
+                const formattedHours = hours % 12 || 12;
+                const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+
+                const formattedDate = `${dayOfWeek}, ${dayOfMonth} ${month} ${year}`;
+                const formattedTime = `${formattedHours}:${formattedMinutes} ${ampm}`;
+                const formattedDateTime = `${formattedDate} ${formattedTime}`;
+
+                const time = document.createElement("div");
+                individualCommentWrapper.append(time);
+                time.className = "individual-comment-time";
+                time.innerText = formattedDateTime;
+              } else {
+                const noCommentsFound = document.createElement("div");
+                commentWrapper.append(noCommentsFound);
+                noCommentsFound.className = "no-comments-found-container";
+              }
+            });
+          },
+        });
+
+        //* input container
+        const addCommentInputContainer = document.createElement("div");
+        addCommentInputContainer.className = "add-comment-input-container";
+
+        //* input
+        const addCommentInput = document.createElement("input");
+        addCommentInput.type = "text";
+        addCommentInput.className = "add-comment-input";
+        addCommentInput.placeholder = "Type something...";
+
+        //* add comment button
+        const addCommentBtn = document.createElement("button");
+        addCommentBtn.className = "add-comment-btn";
+        addCommentBtn.id = post.post_id;
+
+        //appending input and send button to the wrapper
+        addCommentInputContainer.append(addCommentInput, addCommentBtn);
+        commentWrapper.append(addCommentInputContainer);
+        //appending both wrapper to the commentContainer
+        commentContainer.append(commentWrapper);
 
         //-appending all containers to the main container
         mainContainer.append(userRow);
         mainContainer.append(caption);
         mainContainer.append(content);
         mainContainer.append(tools);
+        mainContainer.append(commentContainer);
         $(".list-own-post-container").append(mainContainer);
       });
-      postDelete()
+      postDelete();
+      everythingLoaded();
     },
   });
 }
@@ -663,23 +775,99 @@ deleteBtn.forEach((btn) => {
     });
   });
 });
-//- delete post 
-function postDelete(){
-    const deletePostBtnNew = document.querySelectorAll(".delete-post-btn");
-    deletePostBtnNew.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const id = e.target.id;
-        $.ajax({
-          url: "/deletePost",
-          type: "POST",
-          data: {
-            postId: id,
-          },
-          success: (data) => {
-            $(`#${id}.post-container`).css({ display: "none" });
-            popup("text successfully deleted", "green", "4s");
-          },
-        });
+//- delete post
+function postDelete() {
+  const deletePostBtnNew = document.querySelectorAll(".delete-post-btn");
+  deletePostBtnNew.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const id = e.target.id;
+      $.ajax({
+        url: "/deletePost",
+        type: "POST",
+        data: {
+          postId: id,
+        },
+        success: (data) => {
+          $(`#${id}.post-container`).css({ display: "none" });
+          popup("text successfully deleted", "green", "4s");
+        },
       });
     });
+  });
+
+  const commentButtons = document.querySelectorAll(".comment-icon-container");
+  commentButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const btnId = btn.id;
+      btn.setAttribute(
+        "show",
+        btn.getAttribute("show") === "false" ? true : false
+      );
+      const commentBtnContainer = $(`#${btnId}.comment-container`);
+      commentBtnContainer.attr(
+        "show",
+        commentBtnContainer.attr("show") === "false" ? true : false
+      );
+      if (commentBtnContainer.attr("show") === "true") {
+        const commentWrapperHeight = $(
+          `#${btnId}.comment-container .comment-wrapper`
+        ).height();
+        commentBtnContainer.css({
+          height: `calc(${commentWrapperHeight}px + 1rem)`,
+          paddingBlock: "1rem",
+        });
+      } else {
+        commentBtnContainer.css({
+          height: "0",
+          paddingBlock: "0rem",
+        });
+      }
+    });
+  });
 }
+const everythingLoaded = () => {
+  //if the enter is clicked on the input field. it will automatically trigger the very next send btn. then it will add the comment
+  const ibs = $(".add-comment-input");
+  $.each(ibs, (index, input) => {
+    input.addEventListener("keydown", (e) => {
+      if (e.key == "Enter") {
+        input.nextSibling.click();
+      }
+    });
+  });
+  //adding comment for a post
+  const cbs = $(".add-comment-btn");
+  $.each(cbs, (index, btn) => {
+    const input = btn.previousSibling;
+    const id = btn.id;
+    btn.addEventListener("click", () => {
+      $.ajax({
+        url: "/addPostComment",
+        type: "POST",
+        data: {
+          commentContent: input.value,
+          postId: id,
+        },
+        success: (data) => {
+          if (data == "success") {
+            popup("comment added successfully", "green", "4s");
+
+            getPosts();
+            window.setTimeout(() => {
+              const commentIcon = $(`#${id}.comment-icon-container`);
+              commentIcon.click();
+
+              const btn = $(`#${id}.add-comment-btn`);
+              const inputBtn = btn.closest(".add-comment-input");
+
+              inputBtn.value = "";
+              inputBtn.click();
+            }, 300);
+          } else {
+            popup("some error occurred!", "red", "4s");
+          }
+        },
+      });
+    });
+  });
+};

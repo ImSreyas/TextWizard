@@ -21,7 +21,6 @@ if(deleteButtons){
 }
 const blockButtons = document.querySelectorAll('.block-btn')
 if(blockButtons){
-    console.log('ya working')
     blockButtons.forEach((blockBtn, index) => {
         blockBtn.addEventListener('click', (e) => {
             const deoId = e.target.id

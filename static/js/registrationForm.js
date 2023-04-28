@@ -71,7 +71,7 @@ $(document).ready(()=>{
         let confirmPassword = $('.confirm-password').val()
         let gender = $('.gender-container button[selected=true]').text()
         let userType = $('.user-type-container button[selected=true]').text()
-        console.log(userType)
+ 
         $.ajax({
             url: '/registration',
             type: "POST",
