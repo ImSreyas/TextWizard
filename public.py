@@ -396,7 +396,7 @@ def getComments():
         postId = request.form.get('postId')
         
         data = database.select("SELECT comment.*, user.* FROM comment JOIN user ON comment.user_id = user.user_id WHERE comment.post_id = '%s'" % (postId))
-        return data
+        return [data, userId]
     else : return redirect('/index')
     
 @public.route('/addPostComment', methods = ["POST", "GET"])

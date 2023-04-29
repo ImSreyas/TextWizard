@@ -31,7 +31,7 @@ $(".post-btn").click(() => {
 });
 function getPosts() {
   $.ajax({
-    url: "/getPostsSelf",
+    url: "/getPosts",
     type: "POST",
     success: (posts) => {
       $(".post-output-container-main").html("");
@@ -133,7 +133,7 @@ function getPosts() {
           data: {
             postId: post.post_id,
           },
-          success: (response) => {
+          success: ([response, userId]) => {
             $.each(response, (index, res) => {
               if (res) {
                 const individualCommentWrapper = document.createElement("div");
@@ -197,30 +197,32 @@ function getPosts() {
                 time.className = "individual-comment-time";
                 time.innerText = formattedDateTime;
 
-                const individualCommentDeleteBtn =
-                  document.createElement("button");
-                individualCommentBottomBar.append(individualCommentDeleteBtn);
-                individualCommentDeleteBtn.className =
-                  "individual-comment-delete-btn";
-                individualCommentDeleteBtn.id = res.comment_id;
-                individualCommentDeleteBtn.innerText = "Delete";
-
-                //comment delete btn click event listener
-                individualCommentDeleteBtn.addEventListener("click", (e) => {
-                  $.ajax({
-                    url: "/deleteComment",
-                    type: "POST",
-                    data: {
-                      commentId: res.comment_id,
-                    },
-                    success: (data) => {
-                      console.log(data);
-                      const $comment = $(individualCommentWrapper);
-                      $comment.addClass("removed");
-                      popup("comment deleted successfully", "blue", "3s");
-                    },
-                  });
-                });
+                if(userId == res.user_id){
+                    const individualCommentDeleteBtn =
+                      document.createElement("button");
+                    individualCommentBottomBar.append(individualCommentDeleteBtn);
+                    individualCommentDeleteBtn.className =
+                      "individual-comment-delete-btn";
+                    individualCommentDeleteBtn.id = res.comment_id;
+                    individualCommentDeleteBtn.innerText = "Delete";
+    
+                    //comment delete btn click event listener
+                    individualCommentDeleteBtn.addEventListener("click", (e) => {
+                      $.ajax({
+                        url: "/deleteComment",
+                        type: "POST",
+                        data: {
+                          commentId: res.comment_id,
+                        },
+                        success: (data) => {
+                          console.log(data);
+                          const $comment = $(individualCommentWrapper);
+                          $comment.addClass("removed");
+                          popup("comment deleted successfully", "blue", "3s");
+                        },
+                      });
+                    });
+                }
               } else {
                 const noCommentsFound = document.createElement("div");
                 commentWrapper.append(noCommentsFound);
