@@ -121,3 +121,117 @@ label{
 .time-container{
     font-size: .7rem;
 }
+
+
+.comment-container {
+  height: 0;
+  overflow: hidden;
+  transition: all 300ms ease-in-out;
+}
+
+.add-comment-input-container {
+  width: 100%;
+  display: flex;
+}
+.add-comment-input {
+  padding: 0.8rem 1rem;
+  flex-grow: 1;
+  background-color: var(--bg-input);
+  border: none;
+  outline: none;
+  border-radius: 0.9rem;
+  font-size: 0.9rem;
+}
+.add-comment-btn {
+  background-color: var(--secondary);
+  --size: 3rem;
+  height: var(--size);
+  width: var(--size);
+  margin-inline-start: 0.4rem;
+  border-radius: 100rem;
+  background-image: url("/static/images/paper-plane.png");
+  background-size: 1rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.comment-wrapper{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.individualCommentWrapper{
+    padding: .5rem 1rem;
+    border-radius: 1.2rem;
+    background-color: var(--bg-input);
+    margin-block-end: .8rem;
+    position: relative;
+}
+.individualCommentWrapper.removed{
+  text-decoration: line-through;
+}
+.individualCommentWrapper.removed::after{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 1.2rem;
+}
+.individualCommentTopBar{
+    display: flex;
+    align-items: center;
+}
+.individual-profile-pic-container{
+    display: inline-block;
+    --size: 2rem;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    overflow: hidden;
+}
+.individual-profile-pic{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.individual-comment-name{
+    margin-inline-start: .2rem;
+    padding: .1rem .8rem;
+    border-radius: .45rem;
+    background-color: var(--color);
+    color: var(--onColor);
+    font-size: .8rem;
+}
+.individual-comment-username{
+    padding: .1rem .8rem;
+    border-radius: .45rem;
+    border: 1px solid var(--color);
+    color: var(--text-color);
+    font-size: .8rem;
+    margin-inline-start: .2rem;
+}
+.individual-comment-content{
+    padding: .4rem .5rem .4rem;
+}
+.individualCommentBottomBar{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.individual-comment-time{
+    font-size: .6rem;
+    width: fit-content;
+}
+.individual-comment-delete-btn{
+  font-size: .75rem;
+  transform: translateY(-.09rem);
+  width: fit-content;
+  margin-inline: .5rem;
+  color: var(--color);
+  background-color: transparent;
+}

@@ -533,8 +533,9 @@ function getPosts() {
             postId: post.post_id,
           },
           success: (response) => {
-            $.each(response, (index, res) => {
-              if (res) {
+            console.log(response)
+            if (response != []) {
+              $.each(response, (index, res) => {
                 const individualCommentWrapper = document.createElement("div");
                 commentWrapper.append(individualCommentWrapper);
                 individualCommentWrapper.className = "individualCommentWrapper";
@@ -585,16 +586,48 @@ function getPosts() {
                 const formattedTime = `${formattedHours}:${formattedMinutes} ${ampm}`;
                 const formattedDateTime = `${formattedDate} ${formattedTime}`;
 
+                const individualCommentBottomBar =
+                  document.createElement("div");
+                individualCommentWrapper.append(individualCommentBottomBar);
+                individualCommentBottomBar.className =
+                  "individualCommentBottomBar";
+
                 const time = document.createElement("div");
-                individualCommentWrapper.append(time);
+                individualCommentBottomBar.append(time);
                 time.className = "individual-comment-time";
                 time.innerText = formattedDateTime;
-              } else {
-                const noCommentsFound = document.createElement("div");
-                commentWrapper.append(noCommentsFound);
-                noCommentsFound.className = "no-comments-found-container";
-              }
-            });
+
+                const individualCommentDeleteBtn =
+                  document.createElement("button");
+                individualCommentBottomBar.append(individualCommentDeleteBtn);
+                individualCommentDeleteBtn.className =
+                  "individual-comment-delete-btn";
+                individualCommentDeleteBtn.id = res.comment_id;
+                individualCommentDeleteBtn.innerText = "Delete";
+
+                //comment delete btn click event listener
+                individualCommentDeleteBtn.addEventListener("click", (e) => {
+                  $.ajax({
+                    url: "/deleteComment",
+                    type: "POST",
+                    data: {
+                      commentId: res.comment_id,
+                    },
+                    success: (data) => {
+                      console.log(data);
+                      const $comment = $(individualCommentWrapper);
+                      $comment.addClass("removed");
+                      popup("comment deleted successfully", "blue", "3s");
+                    },
+                  });
+                });
+              });
+            } else {
+              const noCommentsFound = document.createElement("div");
+              commentWrapper.append(noCommentsFound);
+              noCommentsFound.className = "no-comments-found-container";
+              noCommentsFound.innerText = "no comments found...!";
+            }
           },
         });
 
@@ -841,33 +874,34 @@ const everythingLoaded = () => {
     const input = btn.previousSibling;
     const id = btn.id;
     btn.addEventListener("click", () => {
-      $.ajax({
-        url: "/addPostComment",
-        type: "POST",
-        data: {
-          commentContent: input.value,
-          postId: id,
-        },
-        success: (data) => {
-          if (data == "success") {
-            popup("comment added successfully", "green", "4s");
+      input.value &&
+        $.ajax({
+          url: "/addPostComment",
+          type: "POST",
+          data: {
+            commentContent: input.value,
+            postId: id,
+          },
+          success: (data) => {
+            if (data == "success") {
+              popup("comment added successfully", "green", "4s");
 
-            getPosts();
-            window.setTimeout(() => {
-              const commentIcon = $(`#${id}.comment-icon-container`);
-              commentIcon.click();
+              getPosts();
+              window.setTimeout(() => {
+                const commentIcon = $(`#${id}.comment-icon-container`);
+                commentIcon.click();
 
-              const btn = $(`#${id}.add-comment-btn`);
-              const inputBtn = btn.closest(".add-comment-input");
+                const btn = $(`#${id}.add-comment-btn`);
+                const inputBtn = btn.closest(".add-comment-input");
 
-              inputBtn.value = "";
-              inputBtn.click();
-            }, 300);
-          } else {
-            popup("some error occurred!", "red", "4s");
-          }
-        },
-      });
+                inputBtn.value = "";
+                inputBtn.click();
+              }, 300);
+            } else {
+              popup("some error occurred!", "red", "4s");
+            }
+          },
+        });
     });
   });
 };

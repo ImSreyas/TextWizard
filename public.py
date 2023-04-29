@@ -408,7 +408,18 @@ def addPostComment():
         
         data = database.insert("INSERT INTO comment SET post_id='%s', user_id='%s', text='%s'" % (postId, userId, commentContent.replace("'", "\\'")))
         return 'success'
-    else : return redirect('/index')
+    else : return redirect('/login')
+    
+@public.route('/deleteComment', methods = ["POST", "GET"])
+def deleteComment():
+    if(session.get('user')):
+        commentId = request.form.get('commentId')
+        userId = session.get('user')
+        print(commentId)
+        
+        result = database.delete("DELETE FROM comment WHERE comment_id='%s'" % (commentId))
+        return json.dumps(result)
+    else : return redirect('/login')
 
 UPLOAD_FOLDER = '/static/uploads/'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
