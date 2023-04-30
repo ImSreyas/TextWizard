@@ -391,13 +391,11 @@ def deletePost():
 
 @public.route('/getComments', methods = ["POST", "GET"])
 def getComments():
-    if(session.get('user')):
-        userId = session.get('user')
-        postId = request.form.get('postId')
-        
-        data = database.select("SELECT comment.*, user.* FROM comment JOIN user ON comment.user_id = user.user_id WHERE comment.post_id = '%s'" % (postId))
-        return [data, userId]
-    else : return redirect('/index')
+    userId = session.get('user') or 0  
+    postId = request.form.get('postId')
+    
+    data = database.select("SELECT comment.*, user.* FROM comment JOIN user ON comment.user_id = user.user_id WHERE comment.post_id = '%s'" % (postId))
+    return [data, userId]
     
 @public.route('/addPostComment', methods = ["POST", "GET"])
 def addPostComment():

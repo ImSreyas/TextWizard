@@ -197,31 +197,31 @@ function getPosts() {
                 time.className = "individual-comment-time";
                 time.innerText = formattedDateTime;
 
-                if(userId == res.user_id){
-                    const individualCommentDeleteBtn =
-                      document.createElement("button");
-                    individualCommentBottomBar.append(individualCommentDeleteBtn);
-                    individualCommentDeleteBtn.className =
-                      "individual-comment-delete-btn";
-                    individualCommentDeleteBtn.id = res.comment_id;
-                    individualCommentDeleteBtn.innerText = "Delete";
-    
-                    //comment delete btn click event listener
-                    individualCommentDeleteBtn.addEventListener("click", (e) => {
-                      $.ajax({
-                        url: "/deleteComment",
-                        type: "POST",
-                        data: {
-                          commentId: res.comment_id,
-                        },
-                        success: (data) => {
-                          console.log(data);
-                          const $comment = $(individualCommentWrapper);
-                          $comment.addClass("removed");
-                          popup("comment deleted successfully", "blue", "3s");
-                        },
-                      });
+                if (userId == res.user_id) {
+                  const individualCommentDeleteBtn =
+                    document.createElement("button");
+                  individualCommentBottomBar.append(individualCommentDeleteBtn);
+                  individualCommentDeleteBtn.className =
+                    "individual-comment-delete-btn";
+                  individualCommentDeleteBtn.id = res.comment_id;
+                  individualCommentDeleteBtn.innerText = "Delete";
+
+                  //comment delete btn click event listener
+                  individualCommentDeleteBtn.addEventListener("click", (e) => {
+                    $.ajax({
+                      url: "/deleteComment",
+                      type: "POST",
+                      data: {
+                        commentId: res.comment_id,
+                      },
+                      success: (data) => {
+                        console.log(data);
+                        const $comment = $(individualCommentWrapper);
+                        $comment.addClass("removed");
+                        popup("comment deleted successfully", "blue", "3s");
+                      },
                     });
+                  });
                 }
               } else {
                 const noCommentsFound = document.createElement("div");
@@ -339,7 +339,7 @@ const everythingLoaded = () => {
                 inputBtn.click();
               }, 300);
             } else {
-              popup("some error occurred!", "red", "4s");
+              popup("please login to add a comment!", "blue", "4s");
             }
           },
         });
