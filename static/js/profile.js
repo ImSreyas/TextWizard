@@ -915,3 +915,21 @@ const everythingLoaded = () => {
 $(".history-container-main .content-bar").length == 0 &&
   $(".history-container-main").css({ display: "none" }) &&
   $(".history-btn-top").css({ display: "none" });
+
+// when the post share btn is clicked
+const postShareBtn = document.querySelectorAll(".tool-box .post");
+postShareBtn.forEach((p, index) => {
+  p.addEventListener('click',(e) => {
+    const text = getTextFromEditor(index);
+    $.ajax({
+      url: "/sharePost",
+      type: "POST",
+      data: {
+        text: text,
+      },
+      success: () => {
+        location.href = "/post";
+      },
+    });
+  });
+});
