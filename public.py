@@ -378,7 +378,8 @@ def deleteHistoryItem():
     if(session.get('user')):
         userId = session.get('user')
         textId = request.form.get('textId')
-        
+        data = (database.select("SELECT file_name FROM text WHERE user_id='%s' && text_id='%s'" % (userId, textId)))[0]['file_name']
+        os.unlink('static/uploads/' + data)
         database.delete("DELETE FROM text WHERE user_id='%s' && text_id='%s'" % (userId, textId))
         return 'success'
     else : return redirect('/index')
