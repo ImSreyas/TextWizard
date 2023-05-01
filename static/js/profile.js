@@ -532,8 +532,7 @@ function getPosts() {
           data: {
             postId: post.post_id,
           },
-          success: (response) => {
-            console.log(response)
+          success: ([response, userId]) => {
             if (response != []) {
               $.each(response, (index, res) => {
                 const individualCommentWrapper = document.createElement("div");
