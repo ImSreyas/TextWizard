@@ -172,3 +172,21 @@ document.querySelector('.feedback-send-btn').addEventListener('click', (e) => {
         }
     })
 })
+// - quick settings on top
+const quickSettingsButtonsContainers = [
+  document.querySelector(".profile-update-container-main"),
+  document.querySelector(".password-update-container-main"),
+  document.querySelector(".feedback-container-main"),
+];
+const quickSettingsButtons = document.querySelectorAll(
+  ".quick-settings-container div"
+);
+quickSettingsButtons.forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    const offset = quickSettingsButtonsContainers[index].offsetTop;
+    window.scrollTo({
+      top: offset,
+      behavior: "smooth",
+    });
+  });
+});
