@@ -233,11 +233,11 @@ pdfDownloadBtn.forEach((btn) => {
         var blob = new Blob([data], { type: "application/pdf" });
         var url = URL.createObjectURL(blob);
         downloadLink.href = url;
+        fileName && (downloadLink.download = fileName + ".pdf");
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.error("Failed to fetch PDF file:", errorThrown);
       },
     });
-    fileName && (downloadLink.download = fileName + ".pdf");
   }
 });
