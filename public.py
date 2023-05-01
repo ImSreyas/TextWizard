@@ -10,6 +10,8 @@ import myModule as myModule
 from werkzeug.utils import secure_filename
 from datetime import datetime
 import json as json
+from fpdf import FPDF
+import unidecode
 
 
 
@@ -509,4 +511,30 @@ def adminLogin():
 def theme(mode):
     session['theme'] = mode
     return 'success'
+
+@public.route('/pdf', methods=['POST', 'GET'])
+def pdf():
+    data = request.form.get('data')
+     # Create FPDF object
+    pdf = FPDF()
+
+    # Add a page
+    pdf.add_page()
+
+    # Set font and size
+    pdf.set_font('Arial', 'B', 16)
+
+    # Add text
+    updatedData = data.replace('\u2014', '-').replace('\u2019', "'")
+    pdf.cell(40, 10, updatedData)
+
+    # Get the PDF binary data
+    pdf_data = pdf.output(dest='S').encode('latin-1')
+
+    # Set the content-type and headers
+    response = make_response(pdf_data)
+    response.headers.set('Content-Type', 'application/pdf')
+    response.headers.set('Content-Disposition', 'attachment', filename='unknown.pdf')
+
+    return response
     

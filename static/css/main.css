@@ -17,6 +17,7 @@ html{
 }
 *:has(body[theme='yellow']){
     --color: #f7ef0a;
+    --color-: #b4ae05;
     --onColor: rgb(21, 21, 21);
     /* --color: #865DFF; */
     --secondary: #5a5a5a;
@@ -44,6 +45,7 @@ html{
 }
 *:has(body[theme='darkGreen']){
     --color: #658864;
+    --color-: #567255;
     --onColor: white;
     --secondary: #B7B78A;
     --color-dark: #4d694d; 
