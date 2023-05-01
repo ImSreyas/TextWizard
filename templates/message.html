@@ -74,7 +74,16 @@
                                 {% else %}
                                 {% if chat['file_type'] %}
                                 <div class='user-chat-left'>
-
+                                    <div class='user-chat-file-name-container'>
+                                        <div class='user-chat-file-name'>{{
+                                            (chat['file_name'] or 'unknown') + chat['file_type']
+                                        }}</div>
+                                        <a class='user-chat-file-download-btn' data-fileContent='{{ chat['text'] }}' data-fileName='{{ (chat['file_name'] or 'unknown') }}' data-fileFormat='{{ chat['file_type'] }}'>download</a>
+                                    </div>
+                                    <div></div>
+                                    <div class='user-chat-time'>
+                                        {{ chat['time'].time().strftime('%I:%M %p') }}
+                                    </div>
                                 </div>
                                 {% else %}
                                 <div class='user-chat-left'>
