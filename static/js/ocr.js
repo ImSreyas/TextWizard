@@ -68,14 +68,11 @@ function convertImage() {
         p.textContent = line;
         $(".text-content").append(p);
       }
-      document.querySelector(".content-bar").scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        blockOffset: 500,
-      });
-      setTimeout(() => {
-        window.scrollBy(0, -16); // adjust by 50 pixels
-      }, 500);
+      const offsetTop = $(".content-bar").offset().top
+      window.scrollTo({
+        top: offsetTop - 80,
+        behavior: "smooth"
+      })
     },
   });
 }
