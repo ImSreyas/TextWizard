@@ -122,6 +122,20 @@ label{
     font-size: .7rem;
 }
 
+/* -delete post btn and its container  */
+.delete-post-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+.delete-post-btn {
+  width: fit-content;
+  padding: 0.2rem 1rem;
+  border-radius: 0.65rem;
+  font-size: 0.9rem;
+  background-color: var(--color);
+  color: var(--onColor);
+}
 
 .comment-container {
   height: 0;

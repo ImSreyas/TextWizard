@@ -33,7 +33,7 @@ function getPosts() {
   $.ajax({
     url: "/getPosts",
     type: "POST",
-    success: (posts) => {
+    success: ([posts, userId]) => {
       $(".post-output-container-main").html("");
       $(".list-own-post-container").html("");
       posts.forEach((post) => {
@@ -68,8 +68,23 @@ function getPosts() {
         username.className = "username-container_";
         username.innerHTML = post.username;
 
+        //?container for delete btn
+        const deletePostBtnContainer = document.createElement("div");
+        deletePostBtnContainer.className = "delete-post-btn-container";
+
+        //?actual post delete btn
+        const deletePostBtn = document.createElement("button");
+        deletePostBtn.className = "delete-post-btn";
+        deletePostBtn.id = post.post_id;
+        deletePostBtn.innerText = "delete";
+
+        //-appending btn to the main container
+        (userId == post.user_id) && deletePostBtnContainer.append(deletePostBtn);
+
         //-appending user profile pic, user name, username and delete btn to the user row container
         userRow.append(userImageContainer, userName, username);
+        //-appending the post delete button only when a post is own by the current user.
+        userRow.append(deletePostBtnContainer);
 
         //-caption container
         const caption = document.createElement("div");
@@ -263,11 +278,33 @@ function getPosts() {
         );
         $(".post-output-container-main").append(mainContainer);
       });
+      postDelete();
       everythingLoaded();
     },
   });
 }
 getPosts();
+
+//- delete post
+function postDelete() {
+  const deletePostBtnNew = document.querySelectorAll(".delete-post-btn");
+  deletePostBtnNew.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const id = e.target.id;
+      $.ajax({
+        url: "/deletePost",
+        type: "POST",
+        data: {
+          postId: id,
+        },
+        success: (data) => {
+          $(`#${id}.post-container`).css({ display: "none" });
+          popup("text successfully deleted", "green", "4s");
+        },
+      });
+    });
+  });
+}
 
 const everythingLoaded = () => {
   const commentButtons = document.querySelectorAll(".comment-icon-container");

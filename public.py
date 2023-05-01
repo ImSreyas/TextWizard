@@ -108,7 +108,9 @@ def addPost():
         return 'not logged in'
     
 @public.route('/getPosts', methods = ['POST', 'GET'])
-def getPosts() : return database.select("SELECT post.*, user.username, user.name, user.profile_pic FROM post JOIN user ON post.user_id = user.user_id ORDER BY post.post_id DESC")
+def getPosts() : 
+    userId = session.get('user') or 0
+    return [database.select("SELECT post.*, user.username, user.name, user.profile_pic FROM post JOIN user ON post.user_id = user.user_id ORDER BY post.post_id DESC"), userId]
     
 @public.route('/getPostsSelf', methods = ['POST', 'GET'])
 def getPostsOwn() : 
