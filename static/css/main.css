@@ -21,6 +21,7 @@ html{
     --onColor: rgb(21, 21, 21);
     /* --color: #865DFF; */
     --secondary: #5a5a5a;
+    --secondary-: #484848;
     --bg: #333439;
     --text-color: white;
     --text-secondary-color: #d1d0c5;
@@ -48,6 +49,8 @@ html{
     --color-: #567255;
     --onColor: white;
     --secondary: #B7B78A;
+    --secondary-:rgb(147, 147, 104);
+    --secondary-half-opacity: rgba(183,183,138,0.5);
     --color-dark: #4d694d; 
     --bg: #DDDDDD;
     --text-color: black;
