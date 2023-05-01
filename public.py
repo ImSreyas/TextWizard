@@ -522,12 +522,15 @@ def pdf():
     pdf.add_page()
 
     # Set font and size
-    pdf.set_font('Arial', 'B', 16)
+    pdf.set_font('Times', '', 10)
 
-    # Add text
-    updatedData = data.replace('\u2014', '-').replace('\u2019', "'")
-    pdf.cell(40, 10, updatedData)
+    lines = data.split('\n')
 
+    # Loop through the lines and add them to the PDF
+    for line in lines:
+        updatedData = line.replace('\u2014', '-').replace('\u2019', "'")
+        pdf.cell(80, 10, updatedData, ln=True)
+    
     # Get the PDF binary data
     pdf_data = pdf.output(dest='S').encode('latin-1')
 

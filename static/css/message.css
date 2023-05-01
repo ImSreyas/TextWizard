@@ -161,14 +161,14 @@ img{
 }
 .user-chat-right:has(.user-chat-file-name-container),
 .user-chat-left:has(.user-chat-file-name-container){
-    width: 50%;
-    padding: .7rem 1rem;
+    width: 55%;
+    padding: .6rem 1rem;
 }
 .user-chat-file-name-container{
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: .8rem;
     background-color: var(--color-);
     border-radius: 1rem;
 }
@@ -183,7 +183,7 @@ img{
     text-align: center;
     background-color: var(--secondary);
     border-radius: .7rem;
-    padding-block: .6rem;
+    padding-block: .7rem;
     text-decoration: none;
     color: var(--onColor);
 }
