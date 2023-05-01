@@ -417,6 +417,12 @@ function getPosts() {
     success: (posts) => {
       $(".post-output-container-main").html("");
       $(".list-own-post-container").html("");
+
+      //-removing the post container and btn on the top panel if there is no posts
+      posts.length == 0 &&
+        $(".list-own-post-container").css({ display: "none" }) &&
+        $(".post-btn-top").css({ display: "none" });
+
       posts.forEach((post) => {
         //-main container
         const mainContainer = document.createElement("div");
@@ -904,3 +910,8 @@ const everythingLoaded = () => {
     });
   });
 };
+//-removing the unwanted container (history) buttons (top history button) if it is empty
+//removing history
+$(".history-container-main .content-bar").length == 0 &&
+  $(".history-container-main").css({ display: "none" }) &&
+  $(".history-btn-top").css({ display: "none" });
