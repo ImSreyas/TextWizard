@@ -22,6 +22,7 @@
         {% endfor %}
     </div>
     <div class='user-chat-container'>
+        <div class='select-chat-text-shower'>Select a user to see the chat</div>
         {% for individualData in userData %}
     <div class='user-chat-container-inside' show='false' id='{{individualData['user_id']}}'>
         <div class='user-chat-list'>

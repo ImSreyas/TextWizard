@@ -178,3 +178,13 @@ div{
     border-radius: .5rem;
     background-color: var(--bg);
 }
+.select-chat-text-shower{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user-chat-container:has(.user-chat-container-inside[show='true']) .select-chat-text-shower{
+    display: none;
+}
