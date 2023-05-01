@@ -54,8 +54,8 @@ form{
     background-size: 5rem;
     background-position: center;
     width: 60vw;
-    margin: 0 auto;
-    height: 100%;
+    margin: 2rem auto;
+    height: calc(100% - 4rem);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,8 +89,8 @@ div{
 .drag-and-drop-icon-container
 img{
     object-fit: contain;
-    height: 50vh;
-    width: auto;
+    height: 52vh;
+    width: 100%;
     background-repeat: no-repeat;
 }
 .language-selector-container{
