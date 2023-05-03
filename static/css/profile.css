@@ -398,5 +398,7 @@
   color: var(--color);
   background-color: transparent;
 }
-
+.content-bar{
+  overflow: visible !important;
+}
 

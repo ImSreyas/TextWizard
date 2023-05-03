@@ -73,6 +73,9 @@ function convertImage() {
         top: offsetTop - 80,
         behavior: "smooth"
       })
+      const text = getTextFromEditor();
+      const fileName = document.querySelector(".file-name-input").value;
+      txtDownload(text, fileName);
     },
   });
 }
