@@ -137,12 +137,12 @@ def updateText():
         if request.method == 'POST':
             textId = request.form.get('textId')
             textContent = request.form.get('textContent')
-            database.update("UPDATE text SET new_text='%s' WHERE text_id='%s'" % (textContent, textId))
+            database.update("UPDATE text SET new_text='%s', last_edited=NOW() WHERE text_id='%s'" % (textContent, textId))
             return 'success'
         else: 
             return redirect('/index')
     else:
-        return redirect('/index')
+        return redirect('/login')
 
 @public.route('/updateProfile', methods = ['POST', 'GET'])
 def updateProfile():
@@ -541,4 +541,5 @@ def pdf():
     response.headers.set('Content-Disposition', 'attachment', filename='unknown.pdf')
 
     return response
+
     

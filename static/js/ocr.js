@@ -56,6 +56,7 @@ function convertImage() {
     success: ([data, id]) => {
       document.querySelector(".content-bar").style.display = "grid";
       document.querySelector(".content-bar").id = id;
+      document.querySelector(".text-content").id = id;
       // Split the OCR output into lines
       const lines = data.split("\n");
       const para = document.querySelectorAll(".text-content p");
@@ -300,6 +301,7 @@ function mdDownload(data, fileName) {
 const copyBtn = document.querySelector(".tool-box .copy");
 copyBtn.addEventListener("click", () => {
   navigator.clipboard.writeText(getTextFromEditor());
+  popup("text copied to clipboard", "green", '3s')
 });
 //?share
 const shareBtn = document.querySelector(".tool-box .share");
@@ -443,3 +445,18 @@ $(".send-text-to-deo-btn").click(() => {
     },
   });
 });
+const td = document.querySelector('.text-content')
+    td.addEventListener('keyup', (e) => {
+      const ti = e.target.id
+      const tc = getTextFromEditor()
+      console.log(ti, tc)
+      $.ajax({
+        url: '/updateText',
+        type: "POST",
+        data: {
+          textId: ti,
+          textContent: tc
+        }
+      })
+    })
+

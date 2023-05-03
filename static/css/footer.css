@@ -39,3 +39,6 @@ span{
     display: inline;
     height: fit-content;
 }
+a{
+    text-decoration: none;
+}
