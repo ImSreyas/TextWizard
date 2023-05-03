@@ -43,6 +43,8 @@ html{
     --text-highlighter: #202020;
 
     --popup-bg: #161616;
+
+    --bw: rgb(255, 255, 255);
 }
 *:has(body[theme='darkGreen']){
     --color: #658864;
@@ -74,6 +76,8 @@ html{
     --text-highlighter: #171717;
 
     --popup-bg: #1e1f1f;
+
+    --bw: rgb(0, 0, 0);
 }
 body{
     color: var(--text-color);

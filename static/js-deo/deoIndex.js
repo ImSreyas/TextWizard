@@ -372,5 +372,20 @@ if(td){
     })
   })
 }
-
+// done btn functionalities 
+$('.done-btn').click((e) => {
+  textId = e.target.id
+  $.ajax({
+    url: '/deo/done',
+    type: "POST",
+    data: {
+      textId: textId
+    },
+    success: (response) => {
+      (response == 'true') && 
+      $(`#${textId}.content-bar`).remove()
+      popup("successfully completed data entry", "green", "4s")
+    }
+  })
+})
 //  -ocr js end 

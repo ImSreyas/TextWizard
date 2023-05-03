@@ -16,7 +16,7 @@ deo = Blueprint('deo', __name__)
 def deoIndex():
     if session.get('deo'):
         deoId = session.get('deo')
-        dataEntryItems = database.select("SELECT t.*, u.* FROM `text` t INNER JOIN `user` u ON t.user_id = u.user_id WHERE t.file_given=true")
+        dataEntryItems = database.select("SELECT t.*, u.* FROM `text` t INNER JOIN `user` u ON t.user_id = u.user_id WHERE t.file_given=true && t.file_given_done=false")
         return render_template('deo/deoIndex.html', dataEntryItems = dataEntryItems, deoId = deoId)
     else:
         return redirect('/index')
@@ -27,8 +27,20 @@ def updateText():
         if request.method == 'POST':
             textId = request.form.get('textId')
             textContent = request.form.get('textContent')
-            result = database.update("UPDATE text SET new_text='%s', last_edited=NOW(), file_given_done='1' WHERE text_id='%s'" % (textContent, textId))
+            result = database.update("UPDATE text SET new_text='%s', last_edited=NOW() WHERE text_id='%s'" % (textContent, textId))
             return 'success'
+        else: 
+            return redirect('/home')
+    else:
+        return redirect('/home')
+
+@deo.route('/deo/done', methods = ["POST", "GET"])
+def done():
+    if session.get('deo'):
+        if request.method == 'POST':
+            textId = request.form.get('textId')
+            result = database.update("UPDATE text SET file_given_done='1' WHERE text_id='%s'" % (textId))
+            return 'true'
         else: 
             return redirect('/home')
     else:

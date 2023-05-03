@@ -92,11 +92,15 @@
         </div>
         <div class='text-file-download-container'>
             <div>
-                {% if item.file_given == 1 and item.file_given_done == 0%}
-                    <div class='data-entry-status-red' class='data-entry-red'>Data entry</div>
+                {% if item.file_given == 1 and item.file_given_done == 0 %}
+                <div class='data-entry-status-red' class='data-entry-red'></div>
                 {% elif item.file_given == 1 and item.file_given_done == 1 %}
-                    <div class='data-entry-status-green'>Data entry</div>
+                <div class='data-entry-status-green'></div>
                 {% endif %} 
+                <span class='data-entry-text-shower'>Data entry</span>
+                {% if item.file_given == 1 and item.file_given_done == 1 %}
+                <button class='data-entry-resend-btn' id='{{ item.text_id }}'>resend</button>
+                {% endif %}
             </div>
             <div class='download-and-delete-btn-wrapper'>
                 <div class='link-format__container'>

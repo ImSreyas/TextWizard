@@ -16,3 +16,9 @@
 .text-content-new{
     outline: none;
 }
+.done-btn{
+    padding: .5rem 1.2rem;
+    background-color: var(--color);
+    color: var(--onColor);
+    border-radius: 1rem;
+}

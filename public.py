@@ -144,6 +144,18 @@ def updateText():
     else:
         return redirect('/login')
 
+@public.route('/resend', methods = ["POST", "GET"])
+def resend():
+    if session.get('user'):
+        if request.method == 'POST':
+            textId = request.form.get('textId')
+            database.update("UPDATE text SET file_given_done='0' WHERE text_id='%s'" % (textId))
+            return 'success'
+        else: 
+            return redirect('/index')
+    else:
+        return redirect('/login')
+
 @public.route('/updateProfile', methods = ['POST', 'GET'])
 def updateProfile():
     if session.get('user'):

@@ -974,4 +974,22 @@ document.querySelectorAll(".txt-download-link").forEach((download, index) => {
   const fileName = document.querySelectorAll(".file-name-input")[index].value;
   txtDownload(text, fileName, index);
 });
-//auto name update on the download btn
+//resend btn for data entry
+const resendButtons = document.querySelectorAll(".data-entry-resend-btn");
+resendButtons.forEach((btn, i) => {
+  btn.addEventListener('click', (e) => {
+    textId = e.target.id;
+    $.ajax({
+      url: "/resend",
+      type: "POST",
+      data: {
+        textId: textId,
+      },
+      success: (data) => {
+        popup("text re-sended to data entry", "green", "4s");
+        document.querySelectorAll(".data-entry-status-green")[i].style.backgroundColor = 'red'
+        btn.remove()
+      },
+    });
+  });
+});
