@@ -225,6 +225,9 @@ def login():
                     status = (database.select("SELECT status FROM deo WHERE id='%s'" % (result[0]['user_id'])))[0]['status']
                     if status == 0 :
                         return 'DNV'
+                    blockedStatus = (database.select("SELECT block FROM deo WHERE id='%s'" % (result[0]['user_id'])))[0]['block']
+                    if blockedStatus == 1 :
+                        return 'blocked'
                     session['deo'] = result[0]['user_id']
                     return 'deo'
             else :

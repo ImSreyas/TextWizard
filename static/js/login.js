@@ -29,6 +29,18 @@ function userLogin() {
         $.each(errorContainer, (i, error) => {
           $(error).text("");
         });
+      } else if (data == "blocked") {
+        popup(
+          "Your account is blocked by admin... Please try again later",
+          "blue",
+          "5s"
+        );
+        $(".username").val("");
+        $(".password").val("");
+        let errorContainer = $("error");
+        $.each(errorContainer, (i, error) => {
+          $(error).text("");
+        });
       } else {
         let errorContainer = $("error");
         let inputContainer = $(".input");
