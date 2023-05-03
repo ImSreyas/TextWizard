@@ -236,6 +236,7 @@ const copyBtn = document.querySelectorAll('.tool-box .copy')
 copyBtn.forEach((cp, index) => {
     cp.addEventListener('click', () => {
         navigator.clipboard.writeText(getTextFromEditor(index))
+        popup("text copied to clipboard", "green", "3s")
     })
 })
 
