@@ -27,7 +27,7 @@ def updateText():
         if request.method == 'POST':
             textId = request.form.get('textId')
             textContent = request.form.get('textContent')
-            database.update("UPDATE text SET new_text='%s' WHERE text_id='%s'" % (textContent, textId))
+            result = database.update("UPDATE text SET new_text='%s', last_edited=NOW(), file_given_done='1' WHERE text_id='%s'" % (textContent, textId))
             return 'success'
         else: 
             return redirect('/home')
