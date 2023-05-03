@@ -107,54 +107,92 @@ formatSelectorBtns.forEach((formatSelectorBtn, index) => {
     option.addEventListener("click", (e) => {
       optionContainer.setAttribute("vis", "false");
       formatSelectorBtn.children[0].innerText = e.target.innerText;
+
+      const text = getTextFromEditor(index);
+      const fileName =
+        document.querySelectorAll(".file-name-input")[index].value;
+      const link = document.querySelectorAll(".txt-download-link")[index];
+
+      switch (e.target.innerText) {
+        case ".txt":
+          txtDownload(text, fileName, index);
+          break;
+        case ".html":
+          htmlDownload(text, fileName, index);
+          break;
+        case ".css":
+          cssDownload(text, fileName, index);
+          break;
+        case ".csv":
+          csvDownload(text, fileName, index);
+          break;
+        case ".json":
+          jsonDownload(text, fileName, index);
+          break;
+        case ".xml":
+          xmlDownload(text, fileName, index);
+          break;
+        case ".md":
+          mdDownload(text, fileName, index);
+          break;
+        case ".pdf":
+          pdf(
+            document.querySelectorAll(".txt-download-link")[index],
+            getTextFromEditor([index]),
+            document.querySelectorAll(".file-name-input")[index].value
+          );
+          break;
+        default:
+          txtDownload(text, fileName);
+      }
     });
   });
 });
 
 // ?end of file format selection
 // ? download btn
-const downloadBtns = document.querySelectorAll(".txt-download-link");
+// const downloadBtns = document.querySelectorAll(".txt-download-link");
 
-downloadBtns.forEach((downloadBtn, index) => {
-  downloadBtn.addEventListener("click", () => {
-    const textFormat = document
-      .querySelectorAll(".file-format-container")
-      [index].querySelector(".actualFileFormat").innerText;
-    const text = getTextFromEditor(index);
-    const fileName = document
-      .querySelectorAll(".file-name-container")
-      [index].querySelector(".file-name-input").value;
+// downloadBtns.forEach((downloadBtn, index) => {
+//   downloadBtn.addEventListener("click", () => {
+//     const textFormat = document
+//       .querySelectorAll(".file-format-container")
+//       [index].querySelector(".actualFileFormat").innerText;
+//     const text = getTextFromEditor(index);
+//     const fileName = document
+//       .querySelectorAll(".file-name-container")
+//       [index].querySelector(".file-name-input").value;
 
-    switch (textFormat) {
-      case ".txt":
-        txtDownload(text, fileName, index);
-        break;
-      case ".html":
-        htmlDownload(text, fileName, index);
-        break;
-      case ".css":
-        cssDownload(text, fileName, index);
-        break;
-      case ".csv":
-        csvDownload(text, fileName, index);
-        break;
-      case ".json":
-        jsonDownload(text, fileName, index);
-        break;
-      case ".xml":
-        xmlDownload(text, fileName, index);
-        break;
-      case ".md":
-        mdDownload(text, fileName, index);
-        break;
-      case ".pdf":
-        pdfDownload(text, fileName, index);
-        break;
-      default:
-        txtDownload(text, fileName, index);
-    }
-  });
-});
+//     switch (textFormat) {
+//       case ".txt":
+//         txtDownload(text, fileName, index);
+//         break;
+//       case ".html":
+//         htmlDownload(text, fileName, index);
+//         break;
+//       case ".css":
+//         cssDownload(text, fileName, index);
+//         break;
+//       case ".csv":
+//         csvDownload(text, fileName, index);
+//         break;
+//       case ".json":
+//         jsonDownload(text, fileName, index);
+//         break;
+//       case ".xml":
+//         xmlDownload(text, fileName, index);
+//         break;
+//       case ".md":
+//         mdDownload(text, fileName, index);
+//         break;
+//       case ".pdf":
+//         pdfDownload(text, fileName, index);
+//         break;
+//       default:
+//         txtDownload(text, fileName, index);
+//     }
+//   });
+// });
 // ? end of download btn
 //? function for getting the text from editor
 const getTextFromEditor = (i) => {
@@ -176,73 +214,70 @@ function txtDownload(data, fileName, index) {
   downloadLink.href = URL.createObjectURL(
     new Blob([data], { type: "text/plain" })
   );
-  if (fileName != "") {
-    downloadLink.download = fileName + ".txt";
-  }
+  downloadLink.download = fileName ? fileName + ".txt" : "";
 }
 function htmlDownload(data, fileName, index) {
   const downloadLink = document.querySelectorAll(".txt-download-link")[index];
   downloadLink.href = URL.createObjectURL(
     new Blob([data], { type: "text/html" })
   );
-  if (fileName != "") {
-    downloadLink.download = fileName + ".txt";
-  }
+  downloadLink.download = fileName ? fileName + ".html" : "";
 }
 function cssDownload(data, fileName, index) {
   const downloadLink = document.querySelectorAll(".txt-download-link")[index];
   downloadLink.href = URL.createObjectURL(
     new Blob([data], { type: "text/css" })
   );
-  if (fileName != "") {
-    downloadLink.download = fileName + ".txt";
-  }
+  downloadLink.download = fileName ? fileName + ".css" : "";
 }
 function jsonDownload(data, fileName, index) {
   const downloadLink = document.querySelectorAll(".txt-download-link")[index];
   downloadLink.href = URL.createObjectURL(
     new Blob([data], { type: "application/json" })
   );
-  if (fileName != "") {
-    downloadLink.download = fileName + ".txt";
-  }
+  downloadLink.download = fileName ? fileName + ".json" : "";
 }
 function xmlDownload(data, fileName, index) {
   const downloadLink = document.querySelectorAll(".txt-download-link")[index];
   downloadLink.href = URL.createObjectURL(
     new Blob([data], { type: "application/xml" })
   );
-  if (fileName != "") {
-    downloadLink.download = fileName + ".xml";
-  }
+  downloadLink.download = fileName ? fileName + ".xml" : "";
 }
 function csvDownload(data, fileName, index) {
   const downloadLink = document.querySelectorAll(".txt-download-link")[index];
   downloadLink.href = URL.createObjectURL(
     new Blob([data], { type: "text/csv" })
   );
-  if (fileName != "") {
-    downloadLink.download = fileName + ".csv";
-  }
+  downloadLink.download = fileName ? fileName + ".csv" : "";
 }
 function mdDownload(data, fileName, index) {
   const downloadLink = document.querySelectorAll(".txt-download-link")[index];
   downloadLink.href = URL.createObjectURL(
     new Blob([data], { type: "text/markdown" })
   );
-  downloadLink.download = "markdownFile.md";
-  if (fileName != "") {
-    downloadLink.download = fileName + ".md";
-  }
+  downloadLink.download = fileName ? fileName + ".md" : "unknown.md";
 }
-function pdfDownload(data, fileName, index) {
-  const downloadLink = document.querySelectorAll(".txt-download-link")[index];
-  downloadLink.href = URL.createObjectURL(
-    new Blob([data], { type: "application/pdf" })
-  );
-  if (fileName != "") {
-    downloadLink.download = fileName + ".pdf";
-  }
+function pdf(downloadLink, data, fileName) {
+  $.ajax({
+    url: "/pdf",
+    method: "POST",
+    data: {
+      data: data,
+    },
+    xhrFields: {
+      responseType: "blob",
+    },
+    success: function (data) {
+      var blob = new Blob([data], { type: "application/pdf" });
+      var url = URL.createObjectURL(blob);
+      downloadLink.href = url;
+      downloadLink.download = fileName ? fileName + ".pdf" : "";
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.error("Failed to fetch PDF file:", errorThrown);
+    },
+  });
 }
 // async function pdfDownload(data){
 //   // -create a new PDF document
@@ -919,7 +954,7 @@ $(".history-container-main .content-bar").length == 0 &&
 // when the post share btn is clicked
 const postShareBtn = document.querySelectorAll(".tool-box .post");
 postShareBtn.forEach((p, index) => {
-  p.addEventListener('click',(e) => {
+  p.addEventListener("click", (e) => {
     const text = getTextFromEditor(index);
     $.ajax({
       url: "/sharePost",
@@ -933,3 +968,10 @@ postShareBtn.forEach((p, index) => {
     });
   });
 });
+//default text download assign to each download btn
+document.querySelectorAll(".txt-download-link").forEach((download, index) => {
+  const text = getTextFromEditor(index);
+  const fileName = document.querySelectorAll(".file-name-input")[index].value;
+  txtDownload(text, fileName, index);
+});
+//auto name update on the download btn
