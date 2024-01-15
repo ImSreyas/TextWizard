@@ -35,7 +35,7 @@ def landingPage():
 
 @public.route('/ocr')
 def OCRpage():
-    userData = database.select("SELECT * FROM USER")
+    userData = database.select("SELECT * FROM user")
     if(session.get('user')) : return render_template('ocr.html', userData = userData, userLoginStatus = True)
     return render_template('ocr.html', userData = userData, userLoginStatus = False)
 
@@ -126,7 +126,7 @@ def getPostsOwn() :
 def profile():
     if(session.get('user')):
         userId = session.get('user')
-        ud = database.select("SELECT * FROM USER")
+        ud = database.select("SELECT * FROM user")
         userData = database.select("SELECT * FROM user where user_id='%s'" % (userId))
         history = database.select("SELECT * FROM text WHERE user_id='%s' ORDER BY text_id DESC" % (userId))
         return render_template('profile.html', userData = userData, ud = ud, history = history)
