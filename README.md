@@ -68,6 +68,7 @@
 <img src="/screenshots/homeDark.png" alt=" " align="center" />
 <img src="/screenshots/ocrDark.png" alt=" " align="center" />
 <img src="/screenshots/blogDark.png" alt=" " align="center" />
+<img src="/screenshots/messageDark.png" alt=" " align="center" />
 
 
 
