@@ -62,6 +62,14 @@
 
 5. Access the web app in your browser at `http://localhost:5000`.
 
+## 📸 Snapshots
+
+- Home
+- OCR
+- Message
+- blog
+- profile
+
 ## 🛠️ Contributing
 
 📝 Feel free to contribute to the development of TextExtractor by submitting pull requests, reporting issues, or suggesting new features. We welcome your input!
