@@ -41,10 +41,35 @@
 ## 📸 Snapshots
 
 - Home
+<img src="/screenshots/home.png" alt=" " align="center" />
+
 - OCR
+
+<img src="/screenshots/ocr.png" alt=" " align="center" />
+
 - Message
-- blog
-- profile
+
+<img src="/screenshots/message.png" alt=" " align="center" />
+
+- Blog
+ 
+<img src="/screenshots/blog.png" alt=" " align="center" />
+
+- Blog comment
+ 
+<img src="/screenshots/blogComment.png" alt=" " align="center" />
+
+- Profile
+ 
+<img src="/screenshots/profileUpdate.png" alt=" " align="center" />
+
+- Dark mode
+ 
+<img src="/screenshots/homeDark.png" alt=" " align="center" />
+<img src="/screenshots/ocrDark.png" alt=" " align="center" />
+<img src="/screenshots/blogDark.png" alt=" " align="center" />
+
+
 
 ## 🚀 Getting Started
 
