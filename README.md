@@ -38,6 +38,14 @@
 - Communicate with other users within the web app.
 - Share files and stay connected.
 
+## 📸 Snapshots
+
+- Home
+- OCR
+- Message
+- blog
+- profile
+
 ## 🚀 Getting Started
 
 1. Clone the repository to your local machine.
