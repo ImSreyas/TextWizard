@@ -1,4 +1,4 @@
-<h1 align="center">🔥 TextExtractor 🔥</h1>
+<h1 align="center"> TextExtractor ✨</h1>
 
 ⚡ Welcome to TextExtractor, your go-to web application for effortlessly extracting text from images, managing your extracted data, and even sharing and collaborating with others. This application is built using the Python Flask framework, providing a seamless and user-friendly experience.
 
