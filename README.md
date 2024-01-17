@@ -38,6 +38,14 @@
 - Communicate with other users within the web app.
 - Share files and stay connected.
 
+## 📸 Snapshots
+
+- Home
+- OCR
+- Message
+- blog
+- profile
+
 ## 🚀 Getting Started
 
 1. Clone the repository to your local machine.
@@ -61,14 +69,6 @@
    ```
 
 5. Access the web app in your browser at `http://localhost:5000`.
-
-## 📸 Snapshots
-
-- Home
-- OCR
-- Message
-- blog
-- profile
 
 ## 🛠️ Contributing
 
