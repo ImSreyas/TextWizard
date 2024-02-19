@@ -98,7 +98,7 @@
 
 ## 🛠️ Contributing
 
-📝 Feel free to contribute to the development of TextExtractor by submitting pull requests, reporting issues, or suggesting new features. We welcome your input!
+📝 Feel free to contribute to the development of TextExtractor by submitting pull requests, reporting issues, or suggesting new features. I welcome your input!
 
 ✨ Thank you for choosing TextExtractor! I hope you find it valuable and user-friendly. If you have any questions or feedback, please don't hesitate to reach out. ✨
 
